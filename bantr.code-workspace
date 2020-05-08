@@ -1,0 +1,55 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../bantr-lib"
+    }
+  ],
+  "settings": {
+    // tslint config
+    "eslint.options": {
+      "parserOptions": {
+        "project": [
+          "${workspaceFolder}/tsconfig.json"
+        ]
+      }
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.surveys.enabled": false,
+    "cSpell.words": [
+      "bantr",
+      "faceit",
+      "csgo",
+      "contenthash"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      // general
+      "eamodio.gitlens",
+      "stylelint.vscode-stylelint",
+      "dbaeumer.vscode-eslint",
+      "christian-kohler.path-intellisense",
+      "msjsdiag.debugger-for-chrome",
+      "esbenp.prettier-vscode",
+      "christian-kohler.npm-intellisense",
+      "mgmcdermott.vscode-language-babel",
+      "VisualStudioExptTeam.vscodeintellicode",
+      "ms-azuretools.vscode-docker",
+      "redhat.vscode-yaml",
+      "rbbit.typescript-hero",
+      "EditorConfig.EditorConfig",
+      "vscodevim.vim",
+      "wayou.vscode-todo-highlight",
+      "cssho.vscode-svgviewer",
+      "streetsidesoftware.code-spell-checker",
+      "dracula-theme.theme-dracula",
+      "vscode-icons-team.vscode-icons",
+      "jpoissonnier.vscode-styled-components",
+      "apollographql.vscode-apollo",
+      "rbbit.typescript-hero"
+    ]
+  }
+}

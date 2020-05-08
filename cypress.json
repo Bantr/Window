@@ -1,0 +1,10 @@
+{
+  "port": 6006,
+  "projectId": "edec4p",
+  "watchForFileChanges": true,
+  "baseUrl": "http://localhost:30002",
+  "viewportWidth": 1000,
+  "viewportHeight": 660,
+  "video": true,
+  "nodeVersion": "system"
+}
