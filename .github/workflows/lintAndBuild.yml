@@ -1,0 +1,25 @@
+name: Window CI
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint code
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - run: npm run lint
+      - run: npm run lint:css #parallel
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build App
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - run: npm run build
+      # artifacts
