@@ -13,6 +13,7 @@ jobs:
           node-version: "12"
       - run: npm run lint
       - run: npm run lint:css #parallel
+
   build:
     runs-on: ubuntu-latest
     steps:
