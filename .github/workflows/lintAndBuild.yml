@@ -48,3 +48,8 @@ jobs:
       - run: npm run serve:ci
       - name: Cypress run
         uses: cypress-io/github-action@v1
+        with:
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
