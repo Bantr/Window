@@ -9,17 +9,9 @@ export const Container = styled.div`
     margin-left: 15px;
     font-size: 25px;
     cursor: default;
-  }
-`;
 
-export const Logo = styled.svg`
-  width: 25px;
-  height: auto;
-
-  .block1 {
-    fill: ${({ theme }): string => theme.p};
-  }
-  .block2 {
-    fill: ${({ theme }): string => theme.s};
+    &.pointer{
+      cursor: pointer;
+    }
   }
 `;
