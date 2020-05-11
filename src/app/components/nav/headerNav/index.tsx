@@ -4,14 +4,14 @@ import { Settings, Github, Person, LogOut } from 'lib/icons';
 import { ThemeToggle } from '../../ThemeToggle';
 import { NameAndLogo } from 'lib/components';
 import { UserContext } from 'lib/hooks';
-import { AuthenticationService, LocalStorageService } from 'lib/services';
+import { AuthenticationService } from 'lib/services';
 import { NotificationBell } from 'lib/components';
 import { Avatar, Header, Inner, Left, Right, DropDownItem, Line, UserDropDown } from './style';
 
 export const HeaderNav: React.FC<{}> = () => {
   const { userData } = React.useContext(UserContext);
   // TODO: transform to localstorage hook, which automatically updates the state when the local storage changes
-  const _localStorage = new LocalStorageService();
+  //const _localStorage = new LocalStorageService();
   const [dropDownVisible, setDropDownVisible] = useState(false);
 
   const _authenticationService = new AuthenticationService();

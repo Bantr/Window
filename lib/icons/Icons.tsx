@@ -31,12 +31,10 @@ export const Attachment: React.FC<IIconProps> = (props) => (
 ); Attachment.defaultProps = defaultProps;
 
 export const Bantr: React.FC<IIconProps> = (props) => (
-  <Icon
-    {...props}
-    viewBox="0 0 58.103 77.999"
-  >
-    <path d="M0,22.7,22.545,12.126l9.7,55.3L9.7,78Z" />
-    <path d="M25.861,10.572,48.406,0l9.7,55.3L35.558,65.873Z" />
+  <Icon {...props}>
+    <rect className="primary" height="100" rx="10" width="30" />
+    <rect className="primary" height="80" rx="10" width="30" x="40" y="59" />
+    <rect className="secondary" height="66" rx="10" width="30" x="80" y="33" />
   </Icon>
 ); Bantr.defaultProps = defaultProps;
 
