@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { NameAndLogo } from 'lib/components';
+import { Logo } from 'lib/components';
 
 const Container = styled.div`
   width: 100vw;
@@ -12,6 +12,6 @@ const Container = styled.div`
 
 export const AppLoad: React.FC<{}> = () => (
   <Container>
-    <NameAndLogo />
+    <Logo />
   </Container>
 );
