@@ -13,7 +13,7 @@ export const HeaderNav: React.FC<{}> = () => {
   const [dropDownVisible, setDropDownVisible] = useState(false);
 
   const containerRef = React.createRef<HTMLDivElement>();
-  useOutsideAlerter(containerRef, (): void => { setDropDownVisible(!dropDownVisible); });
+  useOutsideAlerter(containerRef, (): void => { setDropDownVisible(false); });
 
   return (
     <Header ref={containerRef}>
