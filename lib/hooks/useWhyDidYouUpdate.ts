@@ -2,7 +2,7 @@ import * as React from 'react';
 
 // Performance hook to see which props cause a rerender of the component.
 // TODO: Check if props type could be more defined.
-export function useWhyDidYouUpdate(name: string, props: Record<string, any>): void {
+export function useWhyDidYouUpdate(name: string, props: any): void {
   const previousProps = React.useRef<HTMLElement>();
 
   React.useEffect(() => {
