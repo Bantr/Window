@@ -9,11 +9,9 @@ export function useLockBodyScroll(): void {
 }
 
 export function useLockRefScroll(ref: React.MutableRefObject<HTMLElement>): void {
-  console.log('this is the ref', ref.current);
-
   React.useLayoutEffect(() => {
     const originalStyle = ref.current.style.overflow;
     ref.current.style.overflow = 'hidden';
     return (): any => { ref.current.style.overflow = originalStyle; };
-  });
+  }, [ref]);
 }
