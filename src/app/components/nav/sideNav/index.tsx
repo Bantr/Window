@@ -1,9 +1,9 @@
 import React from 'react';
-import { LocalStorageService } from 'lib/services';
 import { SideNavLink, ExternalSideNavLink } from './sideNavLink';
 import { Link } from '@reach/router';
 import { ArrowBig, Dashboard, Discord, Github, Heart, People, Tracker } from 'lib/icons';
 import { Collapse, CollapseIconContainer, ComingSoon, Container, PrivacyContainer } from './style';
+import { useLocalStorage } from 'lib/hooks';
 
 const path = '/csgo';
 const links = [
@@ -44,37 +44,28 @@ const socialLinks = [
 ];
 
 export const SideNav: React.FC<{}> = () => {
-  const _localStorageService = new LocalStorageService();
-  const defaultCollapsedState = _localStorageService.getItem('sidenav-is-collapsed');
-
-  const [isCollapsed, setCollapsed] = React.useState<boolean>(defaultCollapsedState ? defaultCollapsedState : false);
-
-  function setCollapsedState(): void {
-    _localStorageService.storeItem('sidenav-is-collapsed', (!isCollapsed).toString());
-    setCollapsed(!isCollapsed);
-  }
-
+  const [collapsed, setCollapsed] = useLocalStorage('sidenav-collapsed', false);
   return (
-    <Container isCollapsed={isCollapsed}>
+    <Container collapsed={collapsed}>
       <div>
         {links.map(({ icon, text, to, comingSoon = false }) => (
           <React.Fragment key={to}>
             {comingSoon ? <ComingSoon>Coming soon!</ComingSoon> : ''}
-            <SideNavLink icon={icon} isCollapsed={isCollapsed} text={text} to={to} />
+            <SideNavLink collapsed={collapsed} icon={icon} text={text} to={to} />
           </React.Fragment>
         ))}
-        <Collapse onClick={setCollapsedState}>
-          <CollapseIconContainer isCollapsed={isCollapsed}>
-            <ArrowBig fill="white" pointer rotate={isCollapsed ? 0 : 180} />
+        <Collapse onClick={(): void => setCollapsed(!collapsed)}>
+          <CollapseIconContainer collapsed={collapsed}>
+            <ArrowBig fill="white" pointer rotate={collapsed ? 0 : 180} />
           </CollapseIconContainer>
         </Collapse>
       </div>
       <div>
         {socialLinks.map((link) => (
-          <ExternalSideNavLink external isCollapsed={isCollapsed} key={link.to} {...link} />
+          <ExternalSideNavLink collapsed={collapsed} external key={link.to} {...link} />
         ))
         }
-        <PrivacyContainer isCollapsed={isCollapsed}>
+        <PrivacyContainer collapsed={collapsed}>
           <Link to="/privacy">privacy</Link>
           <Link to="/terms-of-use">terms of use</Link>
         </PrivacyContainer>

@@ -7,13 +7,13 @@ interface IProps {
   icon: JSX.Element;
   text: string;
   to: string;
-  isCollapsed: boolean;
+  collapsed: boolean;
   external?: boolean;
 }
-export const SideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed, to }) => (
+export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => (
   <LinkContainer>
     {
-      isCollapsed ?
+      collapsed ?
         <Tooltip
           overlay={text}
           placement="right"
@@ -24,7 +24,7 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed, to }) =
               {icon}
             </IconContainer>
             {
-              isCollapsed ? '' : (
+              collapsed ? '' : (
                 <TextContainer>
                   {text}
                 </TextContainer>)
@@ -37,7 +37,7 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed, to }) =
             {icon}
           </IconContainer>
           {
-            isCollapsed ? '' : (
+            collapsed ? '' : (
               <TextContainer>
                 {text}
               </TextContainer>)
@@ -47,10 +47,10 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed, to }) =
   </LinkContainer>
 );
 
-export const ExternalSideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed, to }) => (
+export const ExternalSideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => (
   <LinkContainer className="external">
     {
-      isCollapsed ?
+      collapsed ?
         <Tooltip
           overlay={text}
           placement="right"
@@ -61,7 +61,7 @@ export const ExternalSideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed,
               {icon}
             </IconContainer>
             {
-              isCollapsed ? '' : (
+              collapsed ? '' : (
                 <TextContainer className="external">
                   {text}
                 </TextContainer>)
@@ -73,7 +73,7 @@ export const ExternalSideNavLink: React.FC<IProps> = ({ icon, text, isCollapsed,
             {icon}
           </IconContainer>
           {
-            isCollapsed ? '' : (
+            collapsed ? '' : (
               <TextContainer className="external">
                 {text}
               </TextContainer>)
