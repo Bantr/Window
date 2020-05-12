@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HttpService, RoutingService, AuthenticationService } from 'lib/services';
 import { BantrSettings } from 'lib/settings';
-import { UserContext, useModal, useOutsideAlerter } from 'lib/hooks';
+import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { Container, ConnectionDetails, TitleContainer, CheckmarkContainer } from './style';
 import { DisconnectPlatformModal } from '../../../modals/disconnectPlatform';
 import { Button, Title } from 'lib/components';
@@ -16,43 +16,39 @@ export interface IProps {
 }
 
 export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformName, username }) => {
-  const [connected, setConnected] = React.useState<boolean>(isConnected);
-  const [isDisconnecting, setDisconnecting] = React.useState<boolean>(false);
-  const { setUserData } = React.useContext(UserContext);
-  const [Modal, open, close] = useModal();
   const _httpService = new HttpService();
   const _authenticationService = new AuthenticationService();
   const _bantrSettings = new BantrSettings();
+
+  const [connected, setConnected] = React.useState<boolean>(isConnected);
+
+  const { execute: disconnect, pending, value: disconnected, error } = useAsync(_httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`), false);
+  const [ModalWrapper, openModal, closeModal] = useModal();
+
+  const { setUserData } = React.useContext(UserContext);
   const wrapperRef = React.createRef<HTMLDivElement>();
   useOutsideAlerter(wrapperRef, (): void => { close(); });
   const { enqueueSnackbar } = useSnackbar();
+  const showErrorMessage = (): void => { enqueueSnackbar('Disconnecting failed, contact support if this error remains.'); };
 
-  function openModal(): void {
-    open();
-  }
-
-  async function disconnect(): Promise<void> {
-    setDisconnecting(true);
-    try {
-      await _httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
-      const session = await _authenticationService.isAuthenticated();
-
-      if (!session || !setUserData) {
-        throw new Error('Could not handle current session.');
-      }
-      setUserData({ ...session });
-      const id = session[`${platformName}Id`];
-      // if id doesn't exit it is successfully removed from the session & db.
-      if (!id) {
-        setConnected(false);
-        setDisconnecting(false);
-      } else {
-        enqueueSnackbar('Disconnecting failed, contact support if this error remains.');
-      }
-    } catch (e) {
-      throw new Error(e);
+  React.useEffect(() => {
+    if (disconnected) {
+      _authenticationService.isAuthenticated().then((session) => {
+        if (!session || !setUserData) {
+          showErrorMessage();
+          throw new Error('Could not handle current session.');
+        }
+        setUserData({ ...session });
+        const id = session[`${platformName}Id`];
+        !id ? setConnected(false) : showErrorMessage();
+      })
+        .catch((e: Error) => console.log(e));
     }
-  }
+    if (error) {
+      showErrorMessage();
+      console.error(error);
+    }
+  }, [disconnected, error]);
 
   function connect(): void {
     const _routingService = new RoutingService();
@@ -88,14 +84,14 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
       <Button
         active={!connected}
         color="primary"
-        isLoading={isDisconnecting}
+        isLoading={pending}
         onClick={connected ? openModal : connect}
       >
         {connected ? 'Disconnect' : 'Connect'}
       </Button>
-      <Modal >
-        <DisconnectPlatformModal close={close} disconnect={disconnect} platformName={platformName} ref={wrapperRef} />
-      </Modal>
+      <ModalWrapper>
+        <DisconnectPlatformModal close={closeModal} disconnect={disconnect} platformName={platformName} ref={wrapperRef} />
+      </ModalWrapper>
     </Container>
   );
 };
