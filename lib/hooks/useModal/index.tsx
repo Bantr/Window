@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { useLockBodyScroll, useLockRefScroll } from 'lib/hooks';
 import { Container, Overlay } from './style';
 
 interface IModalProps {
