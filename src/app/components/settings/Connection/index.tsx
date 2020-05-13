@@ -19,10 +19,9 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
   const _httpService = new HttpService();
   const _authenticationService = new AuthenticationService();
   const _bantrSettings = new BantrSettings();
-
   const [connected, setConnected] = React.useState<boolean>(isConnected);
-
-  const { execute: disconnect, pending, value: disconnected, error } = useAsync(_httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`), false);
+  const disconnectRequest = (): Promise<Response> => _httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
+  const { execute: disconnect, pending, value: disconnected, error } = useAsync(disconnectRequest, false);
   const [ModalWrapper, openModal, closeModal] = useModal();
 
   const { setUserData } = React.useContext(UserContext);
