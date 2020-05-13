@@ -1,17 +1,22 @@
 import * as React from 'react';
 
-export function useLockBodyScroll(): void {
+export function useLockBodyScroll(lock = true): void {
   React.useLayoutEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = 'hidden';
-    return (): void => { document.body.style.overflow = originalStyle; };
-  });
+    if (lock) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      // Re-enable scrolling when component unmounts.
+      return (): void => { document.body.style.overflow = originalStyle; };
+    }
+  }, []); // Empty array ensures effect is only run on mount and unmount.
 }
 
 export function useLockRefScroll(ref: React.MutableRefObject<HTMLElement>): void {
   React.useLayoutEffect(() => {
-    const originalStyle = ref.current.style.overflow;
-    ref.current.style.overflow = 'hidden';
-    return (): any => { ref.current.style.overflow = originalStyle; };
+    if (ref) {
+      const originalStyle = ref.current.style.overflow;
+      ref.current.style.overflow = 'hidden';
+      return (): any => { ref.current.style.overflow = originalStyle; };
+    }
   }, [ref]);
 }

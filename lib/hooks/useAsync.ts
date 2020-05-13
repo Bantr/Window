@@ -7,7 +7,7 @@ interface IReturn {
   error: Error;
 }
 
-export const useAsync = (async: Promise<Response>, immediate = true): IReturn => {
+export const useAsync = (async: () => Promise<Response>, immediate = true): IReturn => {
   const [pending, setPending] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<any>(null);
   const [error, setError] = React.useState<Error>(null);
@@ -16,7 +16,7 @@ export const useAsync = (async: Promise<Response>, immediate = true): IReturn =>
     setPending(true);
     setValue(null);
     setError(null);
-    return async.then((response: any): void => setValue(response))
+    return async().then((response: any): void => setValue(response))
       .catch((error: Error) => setError(error))
       .finally(() => setPending(false));
   }, [async]);
