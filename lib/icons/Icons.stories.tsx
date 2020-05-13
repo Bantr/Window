@@ -8,7 +8,7 @@ import {
   Checkmark, Clock, Copy, CreditCard,
   Dashboard, Discord,
   Edit, Eye, EyeOff,
-  Faceit, Filter,
+  Faceit, Filter, Fullscreen
   Github, Globe, GlobeDetailed,
   Hamburger, Heart,
   LogOut,
@@ -77,6 +77,7 @@ export const Icons = (): JSX.Element => (
     <EyeOff />
     <Faceit />
     <Filter />
+    <Fullscreen />
     <Github />
     <Globe />
     <GlobeDetailed />
