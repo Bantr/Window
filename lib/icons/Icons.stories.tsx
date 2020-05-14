@@ -8,7 +8,7 @@ import {
   Checkmark, Clock, Copy, CreditCard,
   Dashboard, Discord,
   Edit, Eye, EyeOff,
-  Faceit, Filter, Fullscreen
+  Faceit, Filter, Fullscreen,
   Github, Globe, GlobeDetailed,
   Hamburger, Heart,
   LogOut,
