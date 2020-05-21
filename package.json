@@ -70,7 +70,7 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.8.3",
-    "@bantr/lib": "^1.8.0",
+    "@bantr/lib": "^1.9.0",
     "@cypress/code-coverage": "^3.7.0",
     "@cypress/webpack-preprocessor": "^5.1.2",
     "@graphql-codegen/cli": "1.13.3",
