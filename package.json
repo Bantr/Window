@@ -6,24 +6,29 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --env.mode=production --progress",
+    "build-storybook": "build-storybook",
+    "cy:cache:list": "cypress cache list",
+    "cy:info": "cypress info",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:verify": "cypress version",
+    "e2e:record": "cypress run --record --key ${CYPRESS_RECORD_KEY:-nokey}",
+    "e2e:record:parallel": "cypress run --record --parallel",
+    "graphql:generate": "graphql-codegen --config gqlTypeGenerator.yml --require dotenv/config",
     "lint": "eslint . -c ./.eslintrc.js --ext .ts,.tsx",
-    "lint:fix": "eslint --fix . -c ./.eslintrc.js --ext .ts,.tsx",
     "lint:css": "stylelint '**/*.tsx'",
+    "lint:fix": "eslint --fix . -c ./.eslintrc.js --ext .ts,.tsx",
+    "serve": "serve ./dist --no-clipboard -s --listen ${HOSTNAME:-'http://localhost':{PORT:-3000}",
+    "serve:ci": "serve ./dist --no-clipboard -s --listen ${PORT:-3000} & wait-on ${HOSTNAME:-'http://localhost'}:${PORT:-3000}",
     "sort-package-json": "sort-package-json package.json",
     "prestart": "npm run graphql:generate",
     "start": "webpack-dev-server --env.mode=development --progress",
-    "graphql:generate": "graphql-codegen --config gqlTypeGenerator.yml --require dotenv/config",
-    "storybook": "node storybook.setup.js",
-    "build-storybook": "build-storybook",
-    "serve": "serve ./dist --no-clipboard -s --listen ${HOSTNAME:-'http://localhost':{PORT:-3000}",
-    "serve:ci": "serve ./dist --no-clipboard -s --listen ${PORT:-3000} & wait-on ${HOSTNAME:-'http://localhost'}:${PORT:-3000}",
-    "cy:verify": "cypress version",
-    "cy:info": "cypress info",
-    "cy:cache:list": "cypress cache list",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
-    "e2e:record": "cypress run --record --key ${CYPRESS_RECORD_KEY:-nokey}",
-    "e2e:record:parallel": "cypress run --record --parallel"
+    "storybook": "node storybook.setup.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.4",
@@ -61,8 +66,7 @@
     "styled-components": "^5.0.1",
     "typescript": "3.9.1-rc",
     "use-sound": "^1.0.2",
-    "uuid": "^7.0.2",
-    "wait-on": "^5.0.0"
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -140,7 +144,6 @@
     "nyc": "^15.0.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "react-cosmos": "^5.0.8",
     "react-dev-utils": "^10.2.0",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-hot-loader": "^4.12.14",
@@ -159,6 +162,7 @@
     "ts-loader": "^6.2.1",
     "typescript-plugin-styled-components": "^1.4.4",
     "url-loader": "^3.0.0",
+    "wait-on": "^5.0.0",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
@@ -169,10 +173,5 @@
   },
   "peerDependencies": {
     "cypress": "4.5.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
   }
 }

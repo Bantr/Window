@@ -6,3 +6,4 @@ export * from './useLocalStorage';
 export * from './useAsync';
 export * from './useLockScroll';
 export * from './useWhyDidYouUpdate';
+export * from './useOnScreen';
