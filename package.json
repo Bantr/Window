@@ -34,6 +34,7 @@
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/preset-typescript": "^3.0.0",
     "@types/react-helmet": "^5.0.15",
+    "@welldone-software/why-did-you-render": "^4.2.2",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-link-http": "^1.5.17",
