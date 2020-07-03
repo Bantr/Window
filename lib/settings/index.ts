@@ -1,1 +1,1 @@
-export { BantrSettings } from './BantrSettings';
+export { bantrSettings } from './BantrSettings';
