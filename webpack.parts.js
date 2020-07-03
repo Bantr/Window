@@ -12,6 +12,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -98,12 +99,29 @@ exports.sourceMap = () => ({
   devtool: 'source-map'
 });
 
-// yarn is not supported yet. when you need a new package, instead of ctrl+c the webpack build, just type import .. from 'package-name'.
-// webpack will automatically install the package.
-// const NpmInstallPlugin = require('npm-intall-webpack-plugin')
-//exports.npmInstall = () => ({
-//  new NpmInstallPlugin()
-// })
+// This lets you view source code context obtained from stack traces in their original untransformed form.
+exports.sentry = ({ clientVersion }) => ({
+  plugins: [
+    new SentryWebpackPlugin({
+      include: '.',
+      ignore: [
+        'node_modules',
+        'webpack.config.js',
+        'webpack.parts.js',
+        'eslintrc.js',
+        '.gitignore',
+        '.eslintrc.js',
+        '.stylelintrc.js',
+        'coverage',
+        'cypress',
+        'storybook',
+        'dist'
+      ],
+      release: `spawn-${clientVersion}`,
+      configFile: '.sentryclirc'
+    })
+  ]
+});
 
 exports.RebuildOnModuleInstall = () => ({
   plugins: [new WatchMissingNodeModulesPlugin(path.resolve('node_modules'))]

@@ -308,13 +308,16 @@ export type IDateComparisonExp = {
 /** columns and relationships of "match" */
 export type IMatch = {
   date: Scalars['timestamp'];
+  durationTicks?: Maybe<Scalars['Int']>;
   externalId: Scalars['String'];
   id: Scalars['Int'];
+  map?: Maybe<Scalars['String']>;
   /** An array relationship */
   players: Array<IMatchPlayersPlayer>;
   /** An aggregated array relationship */
   players_aggregate: IMatchPlayersPlayerAggregate;
-  type: Scalars['Int'];
+  tickrate?: Maybe<Scalars['Int']>;
+  type?: Maybe<Scalars['Int']>;
 };
 
 
@@ -382,13 +385,17 @@ export type IMatchAggregateOrderBy = {
 
 /** aggregate avg on columns */
 export type IMatchAvgFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "match" */
 export type IMatchAvgOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
@@ -398,46 +405,64 @@ export type IMatchBoolExp = {
   _not?: Maybe<IMatchBoolExp>;
   _or?: Maybe<Array<Maybe<IMatchBoolExp>>>;
   date?: Maybe<ITimestampComparisonExp>;
+  durationTicks?: Maybe<IIntComparisonExp>;
   externalId?: Maybe<IStringComparisonExp>;
   id?: Maybe<IIntComparisonExp>;
+  map?: Maybe<IStringComparisonExp>;
   players?: Maybe<IMatchPlayersPlayerBoolExp>;
+  tickrate?: Maybe<IIntComparisonExp>;
   type?: Maybe<IIntComparisonExp>;
 };
 
 /** aggregate max on columns */
 export type IMatchMaxFields = {
+  durationTicks?: Maybe<Scalars['Int']>;
   externalId?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  map?: Maybe<Scalars['String']>;
+  tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "match" */
 export type IMatchMaxOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   externalId?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  map?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate min on columns */
 export type IMatchMinFields = {
+  durationTicks?: Maybe<Scalars['Int']>;
   externalId?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  map?: Maybe<Scalars['String']>;
+  tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "match" */
 export type IMatchMinOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   externalId?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  map?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** ordering options when selecting data from "match" */
 export type IMatchOrderBy = {
   date?: Maybe<IOrderBy>;
+  durationTicks?: Maybe<IOrderBy>;
   externalId?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  map?: Maybe<IOrderBy>;
   players_aggregate?: Maybe<IMatchPlayersPlayerAggregateOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
@@ -646,94 +671,128 @@ export const enum IMatchSelectColumn {
   /** column name */
   Date = 'date',
   /** column name */
+  DurationTicks = 'durationTicks',
+  /** column name */
   ExternalId = 'externalId',
   /** column name */
   Id = 'id',
+  /** column name */
+  Map = 'map',
+  /** column name */
+  Tickrate = 'tickrate',
   /** column name */
   Type = 'type'
 };
 
 /** aggregate stddev on columns */
 export type IMatchStddevFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "match" */
 export type IMatchStddevOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate stddev_pop on columns */
 export type IMatchStddevPopFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "match" */
 export type IMatchStddevPopOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate stddev_samp on columns */
 export type IMatchStddevSampFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "match" */
 export type IMatchStddevSampOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate sum on columns */
 export type IMatchSumFields = {
+  durationTicks?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
+  tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "match" */
 export type IMatchSumOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate var_pop on columns */
 export type IMatchVarPopFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "match" */
 export type IMatchVarPopOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate var_samp on columns */
 export type IMatchVarSampFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "match" */
 export type IMatchVarSampOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
 /** aggregate variance on columns */
 export type IMatchVarianceFields = {
+  durationTicks?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  tickrate?: Maybe<Scalars['Float']>;
   type?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "match" */
 export type IMatchVarianceOrderBy = {
+  durationTicks?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
 };
 
