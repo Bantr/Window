@@ -56,6 +56,7 @@ module.exports = {
     'keyword-spacing': 2,
     'linebreak-style': [2, 'unix'],
     'no-console': 0,
+    'no-case-declarations': 0,
     'no-multi-spaces': 2,
     'no-multiple-empty-lines': [2, { max: 1, maxEOF: 0, maxBOF: 0 }],
     'no-return-assign': 2,
