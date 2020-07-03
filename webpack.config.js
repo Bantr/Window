@@ -17,8 +17,8 @@ const commonConfig = merge([
   parts.IO(),
   parts.loadHtml(),
   parts.cssExtract(),
-  parts.RebuildOnModuleInstall(),
-  parts.progress()
+  parts.dotEnv(PublicEnvironmentVariables),
+  parts.progress(),
 ])
 
 const productionConfig = merge([
@@ -29,9 +29,7 @@ const productionConfig = merge([
   parts.minify(),
   parts.minimizeImages(),
   parts.ServiceWorker(),
-  parts.dotEnv(PublicEnvironmentVariables),
-  parts.sentrySourceMaps(),
-  parts.CopyPublicFolder()
+  parts.CopyPublicFolder(),
 ]);
 
 const developmentConfig = merge([
@@ -41,9 +39,13 @@ const developmentConfig = merge([
     port: process.env.PORT
   }),
   parts.sourceMap(),
-  parts.dotEnv(PublicEnvironmentVariables),
+  parts.RebuildOnModuleInstall(),
   parts.OSXDevSupport(),
 ]);
+
+const ciConfig = merge([
+  parts.sentry({ releaseVersion: process.env.npm_package_version })
+])
 
 module.exports = ({ mode }) => {
   console.log(chalk.white('webpack mode:'), chalk.green(mode));
@@ -51,6 +53,6 @@ module.exports = ({ mode }) => {
     case 'development':
       return merge(commonConfig, developmentConfig, { mode })
     case 'production':
-      return merge(commonConfig, productionConfig, { mode })
+      return merge(commonConfig, productionConfig, process.env.CI ? ciConfig : null, { mode })
   }
 }
