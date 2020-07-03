@@ -12,6 +12,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const SentryWebpackPlugin = require('sentry-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -96,6 +97,15 @@ exports.cleanDist = () => ({
 });
 exports.sourceMap = () => ({
   devtool: 'source-map'
+});
+
+exports.sentrySourceMaps = () => ({
+  // This lets you view source code context obtained from stack traces in their original untransformed form.
+  plugins: [
+    new SentryWebpackPlugin({
+      include: '.',
+    })
+  ]
 });
 
 // yarn is not supported yet. when you need a new package, instead of ctrl+c the webpack build, just type import .. from 'package-name'.

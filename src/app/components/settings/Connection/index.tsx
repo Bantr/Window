@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HttpService, RoutingService, AuthenticationService } from 'lib/services';
-import { BantrSettings } from 'lib/settings';
+import { bantrSettings } from 'lib/settings';
 import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { Container, ConnectionDetails, TitleContainer, CheckmarkContainer } from './style';
 import { DisconnectPlatformModal } from '../../../modals/disconnectPlatform';
@@ -18,7 +18,6 @@ export interface IProps {
 export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformName, username }) => {
   const _httpService = new HttpService();
   const _authenticationService = new AuthenticationService();
-  const _bantrSettings = new BantrSettings();
   const [connected, setConnected] = React.useState<boolean>(isConnected);
   const disconnectRequest = (): Promise<Response> => _httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
   const { execute: disconnect, pending, value: disconnected, error } = useAsync(disconnectRequest, false);
@@ -52,7 +51,7 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
   function connect(): void {
     const _routingService = new RoutingService();
     _routingService.navigateExternal(
-      `${_bantrSettings.apiRoot}/auth/${platformName.toLowerCase()}?redirectTo=${window.location.href}`);
+      `${bantrSettings.apiRoot}/auth/${platformName.toLowerCase()}?redirectTo=${window.location.href}`);
   }
 
   return (

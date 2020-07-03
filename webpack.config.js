@@ -30,6 +30,7 @@ const productionConfig = merge([
   parts.minimizeImages(),
   parts.ServiceWorker(),
   parts.dotEnv(PublicEnvironmentVariables),
+  parts.sentrySourceMaps(),
   parts.CopyPublicFolder()
 ]);
 
