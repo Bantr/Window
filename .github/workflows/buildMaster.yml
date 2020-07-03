@@ -1,4 +1,4 @@
-name: Spawn Master CI
+name: Lint and build (master)
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Spawn CI
+name: Cypress CI
 
 on: [push]
 

@@ -3,6 +3,13 @@ const merge = require('webpack-merge');
 const parts = require('./webpack.parts.js');
 const chalk = require('chalk');
 
+function isStringTrue(val) {
+  if (val === 'true') {
+    return true;
+  }
+  return false;
+}
+
 const PublicEnvironmentVariables = {
   'process.env': {
     'API_ROOT': JSON.stringify(process.env.API_ROOT),
@@ -43,9 +50,11 @@ const developmentConfig = merge([
   parts.OSXDevSupport(),
 ]);
 
-const ciConfig = merge([
+const CIConfig = merge([
   parts.sentry({ releaseVersion: process.env.npm_package_version })
 ])
+
+console.log('ci env', !!process.env.CI);
 
 module.exports = ({ mode }) => {
   console.log(chalk.white('webpack mode:'), chalk.green(mode));
@@ -53,6 +62,6 @@ module.exports = ({ mode }) => {
     case 'development':
       return merge(commonConfig, developmentConfig, { mode })
     case 'production':
-      return merge(commonConfig, productionConfig, process.env.CI ? ciConfig : null, { mode })
+      return merge(commonConfig, productionConfig, isStringTrue(process.env.CI) ? CIConfig : null, { mode })
   }
 }
