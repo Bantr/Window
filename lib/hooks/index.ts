@@ -7,3 +7,4 @@ export * from './useAsync';
 export * from './useLockScroll';
 export * from './useWhyDidYouUpdate';
 export * from './useOnScreen';
+export * from './useDebounce';
