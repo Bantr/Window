@@ -7,7 +7,7 @@ import useSound from 'use-sound';
 import { useOutsideAlerter } from 'lib/hooks';
 import notificationSfx from '../notification.mp3';
 import { NotificationList } from '../notificationList';
-import { HttpService } from 'lib/services';
+import { httpService } from 'lib/services';
 import { BellIcon, Container, NotificationIcon } from './style';
 
 const GET_SEEN_NOTIFICATION_COUNT = gql`
@@ -30,7 +30,6 @@ export const NotificationBell: React.FC<{}> = () => {
   const [deletedNotifications, setDeletedNotifications] = React.useState<number[]>([]);
 
   const [play] = useSound(notificationSfx);
-  const _httpService = new HttpService();
   const { loading, data, error } = useQuery<notificationResponse>(GET_SEEN_NOTIFICATION_COUNT, { pollInterval: 5 * 1000 * 60 });
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   useOutsideAlerter(wrapperRef, (): void => { toggleVisible(false); });
@@ -51,7 +50,7 @@ export const NotificationBell: React.FC<{}> = () => {
   async function getNewNotifications(notificationIds: number[]): Promise<void> {
     if (notificationIds) {
       const body = { 'status': true, 'ids': notificationIds };
-      _httpService.post('/notification/seen', body).catch((e: Error) => { console.log(e); });
+      httpService.post('/notification/seen', body).catch((e: Error) => { console.log(e); });
     }
   }
 

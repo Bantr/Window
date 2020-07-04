@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { RouteComponentProps } from '@reach/router';
-import { HeaderNav, SideNav } from '../components/nav';
+import { HeaderNav, SideNav } from '../components/dashboard/nav';
 import { AuthenticationService } from 'lib/services';
 import { IUserData, UserContext } from 'lib/hooks';
 import { AppLoad } from '../views/appLoad';

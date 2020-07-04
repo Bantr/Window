@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Title } from 'lib/components';
-import { Connection } from '../../components/settings/Connection';
+import { Connection } from '../../components/dashboard/settings/Connection';
 import { UserContext } from 'lib/hooks';
 
 interface IPlatformInfo {

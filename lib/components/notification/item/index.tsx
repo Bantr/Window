@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from '@reach/router';
 import { IBanType } from '@bantr/lib/dist/types';
-import { SteamService, HttpService } from 'lib/services';
+import { SteamService, httpService } from 'lib/services';
 import { Plus } from 'lib/icons';
 import { useSnackbar } from 'notistack';
 import { timeAgo } from 'lib/util';
@@ -37,7 +37,6 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
   const { enqueueSnackbar } = useSnackbar();
 
   const _steamService = new SteamService();
-  const _httpService = new HttpService();
   const containerRef = React.useRef<HTMLDivElement>();
 
   function getMessage(): JSX.Element {
@@ -64,7 +63,7 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
   }
 
   async function deleteNotification(): Promise<void> {
-    const response = await _httpService.post(`/notification/${notificationId}/delete`);
+    const response = await httpService.post(`/notification/${notificationId}/delete`);
     if (response.ok) {
       enqueueSnackbar('Message succesfully removed', { variant: 'success' });
       setDelete(true); // handles the fade out animation.

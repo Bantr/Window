@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from '@reach/router';
 import { Settings, Github } from 'lib/icons';
-import { ThemeToggle } from '../../ThemeToggle';
+import { ThemeToggle } from '../../../ThemeToggle';
 import { Logo } from 'lib/components';
 import { UserContext, useOutsideAlerter } from 'lib/hooks';
 import { NotificationBell } from 'lib/components';

@@ -23,6 +23,11 @@ export const App: React.FC = () => (
           hideIconVariant={false}
           maxSnack={3}
         >
+
+          {
+            // here
+          }
+
           <Router />
         </SnackbarProvider>
         <GlobalStyle />

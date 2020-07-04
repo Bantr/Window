@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { HttpService, RoutingService, AuthenticationService } from 'lib/services';
+import { httpService, RoutingService, AuthenticationService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
 import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { Container, ConnectionDetails, TitleContainer, CheckmarkContainer } from './style';
-import { DisconnectPlatformModal } from '../../../modals/disconnectPlatform';
+import { DisconnectPlatformModal } from '../../../../modals';
 import { Button, Title } from 'lib/components';
 import { useSnackbar } from 'notistack';
 import { Checkmark } from 'lib/icons';
@@ -16,10 +16,9 @@ export interface IProps {
 }
 
 export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformName, username }) => {
-  const _httpService = new HttpService();
   const _authenticationService = new AuthenticationService();
   const [connected, setConnected] = React.useState<boolean>(isConnected);
-  const disconnectRequest = (): Promise<Response> => _httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
+  const disconnectRequest = (): Promise<Response> => httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
   const { execute: disconnect, pending, value: disconnected, error } = useAsync(disconnectRequest, false);
   const [ModalWrapper, openModal, closeModal] = useModal();
 
