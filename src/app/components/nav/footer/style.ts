@@ -16,13 +16,6 @@ export const Inner = styled.div`
   flex-direction: column;
 `;
 
-export const BottomContainer = styled.nav`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 export const PanelContainer = styled.nav`
   display: flex;
   width: 100%;
@@ -63,5 +56,21 @@ export const Panel = styled.div`
   h3 {
     font-weight: 800;
     font-size: 1.2rem;
+  }
+`;
+
+export const BottomContainer = styled.nav`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    will-change: transform;
+    transition: transform .2s ease-in-out;
+
+    &:hover{
+      transform: translateY(-3px);
+    }
   }
 `;

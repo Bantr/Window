@@ -18,8 +18,8 @@ export const Router: React.FC<{}> = () => {
       </Helmet>
       <ReachRouter>
         <Landing path="/" />
-        <Privacy path="/privacy" />
-        <TermsOfUse path="terms-of-use" />
+        <Privacy path="/privacy-policy" />
+        <TermsOfUse path="/terms-of-use" />
         <Csgo path="/csgo">
           <Dashboard path="/" />
           <Tracker path="/tracker" />
