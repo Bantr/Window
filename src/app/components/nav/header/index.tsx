@@ -6,7 +6,7 @@ import {
   NavigationList,
   StyledLink
 } from './style';
-import { httpService } from 'lib/services';
+import { httpService, routingService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
 import { Button } from 'lib/components';
 import { Logo } from 'lib/components';
@@ -24,9 +24,11 @@ export const Header: React.FC = () => {
   }, []);
 
   function signIn(): void {
-    window.location.replace(`${bantrSettings.apiRoot}/auth/steam?redirectTo=${window.location.protocol}//${window.location.hostname}/csgo`);
+    routingService.navigateExternal(`${bantrSettings.apiRoot}/auth/steam?redirectTo=${window.location.protocol}//${window.location.hostname}/csgo`);
   }
-  function open(): void { }
+  function open(): void {
+    routingService.navigate('/csgo/dashboard');
+  }
 
   return (
     <Container>
@@ -40,7 +42,7 @@ export const Header: React.FC = () => {
           <a href="#">Dashboard</a>
           <Button className="resize-transition" onClick={isConnected ? open : signIn}>
             {isConnected ?
-              <React.Fragment><Avatar url={userData.steamAvatar} /> Open Dashboard </React.Fragment>
+              <React.Fragment><Avatar url={userData.steamAvatar} /> Open Dashboard</React.Fragment>
               :
               <React.Fragment> Sign in with Steam </React.Fragment>
             }

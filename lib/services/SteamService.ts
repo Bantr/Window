@@ -1,4 +1,4 @@
-export class SteamService {
+class SteamService {
   public validateUsername(username: string, maxLength = 20): string {
     if (!username) { throw new Error('Username was not found.'); }
 
@@ -8,3 +8,4 @@ export class SteamService {
     return username;
   }
 }
+export const steamService = new SteamService();

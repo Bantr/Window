@@ -12,6 +12,7 @@ export const Container = styled.header`
     transition: width 0.2s ease-in-out;
     margin-left: 25px;
     font-weight: 600;
+    font-size: 0.8rem;
   }
 `;
 
@@ -30,6 +31,7 @@ export const Nav = styled.nav`
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out;
     will-change: opacity;
+    font-size: 0.8rem;
 
     &:hover {
       opacity: 1;
@@ -51,8 +53,8 @@ export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   font-weight: 700;
-  font-size: 1.2rem;
-  opacity: 1;
+  font-size: 1.2rem!important;
+  opacity: 1!important;
 
   svg {
     margin-right: 15px;
@@ -71,4 +73,5 @@ export const Avatar = styled.div<{ url: string }>`
   background-position: center;
   background-size: cover;
   cursor: pointer;
+  margin: 0 10px 0 -5px;
 `;

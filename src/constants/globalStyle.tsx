@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: background-color 0.2s linear;
     color: ${({ theme }): string => theme.t};
     font-family: 'Poppins', sans-serif;
-    overflow-y: hidden;
+    overflow-x: hidden;
   }
 
   #root {

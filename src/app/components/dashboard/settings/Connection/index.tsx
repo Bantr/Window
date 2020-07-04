@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { httpService, RoutingService, AuthenticationService } from 'lib/services';
+import { httpService, routingService, authenticationService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
 import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { Container, ConnectionDetails, TitleContainer, CheckmarkContainer } from './style';
@@ -16,7 +16,6 @@ export interface IProps {
 }
 
 export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformName, username }) => {
-  const _authenticationService = new AuthenticationService();
   const [connected, setConnected] = React.useState<boolean>(isConnected);
   const disconnectRequest = (): Promise<Response> => httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
   const { execute: disconnect, pending, value: disconnected, error } = useAsync(disconnectRequest, false);
@@ -30,7 +29,7 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
 
   React.useEffect(() => {
     if (disconnected) {
-      _authenticationService.isAuthenticated().then((session) => {
+      authenticationService.isAuthenticated().then((session) => {
         if (!session || !setUserData) {
           showErrorMessage();
           throw new Error('Could not handle current session.');
@@ -48,8 +47,7 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
   }, [disconnected, error]);
 
   function connect(): void {
-    const _routingService = new RoutingService();
-    _routingService.navigateExternal(
+    routingService.navigateExternal(
       `${bantrSettings.apiRoot}/auth/${platformName.toLowerCase()}?redirectTo=${window.location.href}`);
   }
 

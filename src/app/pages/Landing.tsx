@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from '@reach/router';
-import { Header } from '../components/nav';
+import { Header, Footer } from '../components/nav';
+import { Body } from '../components/landing';
 interface IProps extends RouteComponentProps {
   path: string;
 }
@@ -11,5 +12,7 @@ export const Landing: React.FC<IProps> = () => (
       <title>Bantr - Homepage</title>
     </Helmet>
     <Header />
+    <Body />
+    <Footer />
   </React.Fragment>
 );

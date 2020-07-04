@@ -1,5 +1,5 @@
-export { AuthenticationService } from './AuthenticationService';
-export { FaceitService } from './FaceitService';
+export { authenticationService } from './AuthenticationService';
+export { faceitService } from './FaceitService';
 export { httpService } from './HttpService';
-export { RoutingService } from './RoutingService';
-export { SteamService } from './SteamService';
+export { routingService } from './RoutingService';
+export { steamService } from './SteamService';
