@@ -19,9 +19,10 @@ export const HeaderNav: React.FC<{}> = () => {
     <Header ref={containerRef}>
       <Inner>
         <Left>
-          <div className="bantr">
-            <Logo to="/csgo" />
-          </div>
+          <Link className="bantr" to="/csgo">
+            <Logo />
+            Bantr
+          </Link>
           <ThemeToggle />
         </Left>
         <Right>

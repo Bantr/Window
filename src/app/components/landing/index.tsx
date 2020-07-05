@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { routingService } from 'lib/services';
+import { bantrSettings } from 'lib/settings';
+
 import {
   Container,
   HeroTitle,
@@ -16,10 +19,12 @@ export const Body: React.FC = () => (
       notifications.
     </HeroTitle>
     <HeroLead>Bantr tracks all the players you played with and against.</HeroLead>
-    <StyledButton variant="outline">Signup here -&gt;</StyledButton>
+    <StyledButton
+      onClick={(): void => { routingService.navigateExternal(`${bantrSettings.apiRoot}/auth/steam?redirectTo=${window.location.protocol}//${window.location.hostname}/csgo`); }}
+      variant="outline">Sign up here -&gt;</StyledButton>
     <WindowContainer>
       <Window>
       </Window>
     </WindowContainer>
-  </Container>
+  </Container >
 );

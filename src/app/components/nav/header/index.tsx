@@ -37,9 +37,8 @@ export const Header: React.FC = () => {
           <Logo size={45} /> Bantr
         </StyledLink>
         <NavigationList>
-          <a href="#">Support</a>
-          <a href="#">pricing</a>
-          <a href="#">Dashboard</a>
+          <a href="#">Bans</a>
+          <a href="#">Statistics | soon</a>
           <Button className="resize-transition" onClick={isConnected ? open : signIn}>
             {isConnected ?
               <React.Fragment><Avatar url={userData.steamAvatar} /> Open Dashboard</React.Fragment>
