@@ -2,9 +2,14 @@
   "port": 6006,
   "projectId": "edec4p",
   "watchForFileChanges": true,
-  "baseUrl": "http://localhost:3000",
-  "viewportWidth": 1000,
-  "viewportHeight": 660,
+  "baseUrl": "http://localhost:30002",
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
   "video": true,
-  "nodeVersion": "system"
+  "nodeVersion": "system",
+  "env": {
+    "api": "cypress-api.bantr.app"
+  },
+  "experimentalFetchPolyfill": true,
+  "experimentalComponentTesting": true
 }

@@ -1,0 +1,41 @@
+/// <reference types="cypress" />
+
+const routes = [
+  '/',
+  '/privacy-policy',
+  '/terms-of-use',
+  '/csgo',
+  '/csgo/tracker',
+  '/csgo/compare',
+  '/csgo/tactical-timeout',
+  '/csgo/tournaments',
+  '/csgo/profile',
+  '/csgo/settings',
+  '/csgo/settings/connections',
+  '/csgo/settings/notifications',
+  '/csgo/settings/appearance',
+  '/csgo/settings/language'
+]
+
+context('Test route existence while authorized', () => {
+
+  routes.forEach((route) => {
+    it(`'${route}' should exist`, () => {
+
+      cy.log('this is the api', Cypress.env('api'));
+      cy.server();
+      cy.route('GET', `${Cypress.env('api')}/auth/session`, 'fixture:userSession.json').as('getSession');
+      cy.visit(route, { timeout: 60000 });
+      // The redirect could take a few seconds, since it needs to verify the session.
+      cy.wait('@getSession');
+      cy.url().should('match', route);
+    })
+  })
+
+  it(`Should return 'page not found'`, () => {
+    cy.visit('thispathdoesnotexist');
+    cy.title().should((title) => expect(title).to.eq('Error 404'))
+    cy.get('h1').should('contain', 'this page could not be found');
+  });
+
+});

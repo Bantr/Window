@@ -39,7 +39,10 @@ export const Header: React.FC = () => {
         <NavigationList>
           <a href="#">Bans</a>
           <a href="#">Statistics | soon</a>
-          <Button className="resize-transition" onClick={isConnected ? open : signIn}>
+          <Button
+            className="resize-transition cy-sign-in"
+            onClick={isConnected ? open : signIn}
+          >
             {isConnected ?
               <React.Fragment><Avatar url={userData.steamAvatar} /> Open Dashboard</React.Fragment>
               :
