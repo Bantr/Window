@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from '@reach/router';
 import { IBanType } from '@bantr/lib/dist/types';
-import { SteamService, HttpService } from 'lib/services';
+import { steamService, httpService } from 'lib/services';
 import { Plus } from 'lib/icons';
 import { useSnackbar } from 'notistack';
 import { timeAgo } from 'lib/util';
@@ -36,8 +36,6 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
   const [isDelete, setDelete] = React.useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
-  const _steamService = new SteamService();
-  const _httpService = new HttpService();
   const containerRef = React.useRef<HTMLDivElement>();
 
   function getMessage(): JSX.Element {
@@ -60,11 +58,11 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
         break;
     }
     const message = unbanned ? `'s ${type} has been removed!` : ` has been ${type} banned!`;
-    return <span><Link to={`/profile/${steamId}`}><strong>{_steamService.validateUsername(name)}</strong></Link> {message}</span>;
+    return <span><Link to={`/profile/${steamId}`}><strong>{steamService.validateUsername(name)}</strong></Link> {message}</span>;
   }
 
   async function deleteNotification(): Promise<void> {
-    const response = await _httpService.post(`/notification/${notificationId}/delete`);
+    const response = await httpService.post(`/notification/${notificationId}/delete`);
     if (response.ok) {
       enqueueSnackbar('Message succesfully removed', { variant: 'success' });
       setDelete(true); // handles the fade out animation.

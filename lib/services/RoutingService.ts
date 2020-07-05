@@ -1,6 +1,6 @@
 import { navigate as reachNavigate } from '@reach/router';
 
-export class RoutingService {
+class RoutingService {
   navigate(path: string): void {
     reachNavigate(path);
   }
@@ -8,3 +8,5 @@ export class RoutingService {
     window.location.href = path;
   }
 }
+
+export const routingService = new RoutingService();

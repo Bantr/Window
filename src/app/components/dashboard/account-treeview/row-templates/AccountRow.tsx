@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { SteamService } from 'lib/services';
+import { steamService } from 'lib/services';
 import { Steam } from 'lib/icons';
 import { ITrackedAccount } from '../AccountTreeview';
 
@@ -56,8 +56,6 @@ const Links = styled.div`
 `;
 
 export const AccountRow: React.FC<ITrackedAccount> = React.forwardRef<HTMLDivElement, ITrackedAccount>(({ steamAvatar = 'not found', steamProfile = 'not found', steamUsername = 'not found', lastCheckedAt }, ref) => {
-  const _steamService = new SteamService();
-
   function transformIsoStringToDate(lastCheckedAt: string): string {
     const lastCheckedDate = new Date(lastCheckedAt);
     const currentDate = new Date();
@@ -79,7 +77,7 @@ export const AccountRow: React.FC<ITrackedAccount> = React.forwardRef<HTMLDivEle
         <Avatar src={steamAvatar}>
           <div className="img" />
         </Avatar>
-        <Username>{_steamService.validateUsername(steamUsername)}</Username>
+        <Username>{steamService.validateUsername(steamUsername)}</Username>
         <LastTracked>{transformIsoStringToDate(lastCheckedAt)}</LastTracked>
         <Links>
           <a href={steamProfile} rel="noopener noreferrer" target="_blank" ><Steam fill="black" /></a>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { RouteComponentProps } from '@reach/router';
 import SimpleBar from 'simplebar-react';
-import { SettingsNav } from '../../components/nav/settingsNav';
+import { SettingsNav } from '../../components/dashboard/nav/settingsNav';
 
 const Container = styled.div`
   width: 100%;

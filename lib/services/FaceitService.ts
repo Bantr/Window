@@ -10,3 +10,4 @@ export class FaceitService {
     });
   }
 }
+export const faceitService = new FaceitService();

@@ -23,12 +23,20 @@ export const Left = styled.div`
   height: 100%;
 
   .bantr {
+
+    svg {
+      margin-right: 15px;
+    }
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     width: 250px;
     padding-left: 25px;
     margin-right: 25px;
+    font-weight: 800;
+    font-size: 1.4rem;
   }
+
 `;
 export const Right = styled.div`
   width: 100%;

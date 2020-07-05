@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from '@reach/router';
 import { Settings, Github } from 'lib/icons';
-import { ThemeToggle } from '../../ThemeToggle';
+import { ThemeToggle } from '../../../ThemeToggle';
 import { Logo } from 'lib/components';
 import { UserContext, useOutsideAlerter } from 'lib/hooks';
 import { NotificationBell } from 'lib/components';
@@ -19,9 +19,10 @@ export const HeaderNav: React.FC<{}> = () => {
     <Header ref={containerRef}>
       <Inner>
         <Left>
-          <div className="bantr">
-            <Logo to="/csgo" />
-          </div>
+          <Link className="bantr" to="/csgo">
+            <Logo />
+            Bantr
+          </Link>
           <ThemeToggle />
         </Left>
         <Right>

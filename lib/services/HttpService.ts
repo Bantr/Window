@@ -1,6 +1,6 @@
 import { bantrSettings } from 'lib/settings';
 
-export class HttpService {
+class HttpService {
   public get(path: string): Promise<Response> {
     return fetch(`${bantrSettings.apiRoot}${path}`, {
       method: 'GET',
@@ -17,3 +17,5 @@ export class HttpService {
     });
   }
 }
+
+export const httpService = new HttpService();

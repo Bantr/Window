@@ -5,6 +5,7 @@ import { Default, Outline, Text } from './style';
 interface IProps {
   active?: boolean;
   disabled?: boolean;
+  className?: string;
   color?: string;
   children?: React.ReactNode;
   variant?: 'default' | 'outline' | 'text';
@@ -16,6 +17,7 @@ interface IProps {
 export const Button: React.FC<IProps> = ({
   active = true,
   children,
+  className,
   color,
   disabled = false,
   isLoading = false,
@@ -26,7 +28,7 @@ export const Button: React.FC<IProps> = ({
     switch (variant) {
       case 'default':
         return (
-          <Default active={active} className={disabled ? 'disabled' : ''} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Default active={active} className={className} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
             {' '}
             {isLoading ? <Spinner /> : ''}
             {children}
@@ -34,14 +36,14 @@ export const Button: React.FC<IProps> = ({
         );
       case 'outline':
         return (
-          <Outline active={active} className={disabled ? 'disabled' : ''} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Outline active={active} className={className} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
             {isLoading ? <Spinner /> : ''}
             {children}
           </Outline>
         );
       case 'text':
         return (
-          <Text active={active} className={disabled ? 'disabled' : ''} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Text active={active} className={className} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
             {isLoading ? <Spinner /> : ''}
             {children}
           </Text>

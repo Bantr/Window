@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from '@reach/router';
-import { SteamButton } from 'lib/components';
-
+import { Header, Footer } from '../components/nav';
+import { Body } from '../components/landing';
 interface IProps extends RouteComponentProps {
   path: string;
 }
 export const Landing: React.FC<IProps> = () => (
-  <div>
+  <React.Fragment>
     <Helmet>
-      <title>Homepage</title>
+      <title>Bantr - Homepage</title>
     </Helmet>
-    <SteamButton />
-  </div>
+    <Header />
+    <Body />
+    <Footer />
+  </React.Fragment>
 );
