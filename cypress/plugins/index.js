@@ -20,5 +20,16 @@ module.exports = (on, config) => {
   // require('@cypress/code-coverage/task')(on, config);
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+
+  on("task", {
+    getSchema() {
+      return fs.readFileSync(
+        path.resolve(__dirname, "../../app-schema.graphql"),
+        "utf8"
+      );
+    }
+  });
+
+
   return config;
 };
