@@ -25,7 +25,11 @@
       "./types",
       "./node_modules/@types",
       "./node_modules/@sentry/types",
-      "./node_modules/cypress/types"
+      "./node_modules/cypress/types",
+      "./cypress/support"
+    ],
+    "types": [
+      "./cypress/support"
     ]
   },
   "include": [

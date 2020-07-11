@@ -1,14 +1,16 @@
 {
-  "port": 6006,
+  "baseUrl": "http://localhost:30002",
   "projectId": "edec4p",
   "watchForFileChanges": true,
-  "baseUrl": "http://localhost:30002",
   "viewportWidth": 1920,
   "viewportHeight": 1080,
   "video": true,
   "nodeVersion": "system",
+  "firefoxGcInterval": null,
+  "integrationFolder": "cypress/tests",
   "env": {
-    "api": "cypress-api.bantr.app"
+    "api": "cypress-api.bantr.app",
+    "coverage": "false"
   },
   "experimentalFetchPolyfill": true,
   "experimentalComponentTesting": true

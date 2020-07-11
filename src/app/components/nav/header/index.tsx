@@ -42,7 +42,8 @@ export const Header: React.FC = () => {
           <a href="#">Bans</a>
           <a href="#">Statistics | soon</a>
           <Button
-            className="resize-transition cy-sign-in"
+            className="resize-transition"
+            data-cy="signIn"
             onClick={isConnected ? open : signIn}
           >
             {isConnected ?
