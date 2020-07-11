@@ -11,12 +11,13 @@
     "cy:cache:list": "cypress cache list",
     "cy:info": "cypress info",
     "cy:open": "cypress open",
-    "cy:run": "npm run graphql:schema && cypress run",
+    "pretest": "npm run graphql:schema",
+    "test": "npm run graphql:schema && cypress run",
     "cy:verify": "cypress version",
     "e2e:record": "npm run graphql:schema && cypress run --record --key ${CYPRESS_RECORD_KEY:-nokey}",
     "e2e:record:parallel": "cypress run --record --parallel",
     "graphql:generate": "graphql-codegen --config gqlTypeGenerator.yml --require dotenv/config",
-    "graphql:schema": "gq https://graphql.bantr.app -H bantr-graphql: ${HASURA_GRAPHQL_USER_SECRET}  --introspect > schema.graphql",
+    "graphql:schema": "./scripts/getGraphqlSchema.sh",
     "lint": "eslint . -c ./.eslintrc.js --ext .ts,.tsx",
     "lint:css": "stylelint '**/*.tsx'",
     "lint:fix": "eslint --fix . -c ./.eslintrc.js --ext .ts,.tsx",
@@ -176,8 +177,5 @@
     "webpack-merge": "^4.2.2",
     "webpack-shell-plugin": "^0.5.0",
     "workbox-webpack-plugin": "^5.0.0"
-  },
-  "peerDependencies": {
-    "cypress": "4.5.0"
   }
 }

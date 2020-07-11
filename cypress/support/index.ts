@@ -13,11 +13,9 @@ beforeEach(() => {
 })
 */
 
-
 import '@cypress/code-coverage/support';
 
-// Polyfill fetch
-Cypress.on("window:before:load", win => {
+Cypress.on('window:before:load', win => {
   // @ts-ignore
   win.fetch = null;
 });

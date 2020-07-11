@@ -48,8 +48,8 @@ const Sun = styled.img<IThemeToggleProps>`
     transition: rotate 0.3s ease-in-out;
   }
 `;
-type Props = {}
-export const ThemeToggle: React.FC<Props> = () => {
+
+export const ThemeToggle: React.FC = () => {
   const theme = useTheme();
   function toggleMode(): void {
     theme.toggleDarkMode();

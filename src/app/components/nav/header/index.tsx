@@ -19,7 +19,9 @@ export const Header: React.FC = () => {
   React.useEffect(() => {
     // check if session exists
     httpService.get('/auth/session').then((res) => {
-      res.ok ? setConnected(true) : null;
+      if (res.ok) {
+        setConnected(true);
+      }
     });
   }, []);
 

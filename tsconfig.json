@@ -25,12 +25,14 @@
       "./types",
       "./node_modules/@types",
       "./node_modules/@sentry/types",
+      "./node_modules/cypress/types"
     ]
   },
   "include": [
     "@types",
     "lib",
-    "src"
+    "src",
+    "cypress"
   ],
   "exclude": [
     "node_modules",

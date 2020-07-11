@@ -3,7 +3,6 @@
 context('Landing view', () => {
   beforeEach(() => {
     cy.visit('/', { timeout: 60000 });
-    cy.screenshot();
   });
 
   it('should render the landing page', () => {

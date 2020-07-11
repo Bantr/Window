@@ -14,6 +14,5 @@
   },
   "include": [
     "**/*.ts",
-    "integration/routes"
   ]
 }

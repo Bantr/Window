@@ -36,7 +36,11 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
         }
         setUserData({ ...session });
         const id = session[`${platformName}Id`];
-        !id ? setConnected(false) : showErrorMessage();
+        if (id) {
+          showErrorMessage();
+        } else {
+          setConnected(false);
+        }
       })
         .catch((e: Error) => console.log(e));
     }
