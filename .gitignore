@@ -6,6 +6,7 @@ build/Release$
 
 # graphql
 schema.graphql
+cypress/assets
 
 # dependency directories
 node_modules/
