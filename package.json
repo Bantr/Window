@@ -12,7 +12,7 @@
     "cy:info": "cypress info",
     "cy:open": "cypress open",
     "pretest": "npm run graphql:schema",
-    "test": "npm run graphql:schema && cypress run",
+    "test": "cypress run",
     "cy:verify": "cypress version",
     "e2e:record": "npm run graphql:schema && cypress run --record --key ${CYPRESS_RECORD_KEY:-nokey}",
     "e2e:record:parallel": "cypress run --record --parallel",

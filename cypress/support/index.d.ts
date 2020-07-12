@@ -9,7 +9,7 @@ declare namespace Cypress {
      * @example cy.dataCy('greeting')
     */
     dataCy(value: string): Chainable<Element>;
-    StubUserSession(): void;
+    stubUserSession(): void;
 
   }
 }

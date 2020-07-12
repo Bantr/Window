@@ -9,6 +9,8 @@ import 'cypress-graphql-mock';
 import './util';
 import './mock';
 
+// Cypress default settings
+
 Cypress.on('window:before:load', win => {
   // @ts-ignore
   win.fetch = null;

@@ -8,6 +8,12 @@
   "nodeVersion": "system",
   "firefoxGcInterval": null,
   "integrationFolder": "cypress/tests",
+  "supportFile": "cypress/support/index.ts",
+  "pluginsFile": "cypress/plugins/index.ts",
+  "screenshotFolder": "cypress/assets/screenshots",
+  "videoFolder": "cypress/assets/videos",
+  "trashAssetsBeforeRuns": true,
+  "animationDistanceThreshold": 15,
   "env": {
     "api": "cypress-api.bantr.app",
     "coverage": "false"
