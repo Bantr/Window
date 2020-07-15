@@ -9,3 +9,4 @@ export * from './useWhyDidYouUpdate';
 export * from './useOnScreen';
 export * from './useDebounce';
 export * from './useHistory';
+export * from './useSessionStorage';

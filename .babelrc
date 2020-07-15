@@ -12,6 +12,14 @@
       {
         "regenerator": true
       }
+    ],
+    [
+      "react-remove-properties",
+      {
+        "properties": [
+          "data-cy"
+        ]
+      }
     ]
   ]
 }

@@ -3,11 +3,19 @@ import { httpService, routingService } from 'lib/services';
 
 class AuthenticationService {
   public async isAuthenticated(): Promise<IUserData> {
-    const result = await httpService.get('/auth/session');
-    if (!result.ok) {
-      routingService.navigate('/');
+    const session = window.sessionStorage.getItem('userSession');
+
+    if (!session) {
+      const response = await httpService.get('/auth/session');
+      if (response.ok) {
+        const jsonResult = await response.json();
+        const stringResult = JSON.stringify(jsonResult);
+        window.sessionStorage.setItem('userSession', stringResult);
+        return jsonResult;
+      }
+      return null;
     }
-    return await result.json();
+    return await JSON.parse(session);
   }
 
   public async logout(): Promise<void> {
