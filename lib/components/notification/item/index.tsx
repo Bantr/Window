@@ -74,7 +74,7 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
   }
 
   return (
-    <Container className={isDelete ? 'delete-animation' : ''} isOdd={!!(index % 2)} ref={containerRef}>
+    <Container className={isDelete ? 'delete-animation' : ''} data-cy="notification" isOdd={!!(index % 2)} ref={containerRef}>
       {seen ? '' : <NewNotification><Ripple /></NewNotification>}
       <NotificationContainer>
         <AvatarContainer>

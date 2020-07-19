@@ -2,7 +2,8 @@ import React from 'react';
 import { SideNavLink, ExternalSideNavLink } from './sideNavLink';
 import { Link } from '@reach/router';
 import { ArrowBig, Dashboard, Discord, Github, Heart, People, Tracker } from 'lib/icons';
-import { Collapse, CollapseIconContainer, ComingSoon, Container, PrivacyContainer } from './style';
+import { ComingSoon } from 'lib/components';
+import { Collapse, CollapseIconContainer, Container, PrivacyContainer } from './style';
 import { useLocalStorage } from 'lib/hooks';
 
 const path = '/csgo';
@@ -10,7 +11,7 @@ const links = [
   {
     text: 'Dashboard',
     icon: <Dashboard pointer scale={1.2} />,
-    to: `${path}`
+    to: `${path}/dashboard`
   },
   {
     text: 'Tracker',
@@ -45,13 +46,14 @@ const socialLinks = [
 
 export const SideNav: React.FC<{}> = () => {
   const [collapsed, setCollapsed] = useLocalStorage('sidenav-collapsed', false);
+
   return (
-    <Container collapsed={collapsed}>
+    <Container collapsed={collapsed} data-cy="sideNav">
       <div>
         {links.map(({ icon, text, to, comingSoon = false }) => (
           <React.Fragment key={to}>
             {comingSoon ? <ComingSoon>Coming soon!</ComingSoon> : ''}
-            <SideNavLink collapsed={collapsed} icon={icon} text={text} to={to} />
+            <SideNavLink collapsed={collapsed} icon={icon} text={text} to={to}></SideNavLink>
           </React.Fragment>
         ))}
         <Collapse onClick={(): void => setCollapsed(!collapsed)}>
@@ -66,7 +68,7 @@ export const SideNav: React.FC<{}> = () => {
         ))
         }
         <PrivacyContainer collapsed={collapsed}>
-          <Link to="/privacy">privacy</Link>
+          <Link to="/privacy-policy">privacy</Link>
           <Link to="/terms-of-use">terms of use</Link>
         </PrivacyContainer>
       </div>

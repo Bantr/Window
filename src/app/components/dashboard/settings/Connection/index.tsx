@@ -2,11 +2,12 @@ import * as React from 'react';
 import { httpService, routingService, authenticationService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
 import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
-import { Container, ConnectionDetails, TitleContainer, CheckmarkContainer } from './style';
+import { Container, ConnectionDetails, TitleContainer, CheckMarkContainer } from './style';
 import { DisconnectPlatformModal } from '../../../../modals';
 import { Button, Title } from 'lib/components';
 import { useSnackbar } from 'notistack';
-import { Checkmark } from 'lib/icons';
+import { CheckMark } from 'lib/icons';
+import * as Sentry from '@sentry/react';
 
 export interface IProps {
   accountId: string;
@@ -18,7 +19,7 @@ export interface IProps {
 export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformName, username }) => {
   const [connected, setConnected] = React.useState<boolean>(isConnected);
   const disconnectRequest = (): Promise<Response> => httpService.get(`/auth/${platformName.toLowerCase()}/disconnect`);
-  const { execute: disconnect, pending, value: disconnected, error } = useAsync(disconnectRequest, false);
+  const { execute: disconnect, pending, value: disconnected, error } = useAsync(disconnectRequest, false); // false parameter = immediate
   const [ModalWrapper, openModal, closeModal] = useModal();
 
   const { setUserData } = React.useContext(UserContext);
@@ -28,22 +29,20 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
   const showErrorMessage = (): void => { enqueueSnackbar('Disconnecting failed, contact support if this error remains.'); };
 
   React.useEffect(() => {
-    if (disconnected) {
-      authenticationService.isAuthenticated().then((session) => {
-        if (!session || !setUserData) {
-          showErrorMessage();
-          throw new Error('Could not handle current session.');
-        }
-        setUserData({ ...session });
-        const id = session[`${platformName}Id`];
-        if (id) {
-          showErrorMessage();
-        } else {
-          setConnected(false);
-        }
-      })
-        .catch((e: Error) => console.log(e));
-    }
+    authenticationService.isAuthenticated(true).then((session) => {
+      if (!session || !setUserData) {
+        showErrorMessage();
+        throw new Error('Could not handle current session.');
+      }
+      setUserData({ ...session });
+      const id = session[`${platformName.toLowerCase()}Id`];
+      if (id) {
+        setConnected(true);
+      } else {
+        setConnected(false);
+      }
+    }).catch((e: Error) => Sentry.captureException(e));
+
     if (error) {
       showErrorMessage();
       console.error(error);
@@ -62,9 +61,9 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
           <Title size="large" type="h3" >{platformName}</Title>
           {
             connected ?
-              <CheckmarkContainer>
-                <Checkmark fill="#fff" />
-              </CheckmarkContainer>
+              <CheckMarkContainer>
+                <CheckMark fill="#fff" />
+              </CheckMarkContainer>
               : ''
           }
         </TitleContainer>

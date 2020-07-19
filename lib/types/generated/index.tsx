@@ -2025,8 +2025,6 @@ export type IQueryRoot = {
   player_tracked_by_user_by_pk?: Maybe<IPlayerTrackedByUser>;
   /** fetch data from the table: "user" */
   user: Array<IUser>;
-  /** fetch aggregated fields from the table: "user" */
-  user_aggregate: IUserAggregate;
   /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<IUser>;
   /** fetch data from the table: "user_settings" */
@@ -2259,16 +2257,6 @@ export type IQueryRootUserArgs = {
 
 
 /** query root */
-export type IQueryRootUserAggregateArgs = {
-  distinct_on?: Maybe<Array<IUserSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<IUserOrderBy>>;
-  where?: Maybe<IUserBoolExp>;
-};
-
-
-/** query root */
 export type IQueryRootUserByPkArgs = {
   id: Scalars['Int'];
 };
@@ -2341,8 +2329,6 @@ export type ISubscriptionRoot = {
   player_tracked_by_user_by_pk?: Maybe<IPlayerTrackedByUser>;
   /** fetch data from the table: "user" */
   user: Array<IUser>;
-  /** fetch aggregated fields from the table: "user" */
-  user_aggregate: IUserAggregate;
   /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<IUser>;
   /** fetch data from the table: "user_settings" */
@@ -2575,16 +2561,6 @@ export type ISubscriptionRootUserArgs = {
 
 
 /** subscription root */
-export type ISubscriptionRootUserAggregateArgs = {
-  distinct_on?: Maybe<Array<IUserSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<IUserOrderBy>>;
-  where?: Maybe<IUserBoolExp>;
-};
-
-
-/** subscription root */
 export type ISubscriptionRootUserByPkArgs = {
   id: Scalars['Int'];
 };
@@ -2705,61 +2681,6 @@ export type IUserTracksAggregateArgs = {
   where?: Maybe<IPlayerTrackedByUserBoolExp>;
 };
 
-/** aggregated selection of "user" */
-export type IUserAggregate = {
-  aggregate?: Maybe<IUserAggregateFields>;
-  nodes: Array<IUser>;
-};
-
-/** aggregate fields of "user" */
-export type IUserAggregateFields = {
-  avg?: Maybe<IUserAvgFields>;
-  count?: Maybe<Scalars['Int']>;
-  max?: Maybe<IUserMaxFields>;
-  min?: Maybe<IUserMinFields>;
-  stddev?: Maybe<IUserStddevFields>;
-  stddev_pop?: Maybe<IUserStddevPopFields>;
-  stddev_samp?: Maybe<IUserStddevSampFields>;
-  sum?: Maybe<IUserSumFields>;
-  var_pop?: Maybe<IUserVarPopFields>;
-  var_samp?: Maybe<IUserVarSampFields>;
-  variance?: Maybe<IUserVarianceFields>;
-};
-
-
-/** aggregate fields of "user" */
-export type IUserAggregateFieldsCountArgs = {
-  columns?: Maybe<Array<IUserSelectColumn>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
-
-/** order by aggregate values of table "user" */
-export type IUserAggregateOrderBy = {
-  avg?: Maybe<IUserAvgOrderBy>;
-  count?: Maybe<IOrderBy>;
-  max?: Maybe<IUserMaxOrderBy>;
-  min?: Maybe<IUserMinOrderBy>;
-  stddev?: Maybe<IUserStddevOrderBy>;
-  stddev_pop?: Maybe<IUserStddevPopOrderBy>;
-  stddev_samp?: Maybe<IUserStddevSampOrderBy>;
-  sum?: Maybe<IUserSumOrderBy>;
-  var_pop?: Maybe<IUserVarPopOrderBy>;
-  var_samp?: Maybe<IUserVarSampOrderBy>;
-  variance?: Maybe<IUserVarianceOrderBy>;
-};
-
-/** aggregate avg on columns */
-export type IUserAvgFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by avg() on columns of table "user" */
-export type IUserAvgOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
 /** Boolean expression to filter rows from the table "user". All fields are combined with a logical 'AND'. */
 export type IUserBoolExp = {
   _and?: Maybe<Array<Maybe<IUserBoolExp>>>;
@@ -2777,54 +2698,6 @@ export type IUserBoolExp = {
   steamId?: Maybe<IStringComparisonExp>;
   tracks?: Maybe<IPlayerTrackedByUserBoolExp>;
   username?: Maybe<IStringComparisonExp>;
-};
-
-/** aggregate max on columns */
-export type IUserMaxFields = {
-  discordId?: Maybe<Scalars['String']>;
-  faceitId?: Maybe<Scalars['String']>;
-  faceitName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  role?: Maybe<Scalars['String']>;
-  settingsId?: Maybe<Scalars['Int']>;
-  steamId?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
-
-/** order by max() on columns of table "user" */
-export type IUserMaxOrderBy = {
-  discordId?: Maybe<IOrderBy>;
-  faceitId?: Maybe<IOrderBy>;
-  faceitName?: Maybe<IOrderBy>;
-  id?: Maybe<IOrderBy>;
-  role?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-  steamId?: Maybe<IOrderBy>;
-  username?: Maybe<IOrderBy>;
-};
-
-/** aggregate min on columns */
-export type IUserMinFields = {
-  discordId?: Maybe<Scalars['String']>;
-  faceitId?: Maybe<Scalars['String']>;
-  faceitName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  role?: Maybe<Scalars['String']>;
-  settingsId?: Maybe<Scalars['Int']>;
-  steamId?: Maybe<Scalars['String']>;
-  username?: Maybe<Scalars['String']>;
-};
-
-/** order by min() on columns of table "user" */
-export type IUserMinOrderBy = {
-  discordId?: Maybe<IOrderBy>;
-  faceitId?: Maybe<IOrderBy>;
-  faceitName?: Maybe<IOrderBy>;
-  id?: Maybe<IOrderBy>;
-  role?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-  steamId?: Maybe<IOrderBy>;
-  username?: Maybe<IOrderBy>;
 };
 
 /** ordering options when selecting data from "user" */
@@ -2865,6 +2738,8 @@ export const enum IUserSelectColumn {
 
 /** columns and relationships of "user_settings" */
 export type IUserSettings = {
+  lastKnownMatch?: Maybe<Scalars['String']>;
+  matchAuthCode?: Maybe<Scalars['String']>;
   notificationCommunityEnabled: Scalars['Boolean'];
   notificationDiscordEnabled: Scalars['Boolean'];
   notificationEconomyEnabled: Scalars['Boolean'];
@@ -2880,6 +2755,8 @@ export type IUserSettingsBoolExp = {
   _and?: Maybe<Array<Maybe<IUserSettingsBoolExp>>>;
   _not?: Maybe<IUserSettingsBoolExp>;
   _or?: Maybe<Array<Maybe<IUserSettingsBoolExp>>>;
+  lastKnownMatch?: Maybe<IStringComparisonExp>;
+  matchAuthCode?: Maybe<IStringComparisonExp>;
   notificationCommunityEnabled?: Maybe<IBooleanComparisonExp>;
   notificationDiscordEnabled?: Maybe<IBooleanComparisonExp>;
   notificationEconomyEnabled?: Maybe<IBooleanComparisonExp>;
@@ -2891,6 +2768,8 @@ export type IUserSettingsBoolExp = {
 
 /** ordering options when selecting data from "user_settings" */
 export type IUserSettingsOrderBy = {
+  lastKnownMatch?: Maybe<IOrderBy>;
+  matchAuthCode?: Maybe<IOrderBy>;
   notificationCommunityEnabled?: Maybe<IOrderBy>;
   notificationDiscordEnabled?: Maybe<IOrderBy>;
   notificationEconomyEnabled?: Maybe<IOrderBy>;
@@ -2903,6 +2782,10 @@ export type IUserSettingsOrderBy = {
 /** select columns of table "user_settings" */
 export const enum IUserSettingsSelectColumn {
   /** column name */
+  LastKnownMatch = 'lastKnownMatch',
+  /** column name */
+  MatchAuthCode = 'matchAuthCode',
+  /** column name */
   NotificationCommunityEnabled = 'notificationCommunityEnabled',
   /** column name */
   NotificationDiscordEnabled = 'notificationDiscordEnabled',
@@ -2914,89 +2797,5 @@ export const enum IUserSettingsSelectColumn {
   NotificationGameEnabled = 'notificationGameEnabled',
   /** column name */
   NotificationVacEnabled = 'notificationVACEnabled'
-};
-
-/** aggregate stddev on columns */
-export type IUserStddevFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev() on columns of table "user" */
-export type IUserStddevOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
-/** aggregate stddev_pop on columns */
-export type IUserStddevPopFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_pop() on columns of table "user" */
-export type IUserStddevPopOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
-/** aggregate stddev_samp on columns */
-export type IUserStddevSampFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_samp() on columns of table "user" */
-export type IUserStddevSampOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
-/** aggregate sum on columns */
-export type IUserSumFields = {
-  id?: Maybe<Scalars['Int']>;
-  settingsId?: Maybe<Scalars['Int']>;
-};
-
-/** order by sum() on columns of table "user" */
-export type IUserSumOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
-/** aggregate var_pop on columns */
-export type IUserVarPopFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by var_pop() on columns of table "user" */
-export type IUserVarPopOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
-/** aggregate var_samp on columns */
-export type IUserVarSampFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by var_samp() on columns of table "user" */
-export type IUserVarSampOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
-};
-
-/** aggregate variance on columns */
-export type IUserVarianceFields = {
-  id?: Maybe<Scalars['Float']>;
-  settingsId?: Maybe<Scalars['Float']>;
-};
-
-/** order by variance() on columns of table "user" */
-export type IUserVarianceOrderBy = {
-  id?: Maybe<IOrderBy>;
-  settingsId?: Maybe<IOrderBy>;
 };
 

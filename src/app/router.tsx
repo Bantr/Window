@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTheme } from 'lib/hooks';
-import { Router as ReachRouter } from '@reach/router';
+import { Router as ReachRouter, Redirect } from '@reach/router';
 import { Csgo, Landing, NotFound, Privacy, TermsOfUse } from '../app/pages';
 import { Dashboard, Profile, Tracker, Compare, Tournaments, TacticalTimeout } from './pages/csgo';
 import { Appearance, Connections, Language, Notifications, Settings } from './pages/settings';
@@ -17,11 +17,12 @@ export const Router: React.FC<{}> = () => {
         {!darkMode ? <link href={favicon} rel="icon" type="image/png" /> : <link href={faviconDark} rel="icon" type="image/png" />}
       </Helmet>
       <ReachRouter>
+        <Redirect from="/csgo" to="/csgo/dashboard" />
         <Landing path="/" />
         <Privacy path="/privacy-policy" />
         <TermsOfUse path="/terms-of-use" />
         <Csgo path="/csgo">
-          <Dashboard path="/" />
+          <Dashboard path="/dashboard" />
           <Tracker path="/tracker" />
           <Compare path="/compare" />
           <TacticalTimeout path="/tactical-timeout" />

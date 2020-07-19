@@ -8,6 +8,8 @@ import 'cypress-graphql-mock';
 // custom commands
 import './util';
 import './mock';
+import './Core';
+import './navigation';
 
 // Cypress default settings
 

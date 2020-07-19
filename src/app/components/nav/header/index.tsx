@@ -6,27 +6,17 @@ import {
   NavigationList,
   StyledLink
 } from './style';
-import { httpService, routingService } from 'lib/services';
+import { routingService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
 import { Button } from 'lib/components';
 import { Logo } from 'lib/components';
 import { UserContext } from 'lib/hooks';
 
 export const Header: React.FC = () => {
-  const [isConnected, setConnected] = React.useState(false);
   const { userData } = React.useContext(UserContext);
 
-  React.useEffect(() => {
-    // check if session exists
-    httpService.get('/auth/session').then((res) => {
-      if (res.ok) {
-        setConnected(true);
-      }
-    });
-  }, []);
-
-  function signIn(): void {
-    routingService.navigateExternal(`${bantrSettings.apiRoot}/auth/steam?redirectTo=${window.location.protocol}//${window.location.hostname}/csgo`);
+  function login(): void {
+    routingService.navigateExternal(`${bantrSettings.apiRoot}/auth/steam?redirectTo=${window.location.protocol}//${window.location.hostname}/csgo/dashboard`);
   }
   function open(): void {
     routingService.navigate('/csgo/dashboard');
@@ -43,10 +33,10 @@ export const Header: React.FC = () => {
           <a href="#">Statistics | soon</a>
           <Button
             className="resize-transition"
-            data-cy="signIn"
-            onClick={isConnected ? open : signIn}
+            data-cy="login"
+            onClick={userData && userData.id ? open : login}
           >
-            {isConnected ?
+            {userData && userData.id ?
               <React.Fragment><Avatar url={userData.steamAvatar} /> Open Dashboard</React.Fragment>
               :
               <React.Fragment> Sign in with Steam </React.Fragment>

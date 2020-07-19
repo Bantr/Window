@@ -38,18 +38,6 @@ export const CollapseIconContainer = styled.div<{ collapsed: boolean }>`
   }
 `;
 
-export const ComingSoon = styled.div`
-  position:absolute;
-  right: -90px;
-  padding: 5px 10px;
-  background-color: ${({ theme }): string => theme.s};
-  border-radius: 5px;
-  font-weight: 800;
-  font-size: 10px;
-  text-transform: uppercase;
-  color: white;
-`;
-
 export const PrivacyContainer = styled.div<{ collapsed: boolean }>`
   display: flex;
   width: ${({ collapsed }): string => collapsed ? '0px' : '200px'};

@@ -11,7 +11,7 @@ interface IProps {
   external?: boolean;
 }
 export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => (
-  <LinkContainer>
+  <LinkContainer data-cy={`sideNav-${text.toLowerCase()}`}>
     {
       collapsed ?
         <Tooltip

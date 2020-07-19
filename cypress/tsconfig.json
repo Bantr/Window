@@ -4,10 +4,12 @@
     "./**/*.ts",
     "tests/away"
   ],
+  "target": "node",
   "exclude": [],
   "compilerOptions": {
     "types": [
       "cypress",
+      "../node_modules/@types/node"
     ],
     "lib": [
       "es2015",

@@ -5,7 +5,7 @@ import { Icon } from './BaseIcon';
 import {
   Action, AlertTriangle, Arrow, ArrowBig, Attachment,
   Bantr, Bell,
-  Checkmark, Clock, Copy, CreditCard,
+  CheckMark, Clock, Copy, CreditCard,
   Dashboard, Discord,
   Edit, Eye, EyeOff,
   Faceit, Filter, Fullscreen,
@@ -65,7 +65,7 @@ export const Icons = (): JSX.Element => (
     <Attachment />
     <Bantr />
     <Bell />
-    <Checkmark />
+    <CheckMark />
     <Clock />
     <Copy />
     <CreditCard />

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { routingService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
+import appTemp from '../../assets/images/app-temp.png';
 
 import {
   Container,
@@ -24,6 +25,7 @@ export const Body: React.FC = () => (
       variant="outline">Sign up here -&gt;</StyledButton>
     <WindowContainer>
       <Window>
+        <img alt="Preview app temp" src={appTemp} />
       </Window>
     </WindowContainer>
   </Container >

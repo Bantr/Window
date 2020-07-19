@@ -6,7 +6,6 @@ export interface IUserContext {
 }
 
 export interface IUserData {
-  isAuthenticated: true;
   id: string | null;
   username: string | null;
   steamId: string | null;

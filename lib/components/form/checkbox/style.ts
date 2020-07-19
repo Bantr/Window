@@ -30,7 +30,7 @@ export const CheckboxContainer = styled.div <{ isChecked: boolean }>`
   overflow: visible;
 `;
 
-export const CheckmarkContainer = styled.div<{ isChecked: boolean }>`
+export const CheckMarkContainer = styled.div<{ isChecked: boolean }>`
   display: ${({ isChecked }): string => isChecked ? 'flex' : 'none'};
   width: 100%;
   height: 100%;

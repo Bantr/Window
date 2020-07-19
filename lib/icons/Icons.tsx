@@ -12,10 +12,15 @@ export const AlertTriangle: React.FC<IIconProps> = (props) => (
     <path d="M22.56 16.3L14.89 3.58a3.43 3.43 0 0 0-5.78 0L1.44 16.3a3 3 0 0 0-.05 3A3.37 3.37 0 0 0 4.33 21h15.34a3.37 3.37 0 0 0 2.94-1.66 3 3 0 0 0-.05-3.04zm-1.7 2.05a1.31 1.31 0 0 1-1.19.65H4.33a1.31 1.31 0 0 1-1.19-.65 1 1 0 0 1 0-1l7.68-12.73a1.48 1.48 0 0 1 2.36 0l7.67 12.72a1 1 0 0 1 .01 1.01z" /><circle cx="12" cy="16" r="1" /><path d="M12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z" />
   </Icon>
 ); AlertTriangle.defaultProps = defaultProps;
-
+export const Archive: React.FC<IIconProps> = (props) => (
+  <Icon {...props}>
+    <path d="M22.56 16.3L14.89 3.58a3.43 3.43 0 0 0-5.78 0L1.44 16.3a3 3 0 0 0-.05 3A3.37 3.37 0 0 0 4.33 21h15.34a3.37 3.37 0 0 0 2.94-1.66 3 3 0 0 0-.05-3.04zm-1.7 2.05a1.31 1.31 0 0 1-1.19.65H4.33a1.31 1.31 0 0 1-1.19-.65 1 1 0 0 1 0-1l7.68-12.73a1.48 1.48 0 0 1 2.36 0l7.67 12.72a1 1 0 0 1 .01 1.01z" /><circle cx="12" cy="16" r="1" /><path d="M12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z" />
+  </Icon>
+); Archive.defaultProps = defaultProps;
 export const Arrow: React.FC<IIconProps> = (props) => (
   <Icon {...props}>
-    <path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" />
+    <path d="M21 6a3 3 0 0 0-3-3H6a3 3 0 0 0-2 5.22V18a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8.22A3 3 0 0 0 21 6zM6 5h12a1 1 0 0 1 0 2H6a1 1 0 0 1 0-2zm12 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h12z" />
+    <rect height="2" rx=".87" ry=".87" width="6" x="9" y="12" />
   </Icon>
 ); Arrow.defaultProps = defaultProps;
 export const ArrowBig: React.FC<IIconProps> = (props) => (
@@ -47,14 +52,14 @@ export const Bell: React.FC<IIconProps> = (props) => (
   </Icon>
 ); Bell.defaultProps = defaultProps;
 
-export const Checkmark: React.FC<IIconProps> = (props) => (
+export const CheckMark: React.FC<IIconProps> = (props) => (
   <Icon
     {...props}
     viewBox="0 0 24 24"
   >
     <path d="m9.86 18a1 1 0 0 1-.73-.32l-4.86-5.17a1 1 0 1 1 1.46-1.37l4.12 4.39 8.41-9.2a1 1 0 1 1 1.48 1.34l-9.14 10a1 1 0 0 1-.73.33z" />
   </Icon>
-); Checkmark.defaultProps = defaultProps;
+); CheckMark.defaultProps = defaultProps;
 
 export const Clock: React.FC<IIconProps> = (props) => (
   <Icon {...props}>

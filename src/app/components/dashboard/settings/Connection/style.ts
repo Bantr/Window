@@ -30,7 +30,7 @@ export const TitleContainer = styled.div`
   justify-content: flex-start;
 `;
 
-export const CheckmarkContainer = styled.div`
+export const CheckMarkContainer = styled.div`
   display: inline-flex;
   width: 12px;
   height: 12px;
