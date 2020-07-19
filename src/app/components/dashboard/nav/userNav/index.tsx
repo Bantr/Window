@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from '@reach/router';
 import { Person, LogOut } from 'lib/icons';
 import { DropDownItem, Line, UserDropDown } from './style';
 import { authenticationService } from 'lib/services';
