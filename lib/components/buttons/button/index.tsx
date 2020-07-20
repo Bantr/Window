@@ -4,7 +4,6 @@ import { Default, Outline, Text } from './style';
 
 interface IProps {
   active?: boolean;
-  disabled?: boolean;
   className?: string;
   color?: string;
   children?: React.ReactNode;
@@ -19,7 +18,6 @@ export const Button: React.FC<IProps> = ({
   children,
   className,
   color,
-  disabled = false,
   isLoading = false,
   onClick,
   variant = 'default'
