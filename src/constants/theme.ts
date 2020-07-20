@@ -54,4 +54,4 @@ const darkTheme: DefaultTheme = {
   placeholderHighlight: placeholderDarkHighlight
 };
 
-export const theme = (mode: string): DefaultTheme => (mode === 'dark' ? darkTheme : lightTheme);
+export const theme = (mode: string): DefaultTheme => (mode === 'dark' ? darkTheme : darkTheme);

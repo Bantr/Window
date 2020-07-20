@@ -20,7 +20,7 @@ import { IUserData, UserContext } from 'lib/hooks';
 import 'rc-tooltip/assets/bootstrap.css';
 import 'simplebar/dist/simplebar.min.css';
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   const defaultUserData: IUserData = {
     id: null,
     username: null,
@@ -102,3 +102,5 @@ export const App: React.FC = () => {
     );
   }
 };
+
+export default Sentry.withProfiler(App);
