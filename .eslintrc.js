@@ -1,8 +1,14 @@
 const path = require('path')
 
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
-  plugins: ['react-hooks', 'react'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:cypress/recommended',
+    'plugin:chai-friendly/recommended'
+  ],
+  plugins: ['react-hooks', 'react', 'cypress'],
   settings: {
     react: {
       version: 'detect'
@@ -16,16 +22,17 @@ module.exports = {
     'storybook.setup.js',
     '.storybook/',
     '@types/',
-    'cypress/',
     'lib/types/generated/index.tsx'
   ],
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
+    'cypress/globals': true
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    createDefaultProgram: true,
     project: './tsconfig.json',
   },
   rules: {
@@ -35,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/ban-ts-ignore': 0,
 
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-spacing': 2,
@@ -94,7 +102,14 @@ module.exports = {
         order: ['lifecycle', 'render', 'static-methods', 'everything-else']
       }
     ],
-    'react/display-name': 0
+    'react/display-name': 0,
+
+    // cypress
+
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/assertion-before-screenshot': 'warn',
+    'cypress/no-force': 'warn'
   },
   overrides: [{
     "files": ["*.js"],

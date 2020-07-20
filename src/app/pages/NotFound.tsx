@@ -11,6 +11,6 @@ export const NotFound: React.FunctionComponent<IProps> = () => (
     <Helmet>
       <title>Error 404</title>
     </Helmet>
-    this page could not be found
+    <h1>this page could not be found</h1>
   </div>
 );

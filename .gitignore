@@ -2,7 +2,12 @@
 /dist
 /build
 /examples
-build/Release
+build/Release$
+
+# graphql
+schema.graphql
+cypress/videos
+cypress/screenshots
 
 # dependency directories
 node_modules/

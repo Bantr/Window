@@ -31,7 +31,7 @@ export const Connections: React.FC<IProps> = () => (
     <Title size="huge" type="h3">Connections</Title>
     <Inner>
       <PlatformConnections />
-      <Title size="large" type="h4" >Valve Matchmaking</Title>
+      <Title size="large" type="h4">Valve Matchmaking</Title>
       Make sure this code is filled in to give us access to your matchmaking demos!
     </Inner>
   </Container>

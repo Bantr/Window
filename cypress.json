@@ -1,10 +1,20 @@
 {
-  "port": 6006,
+  "baseUrl": "http://localhost:30002",
   "projectId": "edec4p",
   "watchForFileChanges": true,
-  "baseUrl": "http://localhost:3000",
-  "viewportWidth": 1000,
-  "viewportHeight": 660,
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
   "video": true,
-  "nodeVersion": "system"
+  "nodeVersion": "system",
+  "firefoxGcInterval": null,
+  "integrationFolder": "cypress/tests",
+  "supportFile": "./cypress/support/index.ts",
+  "trashAssetsBeforeRuns": true,
+  "animationDistanceThreshold": 15,
+  "env": {
+    "api": "api.bantr.app",
+    "coverage": "false"
+  },
+  "experimentalFetchPolyfill": true,
+  "experimentalComponentTesting": true
 }

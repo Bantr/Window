@@ -9,7 +9,7 @@ interface IProps extends RouteComponentProps {
 export const TacticalTimeout: React.FC<IProps> = () => (
   <div>
     <Helmet>
-      <title>Csgo | Tactical Timeout</title>
+      <title>CSGO | Tactical Timeout</title>
     </Helmet>
     Tactical timeout page
   </div>

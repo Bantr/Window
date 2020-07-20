@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { CheckboxContainer, CheckmarkContainer, Container, Label, Ripple } from './style';
-import { Checkmark } from 'lib/icons';
+import { CheckboxContainer, CheckMarkContainer, Container, Label, Ripple } from './style';
+import { CheckMark } from 'lib/icons';
 
 interface IProps {
   defaultChecked?: boolean;
@@ -30,9 +30,9 @@ export const Checkbox: React.FC<IProps> = ({
   return (
     <Container className={isChecked ? 'checked' : ''}>
       <CheckboxContainer isChecked={isChecked} onClick={onCheck} >
-        <CheckmarkContainer isChecked={isChecked}>
-          <Checkmark fill="white" scale={0.8} />
-        </CheckmarkContainer>
+        <CheckMarkContainer isChecked={isChecked}>
+          <CheckMark fill="white" scale={0.8} />
+        </CheckMarkContainer>
         <Ripple className={isChecked ? 'animate' : ''} />
       </CheckboxContainer>
       {

@@ -24,6 +24,22 @@
     })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
   </script>
 
+  <!-- Load polyfills when fetch isn't supported' -->
+  <script>
+    const modernBrowser = (
+      'fetch' in window &&
+      'assign' in Object
+    );
+
+    if (!modernBrowser) {
+      const scriptElement = document.createElement('script');
+
+      scriptElement.async = false;
+      scriptElement.src = '/polyfills.bundle.js';
+      document.head.appendChild(scriptElement);
+    }
+  </script>
+
   <head>
 
   <body>

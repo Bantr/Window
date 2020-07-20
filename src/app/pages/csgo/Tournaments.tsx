@@ -9,7 +9,7 @@ interface IProps extends RouteComponentProps {
 export const Tournaments: React.FC<IProps> = () => (
   <div>
     <Helmet>
-      <title>Csgo | Tournaments</title>
+      <title>CSGO | Tournaments</title>
     </Helmet>
     this is the Tournament page
   </div>

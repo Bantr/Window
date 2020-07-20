@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { RouteComponentProps } from '@reach/router';
+import { Construction } from 'lib/components';
 
 interface IProps extends RouteComponentProps {
   path: string;
 }
 
 export const Tracker: React.FC<IProps> = () => (
-  <div>
+  <React.Fragment>
     <Helmet>
-      <title>Csgo | Tracker</title>
+      <title>CSGO | Tracker</title>
     </Helmet>
-    this is the tracker page
-  </div>
+    <Construction />
+  </React.Fragment>
 );

@@ -41,21 +41,20 @@ export const WindowContainer = styled.div`
   position: relative;
   width: calc(100% - 40px);
   padding: 20px;
-  height: 600px;
+  height: auto;
   margin: 0 auto;
 `;
 
 export const Window = styled.div`
-  position: absolute;
   width: 100%;
   max-width: 1250px;
   height: 100%;
   background-color: ${({ theme }): string => theme.pb};
-  border-radius: 25px;
   margin: 0 auto;
   left: 0;
   right: 0;
   transform: rotateX(20deg);
+  padding: 5px;
 
   img {
     width: 100%;

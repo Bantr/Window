@@ -9,9 +9,10 @@ import notificationSfx from '../notification.mp3';
 import { NotificationList } from '../notificationList';
 import { httpService } from 'lib/services';
 import { BellIcon, Container, NotificationIcon } from './style';
+import * as Sentry from '@sentry/react';
 
-const GET_SEEN_NOTIFICATION_COUNT = gql`
-  query GET_SEEN_NOTIFICATION_COUNT{
+const GET_NEW_NOTIFICATION_COUNT = gql`
+  query GET_NEW_NOTIFICATION_COUNT{
     notification: notification_aggregate(where: {deleted: {_eq: false}, seen: {_eq: false}}){
       aggregate {
         count
@@ -30,13 +31,12 @@ export const NotificationBell: React.FC<{}> = () => {
   const [deletedNotifications, setDeletedNotifications] = React.useState<number[]>([]);
 
   const [play] = useSound(notificationSfx);
-  const { loading, data, error } = useQuery<notificationResponse>(GET_SEEN_NOTIFICATION_COUNT, { pollInterval: 5 * 1000 * 60 });
+  const { loading, data, error } = useQuery<notificationResponse>(GET_NEW_NOTIFICATION_COUNT, { pollInterval: 5 * 1000 * 60 });
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   useOutsideAlerter(wrapperRef, (): void => { toggleVisible(false); });
 
-  // TODO: catch this with sentry
   if (error) {
-    console.log(error);
+    Sentry.captureException(error);
   }
 
   function bellClicked(): void {
@@ -65,7 +65,7 @@ export const NotificationBell: React.FC<{}> = () => {
 
   return (
     <Container ref={wrapperRef}>
-      <BellIcon className={hasNewNotification ? 'animate' : ''} onClick={bellClicked}>
+      <BellIcon className={hasNewNotification ? 'animate' : ''} data-cy="headerNav-notificationBell" onClick={bellClicked}>
         <Bell pointer scale={1.2} />
         {hasNewNotification ? <NotificationIcon /> : ''}
       </BellIcon>

@@ -23,8 +23,8 @@
       "faceit",
       "csgo",
       "contenthash",
-      "checkmark",
-      "ACTIONTYPES"
+      "ACTIONTYPES",
+      "chainable"
     ]
   },
   "extensions": {

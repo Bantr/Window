@@ -19,7 +19,7 @@ const PublicEnvironmentVariables = {
 }
 
 const commonConfig = merge([
-  parts.start(),
+  parts.start(process.env.CI),
   parts.aliases(),
   parts.IO(),
   parts.loadHtml(),
@@ -51,10 +51,8 @@ const developmentConfig = merge([
 ]);
 
 const CIConfig = merge([
-  parts.sentry({ releaseVersion: process.env.npm_package_version })
+  parts.sentry({ clientVersion: process.env.npm_package_version })
 ])
-
-console.log('ci env', !!process.env.CI);
 
 module.exports = ({ mode }) => {
   console.log(chalk.white('webpack mode:'), chalk.green(mode));

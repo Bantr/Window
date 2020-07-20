@@ -22,7 +22,6 @@ import 'simplebar/dist/simplebar.min.css';
 
 export const App: React.FC = () => {
   const defaultUserData: IUserData = {
-    isAuthenticated: true,
     id: null,
     username: null,
     steamId: null,
@@ -38,19 +37,26 @@ export const App: React.FC = () => {
   const [userData, setUserData] = React.useState(defaultUserData);
   const providerUserData = React.useMemo(() => ({ userData, setUserData }), [userData, setUserData]);
   const [isLoading, setLoading] = React.useState(true);
+  const [apiKey, setApiKey] = React.useState('no-key');
 
   async function getSession(): Promise<IUserData> {
     return await authenticationService.isAuthenticated();
   }
 
   React.useEffect(() => {
+    // should only check onLoad if the session exists, if the user has been authenticated in the past.
+
     getSession().then((session: IUserData) => {
-      setUserData({ ...session });
-      setApiKey(session.graphQLKey);
+      console.log('when does this fire');
+      if (session) {
+        setUserData({ ...session });
+        setApiKey(session.graphQLKey);
+      }
       setLoading(false);
+      return;
     });
+    setLoading(false);
   }, []);
-  const [apikey, setApiKey] = React.useState('secret-key');
 
   const link = ApolloLink.from([
     new RetryLink(),
@@ -59,11 +65,13 @@ export const App: React.FC = () => {
       // this should become same origin
       credentials: 'same-origin',
       headers: {
-        'BANTR-GRAPHQL': apikey
+        'BANTR-GRAPHQL': apiKey
       }
     })
   ]);
+
   const apolloClient = new ApolloClient({ link, cache: new InMemoryCache() });
+
   if (isLoading) {
     return (
       <ThemeProvider theme={theme}>
@@ -72,27 +80,25 @@ export const App: React.FC = () => {
     );
   } else {
     return (
-      <React.Fragment>
+      <ThemeProvider theme={theme}>
         <Sentry.ErrorBoundary fallback={ErrorFallback}>
-          <ThemeProvider theme={theme}>
-            <SnackbarProvider
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right'
-              }}
-              hideIconVariant={false}
-              maxSnack={3}
-            >
-              <ApolloProvider client={apolloClient}>
-                <UserContext.Provider value={providerUserData}>
-                  <Router />
-                </UserContext.Provider>
-              </ApolloProvider>
-            </SnackbarProvider>
-            <GlobalStyle />
-          </ThemeProvider>
-        </Sentry.ErrorBoundary>
-      </React.Fragment >
+          <SnackbarProvider
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right'
+            }}
+            hideIconVariant={false}
+            maxSnack={3}
+          >
+            <ApolloProvider client={apolloClient}>
+              <UserContext.Provider value={providerUserData}>
+                <Router />
+                <GlobalStyle />
+              </UserContext.Provider>
+            </ApolloProvider>
+          </SnackbarProvider>
+        </Sentry.ErrorBoundary >
+      </ThemeProvider >
     );
   }
 };

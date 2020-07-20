@@ -4,20 +4,24 @@ import { isDevelopment } from 'lib/util';
 import { bantrSettings } from 'lib/settings';
 import { App } from './app/App';
 
-// should become lazy loaded
 import * as Sentry from '@sentry/browser';
+import { Integrations } from '@sentry/apm';
+
 import * as whyDidYouRender from '@welldone-software/why-did-you-render';
 
 // Sentry should only throw errors in production.
-// TODO: helper function for process env
 if (!isDevelopment()) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
-    release: `${bantrSettings.clientAppName}${bantrSettings.clientAppVersion}`
+    release: `${bantrSettings.clientAppName}${bantrSettings.clientAppVersion}`,
+    integrations: [
+      // @ts-ignore (No advanced types for this new feature yet.)
+      new Integrations.Tracing({ tracingOrigins: ['api.bantr.app'] })
+    ],
+    tracesSampleRate: 0.2 // catches 20% of api calls
   });
-}
 
-if (isDevelopment()) {
+  // Helps to find unnecessary renders
   whyDidYouRender.default(React, { trackAllPureComponents: true });
 }
 

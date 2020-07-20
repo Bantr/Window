@@ -25,13 +25,19 @@ const chalk = require('chalk');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
-exports.start = () => console.log('Webpack has been started..');
+exports.start = (ci) => {
+  console.log('Webpack has been started..');
+  console.log('CI: ', chalk.green(ci ? true : false));
+};
 
 exports.IO = () => ({
   devtool: '',
   target: 'web',
   // startpoint
-  entry: [path.join(__dirname, '/src/index.tsx')],
+  entry: {
+    index: path.join(__dirname, '/src/index.tsx'),
+    polyfills: path.join(__dirname, '/src/polyfills.ts')
+  },
   // on production this returns one bundled js file. To avoid caching a hash is added.
   output: {
     chunkFilename: '[name].js',
