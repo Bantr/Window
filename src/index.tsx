@@ -9,8 +9,6 @@ import { Integrations } from '@sentry/apm';
 
 import * as whyDidYouRender from '@welldone-software/why-did-you-render';
 
-console.log(Sentry);
-
 // Sentry should only throw errors in production.
 if (!isDevelopment()) {
   Sentry.init({
