@@ -23,7 +23,7 @@ Currently we are just working and learning as much as we can, the goal is to cre
 Bantr is currently mainly developed by 2 college students since the beginning of 2020. You can see our current priorities and what we are working on in the main project board. We have recently released the first alpha version and are working hard on a feature rich beta version.
 
 #### Technologies
-Here is a list of the largest technologies we use in this repositories. If you are not familier with one of them, no problem. We do recommend reading the docs before diving into the code, otherwise you might feel overwhelmed.
+Here is a list of the largest technologies we use in this repository. If you are not familier with one of them, no problem. We do recommend reading the docs before diving into the code, otherwise you might feel overwhelmed.
 
 - [**React**](https://reactjs.org/)- Frontend React app
 - [**Cypress**](https://www.cypress.io/) - Regression tests (mocked)
