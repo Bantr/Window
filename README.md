@@ -50,7 +50,7 @@ git clone git@github.com:Bantr/Spawn.git
  If you get `Permission denied` error using `ssh` refer [here](https://help.github.com/articles/error-permission-denied-publickey/)
 or use `https` link as a fallback.
 ```sh
-git clone https://github.com/withspectrum/spectrum.git
+git clone https://github.com/Bantr/Spawn.git
 ```
 
 ### Installation
