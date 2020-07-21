@@ -2,8 +2,9 @@
   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Bantr/Koyi/Node.js%20CI">
  <img alt="Discord" src="https://img.shields.io/discord/626436103573864448?label=Discord">
   <br/>
-  <a href="https://bantr.app">Bantr</a>
-    <img src="https://github.com/Bantr/Spawn/blob/master/public/static/assets/icon/4x/color-combo-2%404x.png" align="center" alt="Bantr" width="100"></a>
+  <a href="https://bantr.app">Bantr <br/>
+    <img src="https://github.com/Bantr/Spawn/blob/master/public/static/assets/icon/4x/color-combo-2%404x.png" align="center" alt="Bantr" width="100">
+  </a>
 </h1>
 
 <h3 align="center">Bantr is free to use. But not to operate. Please consider supporting our service!</h3>
