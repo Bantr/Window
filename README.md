@@ -3,7 +3,7 @@
  <img alt="Discord" src="https://img.shields.io/discord/626436103573864448?label=Discord">
   <br/>
   <a href="https://bantr.app">
-    <img src="https://github.com/Bantr/Spawn/blob/master/public/static/assets/icon/4x/color-combo-2%404x.png" align="center" alt="Bantr" width="100"/>
+    <img src="https://github.com/Bantr/Spawn/blob/master/public/static/assets/icon/4x/color-combo-2%404x.png" align="center" alt="Bantr" width="200"/>
   </a>
 </h1>
 
