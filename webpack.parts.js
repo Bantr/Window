@@ -106,25 +106,23 @@ exports.sourceMap = () => ({
 });
 
 // This lets you view source code context obtained from stack traces in their original untransformed form.
-exports.sentry = ({ clientVersion }) => ({
+exports.sentry = (appName, appVersion) => ({
   plugins: [
     new SentryWebpackPlugin({
       include: '.',
+      ignoreFile: '.gitignore',
       ignore: [
-        'node_modules',
         'webpack.config.js',
         'webpack.parts.js',
-        'eslintrc.js',
-        '.gitignore',
-        '.eslintrc.js',
-        '.stylelintrc.js',
-        'coverage',
         'cypress',
         'storybook',
-        'dist'
+        'public',
+        '@types',
+        'scripts'
       ],
-      release: `spawn-${clientVersion}`,
-      configFile: '.sentryclirc'
+      ext: ['.ts',],
+      release: `${appName}-v${appVersion}`,
+      configFile: '.sentry.properties',
     })
   ]
 });
