@@ -14,7 +14,9 @@ const PublicEnvironmentVariables = {
   'process.env': {
     'API_ROOT': JSON.stringify(process.env.API_ROOT),
     'FACEIT_API_KEY': JSON.stringify(process.env.FACEIT_API_KEY),
-    'SENTRY_DSN': JSON.stringify(process.env.SENTRY_DSN)
+    'SENTRY_DSN': JSON.stringify(process.env.SENTRY_DSN),
+    'CLIENT_APP_NAME': JSON.stringify(process.env.npm_package_name),
+    'CLIENT_APP_VERSION': JSON.stringify(process.env.npm_package_version)
   }
 }
 
