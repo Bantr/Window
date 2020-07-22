@@ -53,7 +53,7 @@ const developmentConfig = merge([
 ]);
 
 const CIConfig = merge([
-  parts.sentry({ clientVersion: process.env.npm_package_version })
+  parts.sentry(process.env.npm_package_name, process.env.npm_package_version)
 ])
 
 module.exports = ({ mode }) => {
