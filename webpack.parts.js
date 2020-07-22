@@ -114,15 +114,13 @@ exports.sentry = (appName, appVersion) => ({
       ignore: [
         'webpack.config.js',
         'webpack.parts.js',
-        'eslintrc.js',
-        '.gitignore',
-        '.eslintrc.js',
-        '.stylelintrc.js',
-        'coverage',
         'cypress',
         'storybook',
-        'dist',
+        'public',
+        '@types',
+        'scripts'
       ],
+      ext: ['.ts',],
       release: `${appName}-v${appVersion}`,
       configFile: '.sentry.properties',
     })
