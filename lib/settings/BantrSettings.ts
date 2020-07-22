@@ -4,7 +4,7 @@ class BantrSettings implements IAppSettings {
   public clientAppId = 'app_id_here'
 
   // TODO: helper function apiroot (check if exist);
-  public apiRoot = process.env.API_ROOT ? process.env.API_ROOT : 'http://localhost:3000';
+  public apiRoot = process.env.API_ROOT || 'http://localhost:3000';
 
   public clientAppName = process.env.npm_package_name;
   public clientAppVersion = process.env.npm_package_version;

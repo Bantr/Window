@@ -318,6 +318,7 @@ export type IMatch = {
   players_aggregate: IMatchPlayersPlayerAggregate;
   tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
+  typeExtended?: Maybe<Scalars['String']>;
 };
 
 
@@ -412,6 +413,7 @@ export type IMatchBoolExp = {
   players?: Maybe<IMatchPlayersPlayerBoolExp>;
   tickrate?: Maybe<IIntComparisonExp>;
   type?: Maybe<IIntComparisonExp>;
+  typeExtended?: Maybe<IStringComparisonExp>;
 };
 
 /** aggregate max on columns */
@@ -422,6 +424,7 @@ export type IMatchMaxFields = {
   map?: Maybe<Scalars['String']>;
   tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
+  typeExtended?: Maybe<Scalars['String']>;
 };
 
 /** order by max() on columns of table "match" */
@@ -432,6 +435,7 @@ export type IMatchMaxOrderBy = {
   map?: Maybe<IOrderBy>;
   tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
+  typeExtended?: Maybe<IOrderBy>;
 };
 
 /** aggregate min on columns */
@@ -442,6 +446,7 @@ export type IMatchMinFields = {
   map?: Maybe<Scalars['String']>;
   tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
+  typeExtended?: Maybe<Scalars['String']>;
 };
 
 /** order by min() on columns of table "match" */
@@ -452,6 +457,7 @@ export type IMatchMinOrderBy = {
   map?: Maybe<IOrderBy>;
   tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
+  typeExtended?: Maybe<IOrderBy>;
 };
 
 /** ordering options when selecting data from "match" */
@@ -464,6 +470,7 @@ export type IMatchOrderBy = {
   players_aggregate?: Maybe<IMatchPlayersPlayerAggregateOrderBy>;
   tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
+  typeExtended?: Maybe<IOrderBy>;
 };
 
 /** columns and relationships of "match_players_player" */
@@ -681,7 +688,9 @@ export const enum IMatchSelectColumn {
   /** column name */
   Tickrate = 'tickrate',
   /** column name */
-  Type = 'type'
+  Type = 'type',
+  /** column name */
+  TypeExtended = 'typeExtended'
 };
 
 /** aggregate stddev on columns */

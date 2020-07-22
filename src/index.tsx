@@ -21,6 +21,7 @@ if (!isDevelopment()) {
   });
 
   // Helps to find unnecessary renders
+} else {
   whyDidYouRender.default(React, { trackAllPureComponents: true });
 }
 
