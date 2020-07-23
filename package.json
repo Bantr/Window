@@ -169,7 +169,7 @@
     "stylelint-custom-processor-loader": "^0.6.0",
     "stylelint-processor-styled-components": "^1.8.0",
     "terser-webpack-plugin": "^3.0.1",
-    "ts-jest": "^25.4.0",
+    "ts-jest": "^25.5.1",
     "ts-loader": "^8.0.0",
     "typescript-plugin-styled-components": "^1.4.4",
     "url-loader": "^4.1.0",
