@@ -161,7 +161,7 @@
     "react-test-renderer": "^16.9.0",
     "regenerator-runtime": "^0.13.3",
     "sass-loader": "^8.0.0",
-    "serve": "^11.3.0",
+    "serve": "^11.3.2",
     "sort-package-json": "^1.22.1",
     "stylelint": "^13.2.0",
     "stylelint-config-recommended": "^3.0.0",
