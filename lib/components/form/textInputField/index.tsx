@@ -1,29 +1,35 @@
 import * as React from 'react';
 import { Container, LabelContainer, Label, InputContainer, Input, ErrorContainer, Error } from './style';
+import { FieldError } from 'react-hook-form';
 
 interface IProps {
-  validation: () => {};
-  required: boolean;
-  readOnly: boolean;
+  name: string; // This is the ID React formik uses to identify a component.
+  register?: () => {};
+  required?: boolean;
+  readOnly?: boolean;
   labelText: string;
-  placeholder?: string;
+  placeholder: string;
+  error?: FieldError;
 }
 
-export const TextInputField: React.FC<IProps> = ({ labelText }) => {
+export const TextInputField = React.forwardRef<HTMLInputElement, IProps>(({ labelText, placeholder, name, error }, ref) => {
   // do some shit here
-  const errorMessage = 'I am the error';
+
+  console.log('this is the error', error);
 
   return (
     <Container>
       <LabelContainer>
-        <Label>{labelText}</Label>
+        <Label htmlFor={name}>{labelText}</Label>
       </LabelContainer>
       <InputContainer>
-        <Input />
+        <Input id={name} name={name} placeholder={placeholder} ref={ref} />
       </InputContainer>
-      <ErrorContainer>
-        <Error>{errorMessage}</Error>
-      </ErrorContainer>
+      {
+        error ? <ErrorContainer>
+          <Error>{error.message}</Error>
+        </ErrorContainer> : null
+      }
     </Container>
   );
-};
+});

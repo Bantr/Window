@@ -52,7 +52,16 @@ export const GlobalStyle = createGlobalStyle`
 
   input {
     margin: 0;
-    padding: 0;
+    padding: 10px 15px;
+    border: 1px;
+    border-color: ${({ theme }): string => theme.pb};
+    border-radius: 5px;
+    color: ${({ theme }): string => theme.t};
+    background-color: ${({ theme }): string => theme.pb};
+
+    &:focus {
+      border-color: ${({ theme }): string => theme.s}};
+    }
   }
 
   button{

@@ -41,7 +41,7 @@ module.exports = {
       use: { loader: 'babel-loader' }
     });
 
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.extensions.push('.storybook.tsx');
     return config;
   }
 };
