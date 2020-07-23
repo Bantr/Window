@@ -97,7 +97,7 @@
     "@testing-library/react": "^9.1.4",
     "@types/c3": "^0.7.4",
     "@types/d3": "^5.7.2",
-    "@types/eslint": "^6.1.8",
+    "@types/eslint": "^7.2.0",
     "@types/faker": "^4.1.12",
     "@types/history": "^4.7.5",
     "@types/jest": "^26.0.3",
