@@ -20,6 +20,6 @@ interface IProps {
   right?: string;
 }
 
-export const ComingSoon: React.FC<IProps> = ({ text = 'Coming soon', right = '-90px' }) => (
+export const ComingSoon: React.FC<IProps> = ({ text = 'Coming soon', right = '-70px' }) => (
   <Container right={right}>{text}</Container>
 );

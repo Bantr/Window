@@ -5,8 +5,8 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 70px);
-  height: calc(120px - 70px);
+  width: 100%;
+  height: 120px;
   background-color: ${({ theme }): string => theme.sb};
   border-radius: 10px;
   padding: 35px;

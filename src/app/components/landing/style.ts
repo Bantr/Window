@@ -39,7 +39,7 @@ export const StyledButton = styled(Button)`
 
 export const WindowContainer = styled.div`
   position: relative;
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
   height: auto;
   margin: 0 auto;

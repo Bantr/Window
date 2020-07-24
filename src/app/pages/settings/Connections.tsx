@@ -10,10 +10,10 @@ const Container = styled.div`
 `;
 
 const Inner = styled.div`
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
   background-color: ${({ theme }): string => theme.pb};
-  height: calc(100% - 40px);
+  height: 100%;
   border-radius: 10px;
   margin-top: 20px;
 `;

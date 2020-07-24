@@ -6,9 +6,9 @@ export const UserDropDown = styled.nav`
   left: -100px;
   right: 0;
   margin: 0 auto;
-  width: 150px;
-  background-color: ${({ theme }): string => theme.sb};
+  width: 175px;
   height: 100px;
+  background-color: ${({ theme }): string => theme.sb};
   transition: 0.15s transform ease-in-out;
   border-radius: 5px;
   display: flex;
@@ -20,8 +20,8 @@ export const UserDropDown = styled.nav`
 export const DropDownItem = styled.div`
   position: relative;
   display: flex;
-  width: calc(100% - 15px);
-  height: 30px;
+  width: 100%;
+  height: 50px;
   align-items: center;
   padding: 10px 0 10px 15px;
   border-radius: 5px;

@@ -13,7 +13,7 @@ export const Inner = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 50px 25px 0;
+  padding: 0 35px;
 `;
 
 export const Left = styled.div`

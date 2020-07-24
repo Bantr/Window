@@ -14,8 +14,8 @@ const Container = styled.div`
 const Input = styled.input`
   border-radius: 10px;
   border: none;
-  width: calc(100% - 60px);
-  height: calc(100% - 20px);
+  width: 100%;
+  height: 100%;
   color: ${({ theme }): string => theme.t};
   background-color: ${({ theme }): string => theme.sb};
   padding: 10px 20px 10px 40px;
