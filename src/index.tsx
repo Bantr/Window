@@ -19,7 +19,6 @@ if (!isDevelopment()) {
     ],
     tracesSampleRate: 0.2 // catches 20% of calls
   });
-} else {
   // Helps to find unnecessary renders
 } else {
   whyDidYouRender.default(React, { trackAllPureComponents: true });
