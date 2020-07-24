@@ -56,5 +56,11 @@ on the root of the repo you can find an example .env file ([.env.example](https:
 - **HASURA_GRAPHQL_USER_SECRET** - Required to download the get the graphql types (runs before dev-server).
 - **API_ROOT** - The address of the api. This should be set to **api.bantr.app*
 
-How do you obtain the **HASURA_GRAPHQL_USER_SECRET**? <br/> Go to the current Bantr.app and login with your steam account (create one if you don't have one, they are free). When authenticated open a new tab and surf to https://api.bantr.app/auth/session. This will return your session object. One of the keys will be **'graphQLKey'**. This is the key you need.
+##### How do you obtain the **HASURA_GRAPHQL_USER_SECRET**? 
+###### Create a Steam profile
+To login into Bantr's webapp it requires you to login with a Steam account. If you are not really into gaming, you may not be familiar with [Steam](https://store.steampowered.com/). Steam is a cloud based gaming library created by the company Valve. It provides a place where you have access to all your games at once and can easily buy new games in the associated Steam shop. It offers more features than that of course. Counterstrike Global Offensive is also made by Valve. By logging in with a steam account we immediately have access to valuable game and user information. 
+
+###### **HASURA_GRAPHQL_USER_SECRET**
+Go to the [Bantr.app](https://bantr.app) and login with your steam account. You should have access to [Bantr.app/csgo/dashboard](https://bantr.app/csgo/dashboard).
+If that works you are authorized. Next, open a new tab and surf to https://api.bantr.app/auth/session. This will return your session object. One of the keys will be **'graphQLKey'**. This is the key you need.
 
