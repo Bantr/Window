@@ -27,6 +27,7 @@ const placeholderLightHighlight = '#ffffff';
 const placeholderDark = '#8e9194';
 const placeholderDarkHighlight = '#b0b0b0';
 
+/*
 const lightTheme: DefaultTheme = {
   dark: false,
   t: black,
@@ -41,6 +42,7 @@ const lightTheme: DefaultTheme = {
   placeholderHighlight: placeholderLightHighlight,
   error: error
 };
+*/
 
 const darkTheme: DefaultTheme = {
   dark: true,

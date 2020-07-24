@@ -13,13 +13,13 @@ import * as whyDidYouRender from '@welldone-software/why-did-you-render';
 if (!isDevelopment()) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
-    release: `${bantrSettings.clientAppName}${bantrSettings.clientAppVersion}`,
+    release: `${bantrSettings.clientAppName}-v${bantrSettings.clientAppVersion}`,
     integrations: [
       new Integrations.Tracing({ tracingOrigins: ['api.bantr.app'] })
     ],
     tracesSampleRate: 0.2 // catches 20% of calls
   });
-
+} else {
   // Helps to find unnecessary renders
 } else {
   whyDidYouRender.default(React, { trackAllPureComponents: true });

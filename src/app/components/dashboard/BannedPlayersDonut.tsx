@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Chart } from 'lib/components/dashboard';
 import { DBVISUAL } from 'lib/enums';
 import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import * as Sentry from '@sentry/react';
 
 interface IPlayerData {

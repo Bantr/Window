@@ -7,12 +7,9 @@ import { ErrorFallback } from 'lib/components';
 import { authenticationService } from 'lib/services';
 import { SnackbarProvider } from 'notistack';
 import { theme } from '../constants/theme';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloClient, ApolloLink } from 'apollo-boost';
-import { RetryLink } from 'apollo-link-retry';
-//import { onError } from 'apollo-link-error';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { RetryLink } from '@apollo/client/link/retry';
+import { InMemoryCache } from '@apollo/client/cache';
+import { ApolloClient, ApolloLink,ApolloProvider, HttpLink } from '@apollo/client';
 import { AppLoad } from './views/appLoad';
 import { IUserData, UserContext } from 'lib/hooks';
 

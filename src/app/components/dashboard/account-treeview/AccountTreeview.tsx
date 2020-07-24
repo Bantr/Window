@@ -6,7 +6,7 @@ import { Title } from 'lib/components';
 import { Hamburger } from 'lib/icons';
 import gql from 'graphql-tag';
 import { AccountRow, AccountRowPlaceholder } from './row-templates/AccountRow';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/client';
 import { Search } from 'lib/components';
 
 const Container = styled.div`
