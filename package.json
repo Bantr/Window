@@ -154,7 +154,7 @@
     "react-hot-loader": "^4.12.14",
     "react-test-renderer": "^16.9.0",
     "regenerator-runtime": "^0.13.3",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^9.0.2",
     "serve": "^11.3.2",
     "sort-package-json": "^1.22.1",
     "stylelint": "^13.2.0",
