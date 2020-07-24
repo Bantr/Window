@@ -6,7 +6,7 @@ export default {
   title: 'Dropdown components'
 };
 
-export const Dropdown = (): JSX.Element => (
+export const Dropdown = (): React.ReactNode => (
   <DropdownComponent>
     <DropdownOption value="spaghetti" />
     <DropdownOption value="lasagna" />

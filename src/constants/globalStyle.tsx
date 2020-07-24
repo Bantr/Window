@@ -54,14 +54,20 @@ export const GlobalStyle = createGlobalStyle`
   input {
     margin: 0;
     padding: 15px 15px;
-    border: 1px;
-    border-color: ${({ theme }): string => theme.pb};
+    border-width: 1px;
     border-radius: 5px;
+    border-color: none;
     color: ${({ theme }): string => theme.t};
     background-color: ${({ theme }): string => theme.pb};
 
     &:focus {
-      border-color: ${({ theme }): string => theme.s}};
+      border-color: ${({ theme }): string => theme.p}};
+    }
+    &[readOnly]{
+      cursor: not-allowed;
+      &:focus {
+        border-color: none!important;
+      }
     }
   }
 
@@ -149,7 +155,6 @@ export const GlobalStyle = createGlobalStyle`
   .c3-circle {
     fill: ${({ theme }): string => theme.p};
   }
-
 `;
 
 // Cosmos export

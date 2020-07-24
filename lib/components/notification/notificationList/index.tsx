@@ -45,7 +45,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
   const { loading, data, error } = useQuery<INotificationsResponse>(GET_NOTIFICATIONS);
   const [isEmpty, setEmpty] = React.useState(false);
 
-  function skeletonLoading(): JSX.Element {
+  function skeletonLoading(): React.ReactNode {
     return (
       <React.Fragment>
         <SkeletonNotification index={0} />
@@ -71,7 +71,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
     }
   }, [data]);
 
-  function loadNotificationComponents(notificationsResponse: INotificationsResponse): JSX.Element[] | JSX.Element {
+  function loadNotificationComponents(notificationsResponse: INotificationsResponse): React.ReactNode | React.ReactNode[] {
     // If notificationList is open and all notifications are removed.
     if (isEmpty) {
       return <NoNotifications>All notifications have been removed.</NoNotifications>;

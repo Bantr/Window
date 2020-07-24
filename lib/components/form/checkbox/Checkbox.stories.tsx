@@ -6,6 +6,6 @@ export default {
   title: 'Checkbox components'
 };
 
-export const Checkbox = (): JSX.Element => <CheckboxComponent />;
-export const ReadOnlyCheckbox = (): JSX.Element => <CheckboxComponent defaultChecked readOnly />;
-export const CheckboxWithLabel = (): JSX.Element => <CheckboxComponent label="Male" />;
+export const Checkbox = (): React.ReactNode => <CheckboxComponent />;
+export const ReadOnlyCheckbox = (): React.ReactNode => <CheckboxComponent defaultChecked readOnly />;
+export const CheckboxWithLabel = (): React.ReactNode => <CheckboxComponent label="Male" />;

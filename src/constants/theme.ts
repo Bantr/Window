@@ -2,7 +2,6 @@ import { DefaultTheme } from 'styled-components';
 
 const black = '#000000';
 const white = '#FFFFFF';
-const error = '#b00020';
 
 const primaryLight = '#ff5e62';
 const secondaryLight = '#f96';
@@ -55,8 +54,7 @@ const darkTheme: DefaultTheme = {
   sb: sdark,
   shadow: shadowDark,
   placeholder: placeholderDark,
-  placeholderHighlight: placeholderDarkHighlight,
-  error: error
+  placeholderHighlight: placeholderDarkHighlight
 };
 
 export const theme = (mode: string): DefaultTheme => (mode === 'dark' ? darkTheme : darkTheme);

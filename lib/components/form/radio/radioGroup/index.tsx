@@ -6,7 +6,7 @@ interface IProps {
   selectedValue?: string;
   name: string;
   defaultValue?: string;
-  children: JSX.Element[];
+  children: React.ReactNode[];
 }
 
 export const RadioGroup: React.FC<IProps> = ({ children, name, defaultValue = null }) => {
@@ -16,8 +16,9 @@ export const RadioGroup: React.FC<IProps> = ({ children, name, defaultValue = nu
     setSelected(value);
   }
 
-  function renderChildren(): React.ReactNode {
-    return React.Children.map(children, (child) => {
+  // TODO: fix any types
+  function renderChildren(): any {
+    return React.Children.map(children, (child: any) => {
       const isSelected = child.props.value === selected ? true : false;
       return React.cloneElement(child as React.ReactElement<any>, { name: name, getValue: getValue, isSelected: isSelected });
     });

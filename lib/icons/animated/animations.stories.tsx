@@ -8,4 +8,4 @@ export default {
   title: 'Animated components'
 };
 
-export const Pulse = (): JSX.Element => <PulseComponent stroke="orange" />;
+export const Pulse = (): React.ReactNode => <PulseComponent stroke="orange" />;

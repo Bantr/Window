@@ -56,7 +56,7 @@ export default {
   title: 'Icons'
 };
 
-export const Icons = (): JSX.Element => (
+export const Icons = (): React.ReactNode => (
   <GridContainer>
     <Action />
     <AlertTriangle />
@@ -108,7 +108,7 @@ export const Icons = (): JSX.Element => (
   </GridContainer>
 );
 
-export const CsgoIcons = (): JSX.Element => (
+export const CsgoIcons = (): React.ReactNode => (
   <GridContainer>
     <ItemDefuser />
     <WeaponAk47 />
@@ -156,4 +156,4 @@ export const CsgoIcons = (): JSX.Element => (
   </GridContainer>
 );
 
-export const Spinners = (): JSX.Element => <GridContainer><Spinner /></GridContainer>;
+export const Spinners = (): React.ReactNode => <GridContainer><Spinner /></GridContainer>;

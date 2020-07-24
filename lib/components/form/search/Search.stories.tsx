@@ -6,4 +6,4 @@ export default {
   title: 'Search component'
 };
 // TODO: should be worked out.
-export const Search = (): JSX.Element => <SearchComponent />;
+export const Search = (): React.ReactNode => <SearchComponent />;

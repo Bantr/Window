@@ -6,7 +6,7 @@ export default {
   title: 'Title components'
 };
 
-export const TitleSize = (): JSX.Element => (
+export const TitleSize = (): React.ReactNode => (
   <>
     <TitleComponent size="small">small title</TitleComponent>
     <TitleComponent size="medium">medium title</TitleComponent>

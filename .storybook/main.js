@@ -29,9 +29,9 @@ module.exports = {
             options: { getCustomTransformers: () => ({ before: [styledComponentsTransformer] }) }
           },
           // Optional
-          {
-            loader: require.resolve('react-docgen-typescript-loader'),
-          }
+          //      {
+          //       loader: require.resolve('react-docgen-typescript-loader'),
+          //     }
         ]
       });
 
