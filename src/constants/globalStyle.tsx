@@ -48,6 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: box-shadow 0.125s linear;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* padding is included in percentage */
   }
 
   input {

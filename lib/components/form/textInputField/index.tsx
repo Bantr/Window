@@ -15,7 +15,7 @@ interface IProps {
 export const TextInputField = React.forwardRef<HTMLInputElement, IProps>(({ labelText, placeholder, name, error }, ref) => {
   // do some shit here
 
-  console.log('this is the error', error);
+  const [showError, setShowError] = React.useState(false);
 
   return (
     <Container>
@@ -23,13 +23,22 @@ export const TextInputField = React.forwardRef<HTMLInputElement, IProps>(({ labe
         <Label htmlFor={name}>{labelText}</Label>
       </LabelContainer>
       <InputContainer>
-        <Input id={name} name={name} placeholder={placeholder} ref={ref} />
+        <Input
+          id={name}
+          name={name}
+          onBlur={(): void => { setShowError(false); }}
+          onFocus={(): void => { setShowError(true); }}
+          placeholder={placeholder}
+          ref={ref}
+        />
       </InputContainer>
       {
-        error ? <ErrorContainer>
-          <Error>{error.message}</Error>
-        </ErrorContainer> : null
+        error && error.message ?
+          <ErrorContainer isError={showError}>
+            <Error>{error.message}</Error>
+          </ErrorContainer> : null
       }
     </Container>
+
   );
 });
