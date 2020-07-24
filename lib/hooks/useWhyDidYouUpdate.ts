@@ -25,6 +25,7 @@ export function useWhyDidYouUpdate(name: string, props: any): void {
 
       // If changes is not empty then output to console.
       if (Object.keys(changes).length) {
+        // eslint-disable-next-line
         console.log('[why-did-you-update]', name, changes);
       }
     }

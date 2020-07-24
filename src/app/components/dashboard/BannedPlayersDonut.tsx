@@ -3,6 +3,7 @@ import { Chart } from 'lib/components/dashboard';
 import { DBVISUAL } from 'lib/enums';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import * as Sentry from '@sentry/react';
 
 interface IPlayerData {
   players: IAggregateResult;
@@ -42,7 +43,8 @@ export const BannedPlayersDonut: React.FC<{}> = () => {
   }
 
   if (error) {
-    console.log(error);
+    // TODO: notify user there was an error, show adapted component.
+    Sentry.captureException(error);
   }
 
   if (loading) {

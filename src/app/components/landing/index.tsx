@@ -22,10 +22,7 @@ interface IFormInputs {
 
 export const Body: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<IFormInputs>({ mode: 'onBlur' });
-  const onSubmit: SubmitHandler<IFormInputs> = (data, event) => {
-    console.log('data', data);
-    console.log('event', event);
-  };
+  const onSubmit: SubmitHandler<IFormInputs> = (data, event) => { };
   // async set https://github.com/react-hook-form/react-hook-form/blob/master/examples/asyncSetFormValues.tsx
 
   return (

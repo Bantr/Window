@@ -24,8 +24,7 @@ export const TextInputField = (): JSX.Element => {
   const { register, handleSubmit, errors } = useForm<IFormInputs>({ mode: 'onBlur' });
 
   const onSubmit: SubmitHandler<IFormInputs> = (data, event) => {
-    console.log('data', data);
-    console.log('event', event);
+    //
   };
   // async set https://github.com/react-hook-form/react-hook-form/blob/master/examples/asyncSetFormValues.tsx
 

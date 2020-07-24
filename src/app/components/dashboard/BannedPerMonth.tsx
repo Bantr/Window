@@ -29,7 +29,6 @@ export const BannedPerMonth: React.FC<{}> = () => {
   }
 
   function parseData(data: any): { [key: string]: any }[] {
-    console.log('this is the real data, but mockdata is loaded', data);
     return mockData;
   }
 

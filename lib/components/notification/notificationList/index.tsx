@@ -6,6 +6,7 @@ import { IBanType } from '@bantr/lib/dist/types';
 import { Container, NoNotifications } from './style';
 import SimpleBar from 'simplebar-react';
 import { Notification, SkeletonNotification } from '../item';
+import * as Sentry from '@sentry/react';
 
 const GET_NOTIFICATIONS = gql`
   query GET_NOTIFICATIONS{
@@ -114,7 +115,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
       }
       return notificationComponents;
     } catch (e) {
-      console.error(e);
+      Sentry.captureException(e);
       return (<NoNotifications>Something went wrong 🥺 . <br /> If this error remains contact support!</NoNotifications>);
     }
   }

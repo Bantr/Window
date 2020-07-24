@@ -72,7 +72,6 @@ export const Range: React.FC<IProps> = ({ defaultValue, disabled = false, max, o
     if (!hadChange) {
       setChange(true);
     }
-    console.log(data.lastX);
     setValue(data.lastX);
     if (typeof onDragEnd === 'function') {
       onChange(data.lastX / width * max);
