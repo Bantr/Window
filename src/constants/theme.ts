@@ -38,7 +38,8 @@ const lightTheme: DefaultTheme = {
   sb: slight,
   shadow: shadowLight,
   placeholder: placeholderLight,
-  placeholderHighlight: placeholderLightHighlight
+  placeholderHighlight: placeholderLightHighlight,
+  error: error
 };
 */
 

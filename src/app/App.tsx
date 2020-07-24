@@ -44,7 +44,6 @@ const App: React.FC = () => {
     // should only check onLoad if the session exists, if the user has been authenticated in the past.
 
     getSession().then((session: IUserData) => {
-      console.log('when does this fire');
       if (session) {
         setUserData({ ...session });
         setApiKey(session.graphQLKey);

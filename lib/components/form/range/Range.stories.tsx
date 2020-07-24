@@ -5,13 +5,13 @@ import { Range as RangeComponent } from './Range';
 export default {
   component: RangeComponent,
   title: 'Range component',
-  decorators: [(storyFn: () => JSX.Element): JSX.Element => <Center width="500px">{storyFn()}</Center>]
+  decorators: [(storyFn: () => React.ReactNode): React.ReactNode => <Center width="500px">{storyFn()}</Center>]
 };
 
-export const Slider = (): JSX.Element => (
+export const Slider = (): React.ReactNode => (
   <RangeComponent max={100} />
 );
 
-export const SliderWithDefaultValue = (): JSX.Element => (
+export const SliderWithDefaultValue = (): React.ReactNode => (
   <RangeComponent defaultValue={5} max={20} />
 );

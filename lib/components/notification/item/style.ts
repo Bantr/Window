@@ -60,7 +60,7 @@ export const Container = styled.div<{ isOdd: boolean }>`
   flex-direction: row;
   align-items: center;
   padding: 10px 20px 10px 10px;
-  width: calc(450px - 30px);
+  width: 450px;
   background-color: ${({ isOdd, theme }): string => isOdd ? theme.sb : theme.pb};
   &:hover ${DeleteContainer}{
     width: 25px;

@@ -50,7 +50,7 @@ export const NotificationBell: React.FC<{}> = () => {
   async function getNewNotifications(notificationIds: number[]): Promise<void> {
     if (notificationIds) {
       const body = { 'status': true, 'ids': notificationIds };
-      httpService.post('/notification/seen', body).catch((e: Error) => { console.log(e); });
+      httpService.post('/notification/seen', body).catch((e: Error) => { Sentry.captureException(e); });
     }
   }
 

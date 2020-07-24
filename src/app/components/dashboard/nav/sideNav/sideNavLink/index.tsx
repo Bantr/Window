@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 import { IconContainer, LinkContainer, TextContainer } from './style';
 
 interface IProps {
-  icon: JSX.Element;
+  icon: React.ReactNode;
   text: string;
   to: string;
   collapsed: boolean;

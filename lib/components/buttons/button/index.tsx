@@ -6,7 +6,6 @@ interface IProps {
   active?: boolean;
   className?: string;
   color?: string;
-  children?: React.ReactNode;
   variant?: 'default' | 'outline' | 'text';
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
   isLoading?: boolean;

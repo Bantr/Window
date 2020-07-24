@@ -29,9 +29,9 @@ module.exports = {
             options: { getCustomTransformers: () => ({ before: [styledComponentsTransformer] }) }
           },
           // Optional
-          {
-            loader: require.resolve('react-docgen-typescript-loader'),
-          }
+          //      {
+          //       loader: require.resolve('react-docgen-typescript-loader'),
+          //     }
         ]
       });
 
@@ -41,7 +41,7 @@ module.exports = {
       use: { loader: 'babel-loader' }
     });
 
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.extensions.push('.storybook.tsx');
     return config;
   }
 };

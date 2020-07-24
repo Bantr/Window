@@ -38,7 +38,7 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
 
   const containerRef = React.useRef<HTMLDivElement>();
 
-  function getMessage(): JSX.Element {
+  function getMessage(): React.ReactNode {
     let type: string;
     switch (parseInt(banType as unknown as string, 10)) {
       case IBanType.Community:

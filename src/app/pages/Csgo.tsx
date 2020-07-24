@@ -5,11 +5,11 @@ import { HeaderNav, SideNav } from '../components/dashboard/nav';
 
 const Container = styled.div`
   display: flex;
+  height: calc(100vh - 70px);
 `;
 const MainView = styled.div`
-  width: calc(100% - 350px);
-  height: calc(100vh - 220px);
-  padding: 100px 100px 50px 100px;
+  width: 100%;
+  padding: 75px 75px 50px 75px;
   overflow-y: auto;
 `;
 

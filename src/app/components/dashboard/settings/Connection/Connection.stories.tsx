@@ -6,7 +6,7 @@ export default {
   title: 'Connection components'
 };
 
-export const Connection = (): JSX.Element => (
+export const Connection = (): React.ReactNode => (
   <ConnectionComponent
     accountId="123456789"
     isConnected
@@ -15,7 +15,7 @@ export const Connection = (): JSX.Element => (
   />
 );
 
-export const DisconnectedConnection = (): JSX.Element => (
+export const DisconnectedConnection = (): React.ReactNode => (
   <ConnectionComponent
     accountId={null}
     isConnected={false}

@@ -12,16 +12,18 @@ const skeletonLoading = keyframes`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  *::selection{
+  *::selection {
     background-color: ${({ theme }): string => theme.t};
     color: ${({ theme }): string => theme.sb};
   }
-  html, body{
+
+  html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
   }
+
   body{
     padding: 0;
     margin: 0;
@@ -48,14 +50,31 @@ export const GlobalStyle = createGlobalStyle`
     transition: box-shadow 0.125s linear;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
   }
 
   input {
     margin: 0;
-    padding: 0;
+    padding: 15px 15px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: none;
+    color: ${({ theme }): string => theme.t};
+    background-color: ${({ theme }): string => theme.pb};
+
+    &:focus {
+      border-color: ${({ theme }): string => theme.p};
+    }
+
+    &[readOnly]{
+      cursor: not-allowed;
+      &:focus {
+        border-color: none!important;
+      }
+    }
   }
 
-  button{
+  button {
     padding: 5px 20px;
     border-radius: 5px;
     border: none;
@@ -67,9 +86,7 @@ export const GlobalStyle = createGlobalStyle`
   .rc-tooltip-inner {min-height: 18px;}
 
   /* custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
+  ::-webkit-scrollbar {width: 10px;}
   ::-webkit-scrollbar-track {
     background-color: ${({ theme }): string => theme.pb};
     border-radius: 10px;
@@ -79,12 +96,12 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }): string => theme.p};
     border-radius: 10px;
     transition: background-color 0.2s ease-in-out;
-  }
-  ::-webkit-scrollbar-thumb:hover{
-    background-color: green;
+    &:hover{
+      background-color: green;
+    }
   }
 
-  a, button{
+  a, button {
     cursor: pointer;
     text-decoration: none;
     background-position: -100px;
@@ -139,10 +156,7 @@ export const GlobalStyle = createGlobalStyle`
   .c3-circle {
     fill: ${({ theme }): string => theme.p};
   }
-
 `;
-
-// Cosmos export
 
 export type Props = {
   children: React.ReactNode;

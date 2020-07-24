@@ -12,12 +12,16 @@ import {
   Window
 } from './style';
 
+interface IFormInputs {
+  default: string;
+  readOnly: string;
+  required: string;
+}
+
 export const Body: React.FC = () => (
   <Container>
     <HeroTitle>
-      Extensive
-      <span> ban </span>
-      notifications.
+      Extensive <span> ban </span> notifications.
     </HeroTitle>
     <HeroLead>Bantr tracks all the players you played with and against.</HeroLead>
     <StyledButton

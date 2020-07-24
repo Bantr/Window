@@ -1,12 +1,14 @@
 import * as React from 'react';
+import * as Sentry from '@sentry/react';
 
 export function useLocalStorage(key: string, initialValue: any): [any, (value: any) => void] {
   const [storedValue, setStoredValue] = React.useState(() => {
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      // TODO: notify user something went wrong?
+      Sentry.captureException(e);
       return initialValue;
     }
   });
@@ -16,8 +18,9 @@ export function useLocalStorage(key: string, initialValue: any): [any, (value: a
       const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      Sentry.captureException(e);
+      // notify user something went wrong
     }
   };
   return [storedValue, setValue];

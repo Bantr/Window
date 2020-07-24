@@ -76,6 +76,7 @@ module.exports = {
     'padded-blocks': [2, 'never'],
     'prefer-arrow-callback': 2,
     'prefer-const': 2,
+    'no-console': 2,
     'quotes': [2, 'single'],
     'space-before-function-paren': [2, { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
     'space-in-parens': [2, 'never'],

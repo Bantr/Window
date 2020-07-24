@@ -33,6 +33,8 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 /coverage
 /.nyc_output
 
+.vscode
+
 # IDEs and editors
 /.idea
 .project

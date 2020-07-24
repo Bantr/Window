@@ -10,7 +10,6 @@ import { Avatar, Header, Inner, Left, Right } from './style';
 export const HeaderNav: React.FC<{}> = () => {
   const { userData } = React.useContext(UserContext);
   const [dropDownVisible, setDropDownVisible] = React.useState(false);
-
   const containerRef = React.createRef<HTMLDivElement>();
   useOutsideAlerter(containerRef, (): void => { setDropDownVisible(false); });
 

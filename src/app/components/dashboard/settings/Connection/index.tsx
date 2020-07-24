@@ -44,8 +44,8 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
     }).catch((e: Error) => Sentry.captureException(e));
 
     if (error) {
+      Sentry.captureException(error);
       showErrorMessage();
-      console.error(error);
     }
   }, [disconnected, error]);
 

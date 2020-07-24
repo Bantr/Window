@@ -2,9 +2,9 @@ import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div<{ collapsed: boolean }>`
   position: relative;
-  height: calc(100vh - 145px);
-  width: ${({ collapsed }): string => (collapsed ? '50px' : '200px')};
-  min-width: ${({ collapsed }): string => (collapsed ? '50px' : '200px')};
+  height: 100%;
+  width: ${({ collapsed }): string => (collapsed ? '100px' : '250px')};
+  min-width: ${({ collapsed }): string => (collapsed ? '100px' : '250px')};
   background-color: ${({ theme }): string => theme.pb};
   padding: 50px 25px 25px 25px;
   display: flex;

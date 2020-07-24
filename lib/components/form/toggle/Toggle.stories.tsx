@@ -6,11 +6,11 @@ export default {
   title: 'Toggle component'
 };
 
-export const Toggle = (): JSX.Element => (
+export const Toggle = (): React.ReactNode => (
   <ToggleComponent name="my-toggle" />
 );
 
-export const ToggleDisabled = (): JSX.Element => (
+export const ToggleDisabled = (): React.ReactNode => (
   <ToggleComponent disabled name="my-toggle" />
 );
 

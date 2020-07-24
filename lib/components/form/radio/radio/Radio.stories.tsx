@@ -7,10 +7,10 @@ export default {
   title: 'Radio components'
 };
 
-export const Radio = (): JSX.Element => <RadioComponent />;
+export const Radio = (): React.ReactNode => <RadioComponent />;
 
 // this should be worked out with the value shown in another div.
-export const RadioGroup = (): JSX.Element => (
+export const RadioGroup = (): React.ReactNode => (
   <RadioGroupComponent name="favourite food">
     <RadioComponent label="pizza" value="pizza" />
     <RadioComponent label="lasagne" value="lasagne" />

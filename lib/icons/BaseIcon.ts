@@ -18,7 +18,8 @@ export const defaultProps: IIconProps = {
   rotate: undefined,
   scale: 1,
   stroke: undefined,
-  onClick: () => { }
+  onClick: () => { },
+  className: 'icon'
 };
 
 export const Icon = styled.svg<IIconProps>`

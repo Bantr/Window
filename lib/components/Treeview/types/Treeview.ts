@@ -1,5 +1,5 @@
 export interface ITreeview {
-  rootItems: JSX.Element;
+  rootItems: React.ReactNode;
   child: ITreeviewChild | null;
 }
 

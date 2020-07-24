@@ -6,6 +6,7 @@ import { IBanType } from '@bantr/lib/dist/types';
 import { Container, NoNotifications } from './style';
 import SimpleBar from 'simplebar-react';
 import { Notification, SkeletonNotification } from '../item';
+import * as Sentry from '@sentry/react';
 
 const GET_NOTIFICATIONS = gql`
   query GET_NOTIFICATIONS{
@@ -44,7 +45,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
   const { loading, data, error } = useQuery<INotificationsResponse>(GET_NOTIFICATIONS);
   const [isEmpty, setEmpty] = React.useState(false);
 
-  function skeletonLoading(): JSX.Element {
+  function skeletonLoading(): React.ReactNode {
     return (
       <React.Fragment>
         <SkeletonNotification index={0} />
@@ -70,7 +71,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
     }
   }, [data]);
 
-  function loadNotificationComponents(notificationsResponse: INotificationsResponse): JSX.Element[] | JSX.Element {
+  function loadNotificationComponents(notificationsResponse: INotificationsResponse): React.ReactNode | React.ReactNode[] {
     // If notificationList is open and all notifications are removed.
     if (isEmpty) {
       return <NoNotifications>All notifications have been removed.</NoNotifications>;
@@ -114,7 +115,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
       }
       return notificationComponents;
     } catch (e) {
-      console.error(e);
+      Sentry.captureException(e);
       return (<NoNotifications>Something went wrong 🥺 . <br /> If this error remains contact support!</NoNotifications>);
     }
   }
