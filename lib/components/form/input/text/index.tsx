@@ -13,7 +13,7 @@ interface IProps {
   loading?: boolean;
 }
 
-export const TextInputField = React.forwardRef<HTMLInputElement, IProps>(({ labelText, placeholder, name, error, icon, readOnly, loading = false }, ref) => {
+export const TextField = React.forwardRef<HTMLInputElement, IProps>(({ labelText, placeholder, name, error, icon, readOnly, loading = false }, ref) => {
   const [showError, setShowError] = React.useState(false);
 
   if (loading) {

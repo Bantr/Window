@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { TextInputField as TextInputFieldComponent } from '.';
+import { TextField as TextFieldComponent } from '.';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { WeaponAk47 } from 'lib/icons';
 
@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export default {
-  component: TextInputFieldComponent,
+  component: TextFieldComponent,
   title: 'Field '
 };
 
@@ -37,11 +37,11 @@ export const TextInputField = (): React.ReactNode => {
     <Container>
       <h1>Example Text Input Field Form</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextInputFieldComponent labelText="Default field" name="default-input" placeholder="default field" />
-        <TextInputFieldComponent labelText="Loading field" loading name="loading-default-input" placeholder="loading field" />
-        <TextInputFieldComponent labelText="Read only field" name="read-only-input" placeholder="readonly field" readOnly />
-        <TextInputFieldComponent icon={<WeaponAk47 />} labelText="Field with icon" name="read-only-input" placeholder="field with icon" />
-        <TextInputFieldComponent error={errors.required} labelText="Required field" name="required" placeholder="field with error example" ref={register({ required: ('this is required.') })} />
+        <TextFieldComponent labelText="Default field" name="default-input" placeholder="default field" />
+        <TextFieldComponent labelText="Loading field" loading name="loading-default-input" placeholder="loading field" />
+        <TextFieldComponent labelText="Read only field" name="read-only-input" placeholder="readonly field" readOnly />
+        <TextFieldComponent icon={<WeaponAk47 />} labelText="Field with icon" name="read-only-input" placeholder="field with icon" />
+        <TextFieldComponent error={errors.required} labelText="Required field" name="required" placeholder="field with error example" ref={register({ required: ('this is required.') })} />
         <input type="submit" />
       </form>
     </Container>
