@@ -53,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
 
   input {
     margin: 0;
-    padding: 10px 15px;
+    padding: 15px 15px;
     border: 1px;
     border-color: ${({ theme }): string => theme.pb};
     border-radius: 5px;

@@ -3,9 +3,8 @@ import { Container, LabelContainer, Label, InputContainer, Input, ErrorContainer
 import { FieldError } from 'react-hook-form';
 
 interface IProps {
-  name: string; // This is the ID React formik uses to identify a component.
+  name: string;
   register?: () => {};
-  required?: boolean;
   readOnly?: boolean;
   labelText: string;
   placeholder: string;
@@ -14,18 +13,11 @@ interface IProps {
 
 export const TextInputField = React.forwardRef<HTMLInputElement, IProps>(({ labelText, placeholder, name, error }, ref) => {
   const [showError, setShowError] = React.useState(false);
-  const [hasError, setError] = React.useState(false);
-
-  if (error && error.message) {
-    setError(true);
-  } else {
-    setError(false);
-  }
 
   return (
     <Container>
       <LabelContainer>
-        <Label htmlFor={name}>{labelText}</Label>
+        <Label htmlFor={name} showError={error ? true : false}>{labelText}</Label>
       </LabelContainer>
       <InputContainer>
         <Input
@@ -38,12 +30,11 @@ export const TextInputField = React.forwardRef<HTMLInputElement, IProps>(({ labe
         />
       </InputContainer>
       {
-        hasError ?
-          <ErrorContainer isError={showError}>
+        error ?
+          <ErrorContainer showError={showError}>
             <Error>{error.message}</Error>
           </ErrorContainer> : null
       }
     </Container>
-
   );
 });

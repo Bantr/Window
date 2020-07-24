@@ -21,12 +21,13 @@ interface IFormInputs {
 
 // TODO: should be worked out.
 export const TextInputField = (): JSX.Element => {
-  const { register, handleSubmit, errors } = useForm<IFormInputs>({ mode: 'onBlur' });
-
-  const onSubmit: SubmitHandler<IFormInputs> = (data, event) => {
-    //
-  };
+  const { register, handleSubmit, errors, trigger } = useForm<IFormInputs>({ mode: 'all' });
+  const onSubmit: SubmitHandler<IFormInputs> = (data, event) => { };
   // async set https://github.com/react-hook-form/react-hook-form/blob/master/examples/asyncSetFormValues.tsx
+
+  React.useEffect(() => {
+    trigger('required');
+  }, []);
 
   return (
     <Container>
@@ -34,7 +35,7 @@ export const TextInputField = (): JSX.Element => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInputFieldComponent labelText="Default field" name="default-input" placeholder="This is the placeholder" />
         <TextInputFieldComponent labelText="Read only field" name="read-only-input" placeholder="This is the placeholder" readOnly />
-        <TextInputFieldComponent error={errors.required} labelText="Required field" name="required" placeholder="This is the placeholder" ref={register({ required: ('this is required') })} />
+        <TextInputFieldComponent error={errors.required} labelText="Required field" name="required" placeholder="This is the placeholder" ref={register({ required: ('this is required.') })} />
         <input type="submit" />
       </form>
     </Container>
