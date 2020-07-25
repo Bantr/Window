@@ -7,6 +7,7 @@ export const Container = styled.div`
   background-color: ${({ theme }): string => theme.pb};
   border-radius: 10px;
   padding: 25px 0 0 35px;
+  margin-right: 50px;
 `;
 
 export const Nav = styled.nav`
