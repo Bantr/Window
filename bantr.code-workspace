@@ -25,6 +25,7 @@
       "contenthash",
       "ACTIONTYPES",
       "chainable",
+      "substract",
     ]
   },
   "extensions": {

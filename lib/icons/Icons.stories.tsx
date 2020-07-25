@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Icon } from './BaseIcon';
 
 import {
-  Action, AlertTriangle, Arrow, ArrowBig, Attachment,
+  Action, AlertTriangle, Archive, Arrow, ArrowBig, Attachment,
   Bantr, Bell,
   CheckMark, Clock, Copy, CreditCard,
   Dashboard, Discord,
@@ -60,6 +60,7 @@ export const Icons = (): React.ReactNode => (
   <GridContainer>
     <Action />
     <AlertTriangle />
+    <Archive />
     <Arrow />
     <ArrowBig />
     <Attachment />
