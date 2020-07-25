@@ -5,13 +5,14 @@ import { Button, Title } from 'lib/components';
 interface IProps {
   title: string;
   description?: string;
+  actionIcon?: React.ReactNode;
   action: () => void;
-  actionName: string;
+  actionText: string;
   close: () => void;
   ref: React.MutableRefObject<HTMLDivElement>;
 }
 
-export const ConfirmationModal = React.forwardRef<HTMLDivElement, IProps>(({ title, description, action, actionName, close }, ref) => (
+export const ConfirmationModal = React.forwardRef<HTMLDivElement, IProps>(({ title, description, action, actionText, actionIcon, close }, ref) => (
   <Container
     aria-describedby={description}
     aria-labelledby={title}
@@ -21,7 +22,7 @@ export const ConfirmationModal = React.forwardRef<HTMLDivElement, IProps>(({ tit
     <Description>{description}</Description>
     <ActionContainer>
       <Cancel onClick={close}>Cancel</Cancel>
-      <Button onClick={action} variant="text">{actionName}</Button>
+      <Button icon={actionIcon} onClick={action} variant="text" >{actionText}</Button>
     </ActionContainer>
   </Container>
 ));

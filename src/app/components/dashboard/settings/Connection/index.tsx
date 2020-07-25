@@ -8,6 +8,7 @@ import { Button, Title } from 'lib/components';
 import { useSnackbar } from 'notistack';
 import { CheckMark } from 'lib/icons';
 import * as Sentry from '@sentry/react';
+import { Trash } from 'lib/icons';
 
 export interface IProps {
   accountId: string;
@@ -90,7 +91,8 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
       <ModalWrapper>
         <ConfirmationModal
           action={disconnect}
-          actionName="Disconnect"
+          actionIcon={<Trash />}
+          actionText="Disconnect"
           close={closeModal}
           description="This is the description"
           ref={wrapperRef}

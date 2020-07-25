@@ -28,7 +28,7 @@ export const ConfirmationModal: React.FC = () => {
       <ModalWrapper>
         <ConfirmationModalComponent
           action={mockAction}
-          actionName="delete"
+          actionText="delete"
           close={closeModal}
           description="I am the confirmations modal description"
           title="I am the title"

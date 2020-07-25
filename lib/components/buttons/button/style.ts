@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface IButtonProps {
   active: boolean;
+  hasIcon: boolean;
 }
 
 export const Default = styled.button<IButtonProps>`
@@ -13,6 +14,11 @@ export const Default = styled.button<IButtonProps>`
   transition: 0.2s background-color ease-in-out;
   transition: 0.2s width ease-in-out;
   color: white;
+  padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 24px' : '5px 20px'};
+
+  svg {
+    cursor: pointer;
+  }
 
   &:hover {
     color: white;
@@ -32,6 +38,11 @@ export const Outline = styled.button<IButtonProps>`
   color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   transition: 0.2s background-color ease-in-out;
   transition: 0.2s width ease-in-out;
+  padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 24px' : '5px 20px'};
+
+  svg {
+    cursor: pointer;
+  }
 
   &:hover {
     background-color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)}0F;
@@ -47,7 +58,11 @@ export const Text = styled.button<IButtonProps>`
   transition: 0.2s background-color ease-in-out;
   transition: 0.2s width ease-in-out;
   text-transform: uppercase;
-  padding: 8px 12px;
+  padding: ${({ hasIcon }): string => hasIcon ? '8px 12px 8px 24px' : '8px 12px'};
+
+  svg {
+    cursor: pointer;
+  }
 
   &:hover {
     background-color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)}0F;
