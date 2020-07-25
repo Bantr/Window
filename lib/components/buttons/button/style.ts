@@ -16,8 +16,9 @@ export const Default = styled.button<IButtonProps>`
   color: white;
   padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 24px' : '5px 20px'};
 
-  svg {
+  svg.icon {
     cursor: pointer;
+    fill: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   }
 
   &:hover {
@@ -42,6 +43,7 @@ export const Outline = styled.button<IButtonProps>`
 
   svg {
     cursor: pointer;
+    fill: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   }
 
   &:hover {
@@ -60,11 +62,14 @@ export const Text = styled.button<IButtonProps>`
   text-transform: uppercase;
   padding: ${({ hasIcon }): string => hasIcon ? '8px 12px 8px 24px' : '8px 12px'};
 
-  svg {
+  svg.icon {
     cursor: pointer;
+    fill: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   }
 
   &:hover {
     background-color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)}0F;
   }
 `;
+
+/* TODO: create icon container and add absolute position to icon */
