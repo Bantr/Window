@@ -27,7 +27,7 @@ export const Dashboard: React.FC<IProps> = () => {
         <title>CSGO | Dashboard</title>
       </Helmet>
       {
-        <TempTitle>Hi, {userData.steamUsername}</TempTitle>
+        <TempTitle>Hi {userData.steamUsername}</TempTitle>
         /*
           <BannedPlayersDonut />
           <BannedPerMonth />

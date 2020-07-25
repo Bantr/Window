@@ -3,7 +3,7 @@ import { httpService, routingService, authenticationService } from 'lib/services
 import { bantrSettings } from 'lib/settings';
 import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { Container, ConnectionDetails, TitleContainer, CheckMarkContainer } from './style';
-import { DisconnectPlatformModal } from '../../../../modals';
+import { ConfirmationModal } from 'lib/components';
 import { Button, Title } from 'lib/components';
 import { useSnackbar } from 'notistack';
 import { CheckMark } from 'lib/icons';
@@ -88,7 +88,14 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
         {connected ? 'Disconnect' : 'Connect'}
       </Button>
       <ModalWrapper>
-        <DisconnectPlatformModal close={closeModal} disconnect={disconnect} platformName={platformName} ref={wrapperRef} />
+        <ConfirmationModal
+          action={disconnect}
+          actionName="Disconnect"
+          close={closeModal}
+          description="This is the description"
+          ref={wrapperRef}
+          title={`Disconnect ${platformName}`}
+        />
       </ModalWrapper>
     </Container>
   );

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { TextField as TextFieldComponent } from './text';
-import { NumberField as NumberFieldComponent } from './number';
+import { TextField as TextFieldComponent } from '.';
+import { NumberField as NumberFieldComponent } from '../number';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { WeaponAk47 } from 'lib/icons';
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 600px;
   margin: 0 auto;
   h1{
@@ -14,8 +14,8 @@ export const Container = styled.div`
 `;
 
 export default {
-  component: [TextFieldComponent, NumberFieldComponent],
-  title: 'Field '
+  component: [TextFieldComponent],
+  title: 'Fields'
 };
 
 interface IFormInputs {
@@ -25,7 +25,7 @@ interface IFormInputs {
 }
 
 // TODO: should be worked out.
-export const TextInputField = (): React.ReactNode => {
+export const TextField = (): React.ReactNode => {
   const { register, handleSubmit, errors, trigger } = useForm<IFormInputs>({ mode: 'all' });
   const onSubmit: SubmitHandler<IFormInputs> = (/*data, event*/) => { };
   // async set https://github.com/react-hook-form/react-hook-form/blob/master/examples/asyncSetFormValues.tsx

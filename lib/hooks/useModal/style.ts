@@ -20,13 +20,15 @@ export const Overlay = styled.div`
   justify-content: center;
   display: flex;
   overflow: hidden;
+  z-index: 1000; /* Should show above everything. */
 `;
 
 export const Container = styled.div`
   position: relative;
   width: auto;
   width: 500px;
-  height: 200px;
+  min-height: 200px;
+  max-height: 400px;
   background-color: ${({ theme }): string => theme.sb};
   padding: 25px;
   border-radius: 10px;
