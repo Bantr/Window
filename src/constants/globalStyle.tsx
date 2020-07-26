@@ -50,6 +50,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: box-shadow 0.125s linear;
     margin: 0;
     padding: 0;
+    user-select: none;
     box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
   }
 
@@ -78,8 +79,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 5px 20px;
     border-radius: 5px;
     border: none;
-    font-size: 0.9rem;
-    font-weight: 500;
   }
 
   /* tooltip style enhancements */

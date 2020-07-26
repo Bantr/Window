@@ -12,7 +12,6 @@ export interface IIconProps {
 }
 
 export const defaultProps: IIconProps = {
-  fill: '#9095a1',
   outline: true,
   pointer: undefined,
   rotate: undefined,
@@ -27,7 +26,7 @@ export const Icon = styled.svg<IIconProps>`
   width: 24px;
   height: 24px;
   scale: ${({ scale }): number => scale};
-  fill: ${({ fill }): string => fill};
+  fill: ${({ fill }): string => fill ? fill : '#9095a1'};
   transform: ${({ rotate }): string => (rotate ? `rotate(${rotate}deg)` : '')};
   cursor: ${({ pointer }): string => (pointer ? 'pointer' : 'auto')};
   &.faceit {

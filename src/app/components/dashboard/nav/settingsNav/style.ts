@@ -17,7 +17,6 @@ export const Nav = styled.nav`
 `;
 
 export const StyledLink = styled(Link) <{ isCurrent?: boolean }>`
-  font-weight: 500;
   font-size: 1rem;
   margin: 5px 0;
   color: ${({ theme }): string => theme.t};

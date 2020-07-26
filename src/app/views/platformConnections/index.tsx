@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Title } from 'lib/components';
+import { Title, Paragraph } from 'lib/components';
 import { Connection } from '../../components/dashboard/settings/Connection';
 import { UserContext } from 'lib/hooks';
 
@@ -25,7 +25,7 @@ export const PlatformConnections: React.FC<{}> = () => {
   return (
     <>
       <Title size="large" type="h4">Platforms</Title>
-      Connect these accounts and unlock amazing Bantr integrations.
+      Connect Discord to receive notifications via Bantr&apos;s Discord bot.
       {
         platforms.map(({ accountId, platformName, isConnected, username }) => <Connection accountId={accountId} isConnected={isConnected} key={`connection-${name}`} platformName={platformName} username={username} />)
       }

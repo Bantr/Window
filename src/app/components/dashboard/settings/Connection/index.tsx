@@ -3,11 +3,12 @@ import { httpService, routingService, authenticationService } from 'lib/services
 import { bantrSettings } from 'lib/settings';
 import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { Container, ConnectionDetails, TitleContainer, CheckMarkContainer } from './style';
-import { DisconnectPlatformModal } from '../../../../modals';
+import { ConfirmationModal } from 'lib/components';
 import { Button, Title } from 'lib/components';
 import { useSnackbar } from 'notistack';
 import { CheckMark } from 'lib/icons';
 import * as Sentry from '@sentry/react';
+import { Trash } from 'lib/icons';
 
 export interface IProps {
   accountId: string;
@@ -88,7 +89,14 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
         {connected ? 'Disconnect' : 'Connect'}
       </Button>
       <ModalWrapper>
-        <DisconnectPlatformModal close={closeModal} disconnect={disconnect} platformName={platformName} ref={wrapperRef} />
+        <ConfirmationModal
+          action={disconnect}
+          actionText="Disconnect"
+          close={closeModal}
+          description={`Are you sure you want to disconnect ${platformName}?`}
+          ref={wrapperRef}
+          title={`Disconnect ${platformName}`}
+        />
       </ModalWrapper>
     </Container>
   );

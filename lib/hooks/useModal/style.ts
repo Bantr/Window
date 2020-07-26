@@ -15,24 +15,25 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #00000045;
+  background-color: #00000080;
   align-items: center;
   justify-content: center;
   display: flex;
   overflow: hidden;
+  z-index: 1000; /* Should show above everything. */
 `;
 
 export const Container = styled.div`
   position: relative;
   width: auto;
   width: 500px;
-  height: 200px;
+  min-height: 200px;
+  max-height: 400px;
   background-color: ${({ theme }): string => theme.sb};
-  padding: 25px;
-  border-radius: 10px;
+  padding: 25px 25px 15px 25px;
   transition: 0.2s all ease-in-out;
   animation: ${slideIn} .2s ease-in-out alternate;
-  box-shadow: 0 12px 11px ${({ theme }): string => theme.sb}4D, 0 19px 4px ${({ theme }): string => theme.sb}38;
+  box-shadow: 0 15px 40px 0 rgba(67,62,75,.3), 0 1px 15px 0 rgba(67,61,74,.15)
   p {
     text-align: left !important;
     margin-top: 15px;

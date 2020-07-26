@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Spinner } from 'lib/icons';
-import { Default, Outline, Text } from './style';
+import { Default, Outline, Text, IconContainer } from './style';
 
 interface IProps {
   active?: boolean;
@@ -9,14 +9,15 @@ interface IProps {
   variant?: 'default' | 'outline' | 'text';
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
   isLoading?: boolean;
+  icon?: React.ReactNode;
 }
-// TODO: disabled is passed as class (why?)
 
 export const Button: React.FC<IProps> = ({
   active = true,
   children,
   className,
   color,
+  icon,
   isLoading = false,
   onClick,
   variant = 'default'
@@ -25,23 +26,23 @@ export const Button: React.FC<IProps> = ({
     switch (variant) {
       case 'default':
         return (
-          <Default active={active} className={className} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Default active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
             {' '}
-            {isLoading ? <Spinner /> : ''}
+            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
             {children}
           </Default>
         );
       case 'outline':
         return (
-          <Outline active={active} className={className} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {isLoading ? <Spinner /> : ''}
-            {children}
+          <Outline active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
+            {icon}{children}
           </Outline>
         );
       case 'text':
         return (
-          <Text active={active} className={className} color={color} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {isLoading ? <Spinner /> : ''}
+          <Text active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
             {children}
           </Text>
         );
