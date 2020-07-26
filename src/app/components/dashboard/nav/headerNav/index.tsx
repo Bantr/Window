@@ -29,7 +29,7 @@ export const HeaderNav: React.FC<{}> = () => {
               pointer
             />
           </a>
-          <Link className="icon-container" data-cy="headerNav-settings" to="/csgo/settings">
+          <Link className="icon-container" data-cy="headerNav-settings" to="/csgo/settings/connections">
             <Settings
               pointer
             />

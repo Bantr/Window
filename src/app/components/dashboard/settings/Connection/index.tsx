@@ -91,10 +91,9 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
       <ModalWrapper>
         <ConfirmationModal
           action={disconnect}
-          actionIcon={<Trash />}
           actionText="Disconnect"
           close={closeModal}
-          description="This is the description"
+          description={`Are you sure you want to disconnect ${platformName}?`}
           ref={wrapperRef}
           title={`Disconnect ${platformName}`}
         />

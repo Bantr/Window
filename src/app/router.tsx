@@ -31,6 +31,7 @@ export const Router: React.FC<{}> = () => {
           { /* general pages */}
           <Profile path="/profile" />
           <Settings path="/settings">
+            <Redirect from="/settings" to="/settings/connections" />
             <Connections path="/connections" />
             <Notifications path="/notifications" />
             <Appearance path="/appearance" />

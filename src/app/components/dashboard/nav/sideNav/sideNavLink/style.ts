@@ -35,7 +35,6 @@ export const TextContainer = styled.div`
   align-items: center;
   margin-left: 15px;
   font-size: 15px;
-  font-weight: 500;
 
   &.external {
     font-size: 12px;

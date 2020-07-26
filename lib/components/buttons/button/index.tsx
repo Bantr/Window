@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Spinner } from 'lib/icons';
-import { Default, Outline, Text } from './style';
+import { Default, Outline, Text, IconContainer } from './style';
 
 interface IProps {
   active?: boolean;
@@ -11,7 +11,6 @@ interface IProps {
   isLoading?: boolean;
   icon?: React.ReactNode;
 }
-// TODO: disabled is passed as class (why?)
 
 export const Button: React.FC<IProps> = ({
   active = true,
@@ -29,21 +28,21 @@ export const Button: React.FC<IProps> = ({
         return (
           <Default active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
             {' '}
-            {isLoading ? <Spinner /> : icon}
+            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
             {children}
           </Default>
         );
       case 'outline':
         return (
           <Outline active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {isLoading ? <Spinner /> : icon}
+            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
             {icon}{children}
           </Outline>
         );
       case 'text':
         return (
           <Text active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {isLoading ? <Spinner /> : icon}
+            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
             {children}
           </Text>
         );

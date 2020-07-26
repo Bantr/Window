@@ -6,15 +6,15 @@ interface IButtonProps {
 }
 
 export const Default = styled.button<IButtonProps>`
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: row;
   background-color: ${({ theme, color, active }): string => (active ? color === 'primary' ? theme.p : theme.s : '#838383')};
-  text-transform: uppercase;
   transition: 0.2s background-color ease-in-out;
   transition: 0.2s width ease-in-out;
   color: white;
-  padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 24px' : '5px 20px'};
+  padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 44px' : '5px 20px'};
 
   svg.icon {
     cursor: pointer;
@@ -28,10 +28,10 @@ export const Default = styled.button<IButtonProps>`
 `;
 
 export const Outline = styled.button<IButtonProps>`
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: row;
-  text-transform: uppercase;
   background-color: transparent;
   border-width: 1px;
   border-style: solid;
@@ -39,7 +39,7 @@ export const Outline = styled.button<IButtonProps>`
   color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   transition: 0.2s background-color ease-in-out;
   transition: 0.2s width ease-in-out;
-  padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 24px' : '5px 20px'};
+  padding: ${({ hasIcon }): string => hasIcon ? '5px 20px 5px 44px' : '5px 20px'};
 
   svg {
     cursor: pointer;
@@ -52,6 +52,7 @@ export const Outline = styled.button<IButtonProps>`
 `;
 
 export const Text = styled.button<IButtonProps>`
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -59,8 +60,7 @@ export const Text = styled.button<IButtonProps>`
   color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   transition: 0.2s background-color ease-in-out;
   transition: 0.2s width ease-in-out;
-  text-transform: uppercase;
-  padding: ${({ hasIcon }): string => hasIcon ? '8px 12px 8px 24px' : '8px 12px'};
+  padding: ${({ hasIcon }): string => hasIcon ? '8px 12px 8px 44px' : '8px 12px'};
 
   svg.icon {
     cursor: pointer;
@@ -72,4 +72,7 @@ export const Text = styled.button<IButtonProps>`
   }
 `;
 
-/* TODO: create icon container and add absolute position to icon */
+export const IconContainer = styled.div`
+  position: absolute;
+  left: 12px;
+`;

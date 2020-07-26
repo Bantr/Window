@@ -14,7 +14,6 @@ export const LabelContainer = styled.div`
 export const Label = styled.label<{ showError: boolean }>`
   color: ${({ theme, showError }): string => showError ? theme.p : theme.t};
   width: 100%;
-  font-weight: 500;
   text-transform: capitalize;
 `;
 export const InputContainer = styled.div`
