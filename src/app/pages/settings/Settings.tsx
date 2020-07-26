@@ -7,7 +7,7 @@ import { SettingsNav } from '../../components/dashboard/nav/settingsNav';
 const Container = styled.div`
   width: 100%;
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 145px);
 `;
 
 interface IProps extends RouteComponentProps {
