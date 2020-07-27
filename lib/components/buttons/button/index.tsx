@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Spinner } from 'lib/icons';
-import { Default, Outline, Text, IconContainer } from './style';
+import { Default, Outline, Text } from './style';
 
 interface IProps {
   active?: boolean;
@@ -26,23 +26,23 @@ export const Button: React.FC<IProps> = ({
     switch (variant) {
       case 'default':
         return (
-          <Default active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Default active={active} className={className} color={color} hasIcon={icon ? true : false} isLoading={isLoading} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
             {' '}
-            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
+            {isLoading ? <Spinner /> : icon}
             {children}
           </Default>
         );
       case 'outline':
         return (
-          <Outline active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
+          <Outline active={active} className={className} color={color} hasIcon={icon ? true : false} isLoading={isLoading} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+            {isLoading ? <Spinner /> : icon}
             {icon}{children}
           </Outline>
         );
       case 'text':
         return (
-          <Text active={active} className={className} color={color} hasIcon={icon ? true : false} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {isLoading ? <Spinner /> : <IconContainer>{icon}</IconContainer>}
+          <Text active={active} className={className} color={color} hasIcon={icon ? true : false} isLoading={isLoading} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+            {isLoading ? <Spinner /> : icon}
             {children}
           </Text>
         );

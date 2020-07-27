@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Title, Paragraph } from 'lib/components';
+import { Title } from 'lib/components';
 import { Connection } from '../../components/dashboard/settings/Connection';
 import { UserContext } from 'lib/hooks';
 

@@ -20,7 +20,7 @@ const Container = styled.div`
 export const ConfirmationModal: React.FC = () => {
   const [ModalWrapper, openModal, closeModal] = useModal();
 
-  function mockAction() { }
+  function mockAction(): void { }
 
   return (
     <Container>

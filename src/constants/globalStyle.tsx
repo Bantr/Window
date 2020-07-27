@@ -50,16 +50,19 @@ export const GlobalStyle = createGlobalStyle`
     transition: box-shadow 0.125s linear;
     margin: 0;
     padding: 0;
-    user-select: none;
     box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
+  }
+
+  label {
+    font-size: 0.9rem;
   }
 
   input {
     margin: 0;
-    padding: 15px 15px;
+    padding: 10px 15px;
     border-width: 1px;
     border-radius: 5px;
-    border-color: none;
+    border-color: transparent;
     color: ${({ theme }): string => theme.t};
     background-color: ${({ theme }): string => theme.pb};
 

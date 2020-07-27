@@ -8,7 +8,6 @@ import { Button, Title } from 'lib/components';
 import { useSnackbar } from 'notistack';
 import { CheckMark } from 'lib/icons';
 import * as Sentry from '@sentry/react';
-import { Trash } from 'lib/icons';
 
 export interface IProps {
   accountId: string;

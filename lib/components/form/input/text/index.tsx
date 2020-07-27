@@ -24,6 +24,7 @@ export const TextField = React.forwardRef<HTMLInputElement, IInputDefaultProps>(
       <InputContainer>
         {icon ? icon : null}
         <Input
+          autoComplete="off"
           hasError={error ? true : false}
           hasIcon={icon ? true : false}
           id={name}

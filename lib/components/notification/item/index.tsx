@@ -64,7 +64,7 @@ export const Notification: React.FC<IProps> = ({ notificationId, avatar, name, d
   async function deleteNotification(): Promise<void> {
     const response = await httpService.post(`/notification/${notificationId}/delete`);
     if (response.ok) {
-      enqueueSnackbar('Message succesfully removed', { variant: 'success' });
+      enqueueSnackbar('Message successfully removed', { variant: 'success' });
       setDelete(true); // handles the fade out animation.
       onDelete(notificationId); // trigger to parent to remove notification from view after animation is complete.
     } else {

@@ -29,7 +29,8 @@ export const BannedPerMonth: React.FC<{}> = () => {
   }
 
   function parseData(data: any): { [key: string]: any }[] {
-    return mockData;
+    // temp fix, data shouldn't been returned
+    return data || mockData;
   }
 
   React.useEffect(() => {
