@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Button } from 'lib/components';
 import { useModal } from 'lib/hooks';
-import { ConfirmationModal as ConfirmationModalComponent } from './confirmationModal';
+import { ConfirmationModal as ConfirmationModalComponent } from '.';
 
 export default {
   component: [ConfirmationModalComponent],
@@ -24,7 +24,7 @@ export const ConfirmationModal: React.FC = () => {
 
   return (
     <Container>
-      <Button onClick={openModal}>Open confirmation modal</Button>
+      <Button onClick={openModal}>Open modal</Button>
       <ModalWrapper>
         <ConfirmationModalComponent
           action={mockAction}
