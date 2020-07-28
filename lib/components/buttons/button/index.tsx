@@ -26,22 +26,39 @@ export const Button: React.FC<IProps> = ({
     switch (variant) {
       case 'default':
         return (
-          <Default active={active} className={className} color={color} hasIcon={icon ? true : false} isLoading={isLoading} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
-            {' '}
+          <Default
+            active={active}
+            className={className}
+            color={color}
+            hasIcon={icon ? true : false}
+            isLoading={isLoading}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>): void => (typeof onClick === 'function' ? onClick(e) : null)}>
             {isLoading ? <Spinner /> : icon}
             {children}
           </Default>
         );
       case 'outline':
         return (
-          <Outline active={active} className={className} color={color} hasIcon={icon ? true : false} isLoading={isLoading} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Outline
+            active={active}
+            className={className}
+            color={color}
+            hasIcon={icon ? true : false}
+            isLoading={isLoading}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>): void => (typeof onClick === 'function' ? onClick(e) : null)}>
             {isLoading ? <Spinner /> : icon}
             {icon}{children}
           </Outline>
         );
       case 'text':
         return (
-          <Text active={active} className={className} color={color} hasIcon={icon ? true : false} isLoading={isLoading} onClick={(e: React.MouseEvent<HTMLButtonElement>): void => onClick(e)}>
+          <Text
+            active={active}
+            className={className}
+            color={color}
+            hasIcon={icon ? true : false}
+            isLoading={isLoading}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>): void => (typeof onClick === 'function' ? onClick(e) : null)}>
             {isLoading ? <Spinner /> : icon}
             {children}
           </Text>
