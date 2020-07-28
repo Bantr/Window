@@ -84,6 +84,11 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
   }
 
+  ul {
+    list-style-position: inside;
+    margin: 10px 0;
+  }
+
   /* tooltip style enhancements */
   .rc-tooltip-inner {min-height: 18px;}
 
