@@ -36,10 +36,10 @@ interface INotificationsResponse {
 interface IProps {
   deletedNotifications: number[];
   deleteNotification: (notificationId: number) => void;
-  getNewNotifications: (notificationIds: number[]) => void;
+  setNotificationsToSeen: (notificationIds: number[]) => void;
 }
 
-export const NotificationList: React.FC<IProps> = ({ deletedNotifications, deleteNotification, getNewNotifications }) => {
+export const NotificationList: React.FC<IProps> = ({ deletedNotifications, deleteNotification, setNotificationsToSeen }) => {
   let count = 0;
 
   const { loading, data, error } = useQuery<INotificationsResponse>(GET_NOTIFICATIONS);
@@ -67,7 +67,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
     if (data) {
       // this will callback to a post to delete all notification that have seen = false.
       const newNotificationsIds = data.notifications.map(({ id, seen }) => seen ? null : id).filter((id) => id);
-      getNewNotifications(newNotificationsIds);
+      setNotificationsToSeen(newNotificationsIds);
     }
   }, [data]);
 

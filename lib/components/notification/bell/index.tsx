@@ -21,7 +21,7 @@ const GET_NEW_NOTIFICATION_COUNT = gql`
   }
 `;
 
-type notificationResponse = {
+type NotificationResponse = {
   notification: INotificationAggregate;
 }
 
@@ -31,7 +31,7 @@ export const NotificationBell: React.FC<{}> = () => {
   const [deletedNotifications, setDeletedNotifications] = React.useState<number[]>([]);
 
   const [play] = useSound(notificationSfx);
-  const { loading, data, error } = useQuery<notificationResponse>(GET_NEW_NOTIFICATION_COUNT, { pollInterval: 5 * 1000 * 60 });
+  const { loading, data, error } = useQuery<NotificationResponse>(GET_NEW_NOTIFICATION_COUNT, { pollInterval: 5 * 1000 * 60 });
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   useOutsideAlerter(wrapperRef, (): void => { toggleVisible(false); });
 
@@ -47,7 +47,7 @@ export const NotificationBell: React.FC<{}> = () => {
     setDeletedNotifications([...deletedNotifications, notificationId]);
   }
 
-  async function getNewNotifications(notificationIds: number[]): Promise<void> {
+  async function setNotificationsToSeen(notificationIds: number[]): Promise<void> {
     if (notificationIds) {
       const body = { 'status': true, 'ids': notificationIds };
       httpService.post('/notification/seen', body).catch((e: Error) => { Sentry.captureException(e); });
@@ -74,7 +74,7 @@ export const NotificationBell: React.FC<{}> = () => {
           <NotificationList
             deletedNotifications={deletedNotifications}
             deleteNotification={deleteNotification}
-            getNewNotifications={getNewNotifications}
+            setNotificationsToSeen={setNotificationsToSeen}
           />
           :
           ''
