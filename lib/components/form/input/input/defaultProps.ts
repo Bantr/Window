@@ -8,4 +8,5 @@ export interface IInputDefaultProps {
   placeholder: string;
   error?: FieldError;
   loading?: boolean;
+  color?: 'primary' | 'secondary';
 }

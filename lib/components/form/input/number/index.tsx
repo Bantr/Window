@@ -4,7 +4,7 @@ import { ChangeNumberContainer } from './style';
 import { IInputDefaultProps } from '../input/defaultProps';
 import { Arrow } from 'lib/icons';
 
-export const NumberField = React.forwardRef<HTMLInputElement, IInputDefaultProps>(({ labelText, placeholder, name, error, icon, loading, readOnly }, ref) => {
+export const NumberField = React.forwardRef<HTMLInputElement, IInputDefaultProps>(({ labelText, placeholder, name, color = 'primary', error, icon, loading, readOnly }, ref) => {
   const [showError, setShowError] = React.useState(false);
   const [value, setValue] = React.useState<any>();
 
@@ -28,6 +28,7 @@ export const NumberField = React.forwardRef<HTMLInputElement, IInputDefaultProps
         {icon ? icon : null}
         <Input
           autoComplete="off"
+          color={color}
           hasError={error ? true : false}
           hasIcon={icon ? true : false}
           id={name}

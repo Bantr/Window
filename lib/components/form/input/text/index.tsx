@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, LabelContainer, Label, InputContainer, Input, ErrorContainer, Error } from '../input/style';
 import { IInputDefaultProps } from '../input/defaultProps';
 
-export const TextField = React.forwardRef<HTMLInputElement, IInputDefaultProps>(({ labelText, placeholder, name, error, icon, readOnly, loading = false }, ref) => {
+export const TextField = React.forwardRef<HTMLInputElement, IInputDefaultProps>(({ labelText, placeholder, name, color = 'primary', error, icon, readOnly, loading = false }, ref) => {
   const [showError, setShowError] = React.useState(false);
 
   if (loading) {
@@ -25,6 +25,7 @@ export const TextField = React.forwardRef<HTMLInputElement, IInputDefaultProps>(
         {icon ? icon : null}
         <Input
           autoComplete="off"
+          color={color}
           hasError={error ? true : false}
           hasIcon={icon ? true : false}
           id={name}
