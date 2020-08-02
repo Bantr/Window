@@ -7,7 +7,7 @@ import { SettingsNav } from '../../components/dashboard/nav/settingsNav';
 const Container = styled.div`
   width: 100%;
   display: flex;
-  height: calc(100vh - 145px);
+  height: calc(100vh - 195px); /* -145 for the margins -50px for spacing */
 `;
 
 interface IProps extends RouteComponentProps {
@@ -16,7 +16,7 @@ interface IProps extends RouteComponentProps {
 export const Settings: React.FC<IProps> = ({ children }) => (
   <Container>
     <SettingsNav />
-    <SimpleBar style={{ height: '80%', width: '100%' }}>
+    <SimpleBar style={{ height: '100%', width: '100%' }}>
       {children}
     </SimpleBar>
   </Container>

@@ -53,6 +53,17 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
   }
 
+ a.highlight {
+    color: ${({ theme }): string => theme.p};
+    text-decoration-line: underline;
+    text-decoration-color: ${({ theme }): string => theme.p};
+
+    &:hover {
+    color: ${({ theme }): string => theme.s};
+    text-decoration-color: ${({ theme }): string => theme.s};
+    }
+  }
+
   label {
     font-size: 0.9rem;
   }
@@ -64,7 +75,6 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 5px;
     border-color: transparent;
     color: ${({ theme }): string => theme.t};
-    background-color: ${({ theme }): string => theme.pb};
 
     &:focus {
       border-color: ${({ theme }): string => theme.p};

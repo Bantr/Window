@@ -10,7 +10,7 @@ export const ErrorMessage: React.FC<IProps> = ({ message /*, closable = true*/ }
   /*  const [visible, setVisible] = React.useState(true);*/
   <Container animate={{ height: '100%' }} isVisible={true} transition={{ type: 'spring', damping: 100, mass: 0.5 }}>
     <AlertTriangle scale={.9} />
-    <p>{message}</p>
+    {message}
     {/* closable ? <Plus onClick={(): void => { setVisible(false); }} pointer rotate={45} /> : null*/}
   </Container>
 );
