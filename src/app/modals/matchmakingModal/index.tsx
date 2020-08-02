@@ -81,9 +81,7 @@ export const MatchmakingModal = React.forwardRef<HTMLDivElement, IProps>(({ clos
           In order to have access to your replays, we need your game authentication code and your most recently completed match token.
           These can both be found <a className="highlight" href="https://help.steampowered.com/en/wizard/HelpWithGameIssue/?appid=730&issueid=128" rel="noopener noreferrer" target="_blank">here</a>.
         </p>
-
         <br />
-
         <p><strong>Important:</strong> Without this information we will not be able to process your CSGO matchmaking matches.</p>
       </Description >
       <form

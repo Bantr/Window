@@ -25,7 +25,7 @@ export const PlatformConnections: React.FC<{}> = () => {
   return (
     <>
       <Title size="large" type="h4">Platforms</Title>
-      Connect Discord to receive notifications via Bantr&apos;s Discord bot.
+      Connect Discord to receive notifications via Bantr&apos;s Discord bot. Advanced notification settings can be configured in the notification settings.
       {
         platforms.map(({ accountId, platformName, isConnected, username }) => <Connection accountId={accountId} isConnected={isConnected} key={`connection-${name}`} platformName={platformName} username={username} />)
       }

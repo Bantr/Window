@@ -12,9 +12,9 @@ import * as Sentry from '@sentry/react';
 
 import { setCustomErrorMessages } from 'lib/helpers';
 import { httpService } from 'lib/services';
-import { Title, TextField, Paragraph } from 'lib/components';
+import { Title, TextField, Paragraph, FieldActionContainer, FieldAction } from 'lib/components';
 
-import { Container, FieldActionContainer } from './style';
+import { Container, Inner } from './style';
 
 const schema = Joi.object({
   lastKnownMatch: Joi
@@ -45,8 +45,7 @@ const GET_MATCHMAKING_CODES = gql`
 
 export const MatchMaking: React.FC = () => {
   const { register, handleSubmit, errors, setValue, getValues } = useForm<IFormInputs>({ resolver: joiResolver(schema), mode: 'onChange' });
-  const [lastKnownMatchReadOnly, setLastKnownMatchReadOnly] = React.useState<boolean>(false);
-  const [matchmakingAuthReadOnly, setmatchmakingAuthReadOnly] = React.useState<boolean>(false);
+  const [fieldIsEmpty, setFieldIsEmpty] = React.useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
   const { loading, data, error } = useQuery(GET_MATCHMAKING_CODES);
 
@@ -59,11 +58,8 @@ export const MatchMaking: React.FC = () => {
       setValue('matchmakingAuthCode', data.user[0].settings.matchAuthCode || '');
       const values = getValues();
 
-      if (values.lastKnownMatch !== '') {
-        setLastKnownMatchReadOnly(true);
-      }
-      if (values.matchmakingAuthCode !== '') {
-        setmatchmakingAuthReadOnly(true);
+      if (values.lastKnownMatch === '' || values.matchmakingAuthCode === '') {
+        setFieldIsEmpty(true);
       }
     }
   }, [data, error]);
@@ -93,31 +89,32 @@ export const MatchMaking: React.FC = () => {
         In order to have access to your replays, we need your game authentication code and your most recently completed match token. <br />
         These can both be found <a className="highlight" href="https://help.steampowered.com/en/wizard/HelpWithGameIssue/?appid=730&issueid=128" rel="noopener noreferrer" target="_blank">here</a>.
       </Paragraph>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          color="secondary"
-          error={errors.matchmakingAuthCode}
-          labelText="Game authentication code"
-          loading={loading}
-          name="matchmakingAuthCode"
-          placeholder="7BV9-BD9HN-5RDB"
-          readOnly={matchmakingAuthReadOnly}
-          ref={register}
-        />
-        <FieldActionContainer></FieldActionContainer>
-        <TextField
-          color="secondary"
-          error={errors.lastKnownMatch}
-          labelText="Recently completed match token"
-          loading={loading}
-          name="lastKnownMatch"
-          placeholder="CSGO-4DA8S-D9AE5-KFAP7-TLZDR-RVMPP"
-          readOnly={lastKnownMatchReadOnly}
-          ref={register}
-        />
-        <FieldActionContainer></FieldActionContainer>
-
-      </form>
+      <Inner hasError={fieldIsEmpty}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            error={errors.matchmakingAuthCode}
+            labelText="Game authentication code"
+            loading={loading}
+            name="matchmakingAuthCode"
+            placeholder="7BV9-BD9HN-5RDB"
+            ref={register}
+          />
+          <FieldActionContainer>
+            <FieldAction>Remove</FieldAction>
+          </FieldActionContainer>
+          <TextField
+            error={errors.lastKnownMatch}
+            labelText="Recently completed match token"
+            loading={loading}
+            name="lastKnownMatch"
+            placeholder="CSGO-4DA8S-D9AE5-KFAP7-TLZDR-RVMPP"
+            ref={register}
+          />
+          <FieldActionContainer>
+            <FieldAction>Remove</FieldAction>
+          </FieldActionContainer>
+        </form>
+      </Inner>
     </Container>
   );
 };
