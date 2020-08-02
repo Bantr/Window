@@ -10,6 +10,7 @@ import { NotificationList } from '../notificationList';
 import { httpService } from 'lib/services';
 import { BellIcon, Container, NotificationIcon } from './style';
 import * as Sentry from '@sentry/react';
+import Tooltip from 'rc-tooltip';
 
 const GET_NEW_NOTIFICATION_COUNT = gql`
   query GET_NEW_NOTIFICATION_COUNT{
@@ -64,11 +65,18 @@ export const NotificationBell: React.FC<{}> = () => {
   }, [loading, data]);
 
   return (
+
     <Container ref={wrapperRef}>
-      <BellIcon className={hasNewNotification ? 'animate' : ''} data-cy="headerNav-notificationBell" onClick={bellClicked}>
-        <Bell pointer scale={1.2} />
-        {hasNewNotification ? <NotificationIcon /> : ''}
-      </BellIcon>
+      <Tooltip
+        overlay="Notifications"
+        placement="bottom"
+        trigger="hover"
+      >
+        <BellIcon className={hasNewNotification ? 'animate' : ''} data-cy="headerNav-notificationBell" onClick={bellClicked}>
+          <Bell pointer scale={1.2} />
+          {hasNewNotification ? <NotificationIcon /> : ''}
+        </BellIcon>
+      </Tooltip>
       {
         visible ?
           <NotificationList
