@@ -26,7 +26,7 @@ export const Overlay = styled.div`
 export const Container = styled.div`
   position: relative;
   min-height: 200px;
-  max-height: 500px;
+  max-height: 750px;
   background-color: ${({ theme }): string => theme.sb};
   padding: 25px 25px 15px 25px;
   transition: 0.2s all ease-in-out;
