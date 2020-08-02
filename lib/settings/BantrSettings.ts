@@ -1,4 +1,8 @@
-import { IAppSettings } from './AppSettings';
+export interface IAppSettings {
+  clientAppId: string;
+  clientAppName: string;
+  clientAppVersion: string;
+}
 
 class BantrSettings implements IAppSettings {
   public clientAppId = 'app_id_here'
