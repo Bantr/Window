@@ -16,5 +16,6 @@ declare module 'styled-components' {
     shadow: string;
     placeholder: string;
     placeholderHighlight: string;
+    error: string;
   }
 }

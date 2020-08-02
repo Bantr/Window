@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export const Container = styled(motion.div) <{ isVisible: boolean }>`
   width: 100%;
   height: 0;
-  background-color: ${({ theme }): string => theme.p};
+  background-color: ${({ theme }): string => theme.error};
   color: white;
   padding: 10px 15px;
   display: ${({ isVisible }): string => isVisible ? 'flex' : 'none'};

@@ -57,6 +57,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }): string => theme.p};
     text-decoration-line: underline;
     text-decoration-color: ${({ theme }): string => theme.p};
+    font-weight: 500;
 
     &:hover {
     color: ${({ theme }): string => theme.s};
@@ -71,10 +72,11 @@ export const GlobalStyle = createGlobalStyle`
   input {
     margin: 0;
     padding: 10px 15px;
-    border-width: 1px;
+    border-width: 2px;
     border-radius: 5px;
     border-color: transparent;
     color: ${({ theme }): string => theme.t};
+    outline: 0;
 
     &:focus {
       border-color: ${({ theme }): string => theme.p};
@@ -114,7 +116,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 10px;
     transition: background-color 0.2s ease-in-out;
     &:hover{
-      background-color: green;
+    background-color: ${({ theme }): string => theme.p}fa;
     }
   }
 

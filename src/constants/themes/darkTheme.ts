@@ -11,5 +11,6 @@ export const darkTheme: DefaultTheme = {
   sb: '#171a31',
   shadow: '#121527',
   placeholder: '#8e9194',
-  placeholderHighlight: '#b0b0b0'
+  placeholderHighlight: '#b0b0b0',
+  error: '#bf2e36'
 };

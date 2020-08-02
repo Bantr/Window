@@ -11,5 +11,6 @@ export const lightTheme: DefaultTheme = {
   sb: '#edf1f7',
   shadow: '#8e9194',
   placeholder: '#dddbdd',
-  placeholderHighlight: '#ffffff'
+  placeholderHighlight: '#ffffff',
+  error: '#6f2b2f'
 };
