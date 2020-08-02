@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { RouteComponentProps } from '@reach/router';
 import { HeaderNav, SideNav } from '../components/dashboard/nav';
-import { SteamAuthModal } from '../modals';
+import { MatchmakingModal } from '../modals';
 import { useModal } from 'lib/hooks';
 
 const Container = styled.div`
@@ -30,7 +30,7 @@ export const Csgo: React.FC<IProps> = ({ children }) => {
   return (
     <React.Fragment>
       <ModalWrapper>
-        <SteamAuthModal close={closeModal} ref={wrapperRef} />
+        <MatchmakingModal close={closeModal} ref={wrapperRef} />
       </ModalWrapper>
       <HeaderNav />
       <Container>

@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
-  width: 600px;
+  width: 700px;
 `;
 
 export const ActionContainer = styled.div`
   width: 100%;
-  margin-top: 30px;
+  margin-top: 70px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -29,6 +29,19 @@ export const Header = styled.div`
 
 export const Description = styled.div`
   width: 100%;
-  background-color: purple;
   margin-bottom: 25px;
+
+
+  ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    li {
+     span {
+       text-decoration: underline;
+     }
+     margin-bottom: 5px;
+    }
+  }
 `;

@@ -2,10 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Button } from 'lib/components';
 import { useModal } from 'lib/hooks';
-import { SteamAuthModal as SteamAuthModalComponent } from './index';
+import { MatchmakingModal as MatchmakingModalComponent } from '.';
 
 export default {
-  component: SteamAuthModalComponent,
+  component: MatchmakingModalComponent,
   title: 'Modal'
 };
 
@@ -17,14 +17,14 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export const SteamAuthModal: React.FC = () => {
+export const MatchMakingModal: React.FC = () => {
   const [ModalWrapper, openModal, closeModal] = useModal();
 
   return (
     <Container>
       <Button onClick={openModal}>Open modal</Button>
       <ModalWrapper>
-        <SteamAuthModalComponent
+        <MatchmakingModalComponent
           close={closeModal}
         />
       </ModalWrapper>

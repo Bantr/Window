@@ -1,1 +1,1 @@
-export * from './steamAuthModal';
+export * from './matchmakingModal';
