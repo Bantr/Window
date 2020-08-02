@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { RouteComponentProps } from '@reach/router';
 import { Title } from 'lib/components';
-import { PlatformConnections } from '../../views/platformConnections';
+import { PlatformConnections, MatchMaking } from '../../views/settings/connections';
 
 const Container = styled.div`
   display: block;
@@ -23,7 +23,6 @@ interface IProps extends RouteComponentProps {
 }
 
 export const Connections: React.FC<IProps> = () => (
-
   <Container>
     <Helmet>
       <title>Settings | Connections</title>
@@ -31,8 +30,7 @@ export const Connections: React.FC<IProps> = () => (
     <Title size="huge" type="h3">Connections</Title>
     <Inner>
       <PlatformConnections />
-      <Title size="large" type="h4">Valve Matchmaking</Title>
-      Make sure this code is filled in to give us access to your matchmaking demos!
+      <MatchMaking />
     </Inner>
   </Container>
 );
