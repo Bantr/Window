@@ -5,11 +5,24 @@ import { Router as ReachRouter, Redirect } from '@reach/router';
 import { Csgo, Landing, NotFound, Playground, Privacy, TermsOfUse } from '../app/pages';
 import { Dashboard, Profile, Tracker, Compare, Tournaments, TacticalTimeout } from './pages/csgo';
 import { Appearance, Connections, Language, Notifications, Settings } from './pages/settings';
+import { authenticationService } from 'lib/services';
+import { AppLoad } from './views/appLoad';
 
 import { favicon, faviconDark } from 'lib/images';
 
 export const Router: React.FC<{}> = () => {
   const darkMode = useTheme().dark;
+  const [isAuthenticated, setAuthenticated] = React.useState<boolean>(false);
+  const [loading, isLoading] = React.useState<boolean>(true);
+
+  React.useEffect(() => {
+    authenticationService.isAuthenticated().then((session) => {
+      if (session && session.id) {
+        setAuthenticated(true);
+      }
+      isLoading(false);
+    });
+  });
 
   return (
     <React.Fragment>
@@ -21,24 +34,32 @@ export const Router: React.FC<{}> = () => {
         <Landing path="/" />
         <Privacy path="/privacy-policy" />
         <TermsOfUse path="/terms-of-use" />
-        <Csgo path="/csgo">
-          <Dashboard path="/dashboard" />
-          <Tracker path="/tracker" />
-          <Compare path="/compare" />
-          <TacticalTimeout path="/tactical-timeout" />
-          <Tournaments path="/tournaments" />
-          { /* general pages */}
-          <Profile path="/profile" />
-          <Settings path="/settings">
-            <Redirect from="/settings" to="/settings/connections" />
-            <Connections path="/connections" />
-            <Notifications path="/notifications" />
-            <Appearance path="/appearance" />
-            <Language path="/language" />
-          </Settings>
-        </Csgo>
-        <Playground path="/playground" />
-        <NotFound default />
+        {
+          isAuthenticated ?
+            <>
+              <Csgo path="/csgo">
+                <Dashboard default path="/dashboard" />
+                <Tracker path="/tracker" />
+                <Compare path="/compare" />
+                <TacticalTimeout path="/tactical-timeout" />
+                <Tournaments path="/tournaments" />
+                { /* general pages */}
+                <Profile path="/profile" />
+                <Settings path="/settings">
+                  <Redirect from="/settings" to="/settings/connections" />
+                  <Connections default path="/connections" />
+                  <Notifications path="/notifications" />
+                  <Appearance path="/appearance" />
+                  <Language path="/language" />
+                </Settings>
+              </Csgo>
+              <Playground path="/playground" />
+            </> : null
+        }
+        {loading ?
+          <AppLoad default />
+          : <NotFound default />
+        }
       </ReachRouter>
     </React.Fragment>
   );
