@@ -20,3 +20,9 @@ export const Inner = styled.div < { hasError: boolean }>`
   border-color: ${({ theme, hasError }): string => hasError ? theme.error : theme.sb};
   border-radius: 10px;
 `;
+
+export const ActionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { RouteComponentProps } from '@reach/router';
 import { HeaderNav, SideNav } from '../components/dashboard/nav';
 import { MatchmakingModal } from '../modals';
-import { useModal } from 'lib/hooks';
+import { useModal, useLocalStorage } from 'lib/hooks';
 
 const Container = styled.div`
   display: flex;
@@ -22,15 +22,23 @@ interface IProps extends RouteComponentProps {
 export const Csgo: React.FC<IProps> = ({ children }) => {
   const [ModalWrapper, openModal, closeModal] = useModal();
   const wrapperRef = React.createRef<HTMLDivElement>();
+  const [val, setVal] = useLocalStorage('showMatchmakingModal', true);
 
   React.useEffect(() => {
-    openModal();
+    if (val === true) {
+      openModal();
+    }
   }, []);
+
+  function close(): void {
+    setVal(false);
+    closeModal();
+  }
 
   return (
     <React.Fragment>
       <ModalWrapper>
-        <MatchmakingModal close={closeModal} ref={wrapperRef} />
+        <MatchmakingModal close={close} ref={wrapperRef} />
       </ModalWrapper>
       <HeaderNav />
       <Container>

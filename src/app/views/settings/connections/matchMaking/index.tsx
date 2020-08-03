@@ -12,9 +12,9 @@ import * as Sentry from '@sentry/react';
 
 import { setCustomErrorMessages } from 'lib/helpers';
 import { httpService } from 'lib/services';
-import { Title, TextField, Paragraph, FieldActionContainer, FieldAction } from 'lib/components';
+import { Button, Paragraph, Title, TextField } from 'lib/components';
 
-import { Container, Inner } from './style';
+import { Container, Inner, ActionContainer } from './style';
 
 const schema = Joi.object({
   lastKnownMatch: Joi
@@ -44,7 +44,7 @@ const GET_MATCHMAKING_CODES = gql`
 `;
 
 export const MatchMaking: React.FC = () => {
-  const { register, handleSubmit, errors, setValue, getValues } = useForm<IFormInputs>({ resolver: joiResolver(schema), mode: 'onChange' });
+  const { register, handleSubmit, errors, setValue, getValues, formState } = useForm<IFormInputs>({ resolver: joiResolver(schema), mode: 'onChange' });
   const [fieldIsEmpty, setFieldIsEmpty] = React.useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
   const { loading, data, error } = useQuery(GET_MATCHMAKING_CODES);
@@ -54,10 +54,9 @@ export const MatchMaking: React.FC = () => {
       // should show an error
     }
     if (data) {
-      setValue('lastKnownMatch', data.user[0].settings.lastKnownMatch || '');
-      setValue('matchmakingAuthCode', data.user[0].settings.matchAuthCode || '');
+      setValue('lastKnownMatch', data.user[0].settings.lastKnownMatch || '', { shouldValidate: true });
+      setValue('matchmakingAuthCode', data.user[0].settings.matchAuthCode || '', { shouldValidate: true });
       const values = getValues();
-
       if (values.lastKnownMatch === '' || values.matchmakingAuthCode === '') {
         setFieldIsEmpty(true);
       }
@@ -65,6 +64,10 @@ export const MatchMaking: React.FC = () => {
   }, [data, error]);
 
   const onSubmit: SubmitHandler<IFormInputs> = async ({ lastKnownMatch, matchmakingAuthCode }) => {
+    if (!formState.isDirty) {
+      return;
+    }
+
     try {
       const matchmakingAuthResponse = await httpService.post('/settings/steam/matchmakingauth', { matchmakingAuthCode, lastKnownMatch });
 
@@ -93,15 +96,13 @@ export const MatchMaking: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
             error={errors.matchmakingAuthCode}
+            isSecret
             labelText="Game authentication code"
             loading={loading}
             name="matchmakingAuthCode"
             placeholder="7BV9-BD9HN-5RDB"
             ref={register}
           />
-          <FieldActionContainer>
-            <FieldAction>Remove</FieldAction>
-          </FieldActionContainer>
           <TextField
             error={errors.lastKnownMatch}
             labelText="Recently completed match token"
@@ -110,9 +111,9 @@ export const MatchMaking: React.FC = () => {
             placeholder="CSGO-4DA8S-D9AE5-KFAP7-TLZDR-RVMPP"
             ref={register}
           />
-          <FieldActionContainer>
-            <FieldAction>Remove</FieldAction>
-          </FieldActionContainer>
+          <ActionContainer>
+            <Button active={formState.isValid && formState.isDirty} color="primary" >Save</Button>
+          </ActionContainer>
         </form>
       </Inner>
     </Container>
