@@ -12,6 +12,7 @@ import { InMemoryCache } from '@apollo/client/cache';
 import { ApolloClient, ApolloLink, ApolloProvider, HttpLink } from '@apollo/client';
 import { AppLoad } from './views/appLoad';
 import { IUserData, UserContext } from 'lib/hooks';
+import { bantrSettings } from 'lib/settings';
 
 /* tooltip styling */
 import 'rc-tooltip/assets/bootstrap.css';
@@ -57,7 +58,7 @@ const App: React.FC = () => {
   const link = ApolloLink.from([
     new RetryLink(),
     new HttpLink({
-      uri: 'https://graphql.bantr.app',
+      uri: bantrSettings.graphQLEndpoint,
       // this should become same origin
       credentials: 'same-origin',
       headers: {

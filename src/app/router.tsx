@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTheme } from 'lib/hooks';
 import { Router as ReachRouter, Redirect } from '@reach/router';
-import { Csgo, Landing, NotFound, Privacy, TermsOfUse } from '../app/pages';
+import { Csgo, Landing, NotFound, Playground, Privacy, TermsOfUse } from '../app/pages';
 import { Dashboard, Profile, Tracker, Compare, Tournaments, TacticalTimeout } from './pages/csgo';
 import { Appearance, Connections, Language, Notifications, Settings } from './pages/settings';
 
@@ -27,7 +27,6 @@ export const Router: React.FC<{}> = () => {
           <Compare path="/compare" />
           <TacticalTimeout path="/tactical-timeout" />
           <Tournaments path="/tournaments" />
-
           { /* general pages */}
           <Profile path="/profile" />
           <Settings path="/settings">
@@ -38,6 +37,7 @@ export const Router: React.FC<{}> = () => {
             <Language path="/language" />
           </Settings>
         </Csgo>
+        <Playground path="/playground" />
         <NotFound default />
       </ReachRouter>
     </React.Fragment>
