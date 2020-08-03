@@ -90,7 +90,7 @@ exports.devServer = ({ host, port } = { host: 'localhost', port: 8080 }) => ({
 exports.banner = () => ({
   plugins: [
     new webpack.BannerPlugin({
-      banner: 'contributed by: github.com/emielvanseveren, github.com/niekcandaele contenthash:[contenthash] name:[name]'
+      banner: 'contributed by: github.com/emielvanseveren, github.com/niekcandaele hash:[hash] name:[name]'
     })
   ]
 });
