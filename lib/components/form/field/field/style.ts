@@ -14,6 +14,7 @@ export const LabelContainer = styled.div`
 export const Label = styled.label<{ showError: boolean }>`
   color: ${({ theme, showError }): string => showError ? theme.error : theme.t};
   width: 100%;
+  user-select: none;
   text-transform: capitalize;
 `;
 export const InputContainer = styled.div`
@@ -62,6 +63,9 @@ export const Input = styled.input<{ hasIcon: boolean; hasError: boolean; color: 
     &:focus {
       border-color: transparent;
     }
+  }
+  &[type='password']{
+    letter-spacing: 3px;
   }
 `;
 
