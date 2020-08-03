@@ -9,7 +9,7 @@ import { SnackbarProvider } from 'notistack';
 import { theme } from '../constants/theme';
 import { RetryLink } from '@apollo/client/link/retry';
 import { InMemoryCache } from '@apollo/client/cache';
-import { ApolloClient, ApolloLink,ApolloProvider, HttpLink } from '@apollo/client';
+import { ApolloClient, ApolloLink, ApolloProvider, HttpLink } from '@apollo/client';
 import { AppLoad } from './views/appLoad';
 import { IUserData, UserContext } from 'lib/hooks';
 
@@ -80,8 +80,8 @@ const App: React.FC = () => {
         <Sentry.ErrorBoundary fallback={ErrorFallback}>
           <SnackbarProvider
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right'
+              vertical: 'top',
+              horizontal: 'center'
             }}
             hideIconVariant={false}
             maxSnack={3}

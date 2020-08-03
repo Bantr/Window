@@ -13,7 +13,7 @@ export const Inner = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 35px;
+  padding: 0 30px;
 `;
 
 export const Left = styled.div`
@@ -23,7 +23,6 @@ export const Left = styled.div`
   height: 100%;
 
   .bantr {
-
     svg {
       margin-right: 15px;
     }
@@ -31,7 +30,6 @@ export const Left = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 250px;
-    padding-left: 25px;
     margin-right: 25px;
     font-weight: 800;
     font-size: 1.4rem;
@@ -45,16 +43,12 @@ export const Right = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  .icon-container{
+  a{
     display: flex;
     align-items: center;
     justify-content: center;
     margin:0 10px;
-    transition: transform .2s ease-in-out;
-    &:hover{
-         transform: translateY(-5px);
-      }
-    }
+  }
 `;
 
 export const Avatar = styled.div<{ url: string }>`

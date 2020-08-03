@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Archive } from 'lib/icons';
+import { AlertTriangle } from 'lib/icons';
 
 const Container = styled.div`
   width: 100%;
@@ -17,6 +17,6 @@ const Title = styled.h2`
 export const Construction: React.FC = () => (
   <Container>
     <Title>Under construction!</Title>
-    <Archive fill="#fff" scale={10} />
+    <AlertTriangle fill="#fff" scale={10} />
   </Container>
 );

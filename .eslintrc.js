@@ -43,6 +43,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
+    '@typescript-eslint/no-unused-vars': 2,
 
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-spacing': 2,
@@ -63,7 +64,6 @@ module.exports = {
     'indent': [2, 2, { SwitchCase: 1 }],
     'keyword-spacing': 2,
     'linebreak-style': [2, 'unix'],
-    'no-console': 0,
     'no-case-declarations': 0,
     'no-multi-spaces': 2,
     'no-multiple-empty-lines': [2, { max: 1, maxEOF: 0, maxBOF: 0 }],

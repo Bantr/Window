@@ -50,18 +50,33 @@ export const GlobalStyle = createGlobalStyle`
     transition: box-shadow 0.125s linear;
     margin: 0;
     padding: 0;
-    user-select: none;
     box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
+  }
+
+ a.highlight {
+    color: ${({ theme }): string => theme.p};
+    text-decoration-line: underline;
+    text-decoration-color: ${({ theme }): string => theme.p};
+    font-weight: 500;
+
+    &:hover {
+    color: ${({ theme }): string => theme.s};
+    text-decoration-color: ${({ theme }): string => theme.s};
+    }
+  }
+
+  label {
+    font-size: 0.9rem;
   }
 
   input {
     margin: 0;
-    padding: 15px 15px;
-    border-width: 1px;
+    padding: 10px 15px;
+    border-width: 2px;
     border-radius: 5px;
-    border-color: none;
+    border-color: transparent;
     color: ${({ theme }): string => theme.t};
-    background-color: ${({ theme }): string => theme.pb};
+    outline: 0;
 
     &:focus {
       border-color: ${({ theme }): string => theme.p};
@@ -81,6 +96,11 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
   }
 
+  ul {
+    list-style-position: inside;
+    margin: 10px 0;
+  }
+
   /* tooltip style enhancements */
   .rc-tooltip-inner {min-height: 18px;}
 
@@ -96,7 +116,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 10px;
     transition: background-color 0.2s ease-in-out;
     &:hover{
-      background-color: green;
+    background-color: ${({ theme }): string => theme.p}fa;
     }
   }
 

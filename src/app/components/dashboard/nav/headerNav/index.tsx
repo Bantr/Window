@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Link } from '@reach/router';
-import { Settings, Github } from 'lib/icons';
+import { Github } from 'lib/icons';
 import { Logo } from 'lib/components';
 import { UserContext, useOutsideAlerter } from 'lib/hooks';
-import { NotificationBell } from 'lib/components';
+import { NotificationBell } from './notificationBell';
 import { UserNav } from '../userNav';
+import { Settings } from './settings';
 import { Avatar, Header, Inner, Left, Right } from './style';
+import Tooltip from 'rc-tooltip';
 
 export const HeaderNav: React.FC<{}> = () => {
   const { userData } = React.useContext(UserContext);
@@ -24,22 +26,28 @@ export const HeaderNav: React.FC<{}> = () => {
         </Left>
         <Right>
           <NotificationBell data-cy="headerNav-notifications" />
-          <a className="icon-container" data-cy="headerNav-github" href="https://github.com/bantr" rel="noopener noreferrer" target="_blank">
-            <Github
-              pointer
-            />
-          </a>
-          <Link className="icon-container" data-cy="headerNav-settings" to="/csgo/settings/connections">
-            <Settings
-              pointer
-            />
-          </Link>
-          <Avatar
-            data-cy="headerNav-avatar"
-            onClick={(): void => setDropDownVisible(!dropDownVisible)}
-            url={userData.steamAvatar}>
-            {dropDownVisible ? <UserNav /> : ''}
-          </Avatar>
+          <Tooltip
+            overlay="Github"
+            placement="bottom"
+            trigger="hover"
+          >
+            <a className="icon-container" data-cy="headerNav-github" href="https://github.com/bantr" rel="noopener noreferrer" target="_blank">
+              <Github pointer />
+            </a>
+          </Tooltip>
+          <Settings />
+          <Tooltip
+            overlay="Profile"
+            placement="bottom"
+            trigger="hover"
+          >
+            <Avatar
+              data-cy="headerNav-avatar"
+              onClick={(): void => setDropDownVisible(!dropDownVisible)}
+              url={userData.steamAvatar}>
+              {dropDownVisible ? <UserNav /> : ''}
+            </Avatar>
+          </Tooltip>
         </Right>
       </Inner>
     </Header>

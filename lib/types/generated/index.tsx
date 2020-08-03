@@ -1446,6 +1446,206 @@ export type IMatchSumOrderBy = {
   type?: Maybe<IOrderBy>;
 };
 
+/** columns and relationships of "match_teams_team" */
+export type IMatchTeamsTeam = {
+  /** An object relationship */
+  match: IMatch;
+  matchId: Scalars['Int'];
+  /** An object relationship */
+  team: ITeam;
+  teamId: Scalars['Int'];
+};
+
+/** aggregated selection of "match_teams_team" */
+export type IMatchTeamsTeamAggregate = {
+  aggregate?: Maybe<IMatchTeamsTeamAggregateFields>;
+  nodes: Array<IMatchTeamsTeam>;
+};
+
+/** aggregate fields of "match_teams_team" */
+export type IMatchTeamsTeamAggregateFields = {
+  avg?: Maybe<IMatchTeamsTeamAvgFields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<IMatchTeamsTeamMaxFields>;
+  min?: Maybe<IMatchTeamsTeamMinFields>;
+  stddev?: Maybe<IMatchTeamsTeamStddevFields>;
+  stddev_pop?: Maybe<IMatchTeamsTeamStddevPopFields>;
+  stddev_samp?: Maybe<IMatchTeamsTeamStddevSampFields>;
+  sum?: Maybe<IMatchTeamsTeamSumFields>;
+  var_pop?: Maybe<IMatchTeamsTeamVarPopFields>;
+  var_samp?: Maybe<IMatchTeamsTeamVarSampFields>;
+  variance?: Maybe<IMatchTeamsTeamVarianceFields>;
+};
+
+
+/** aggregate fields of "match_teams_team" */
+export type IMatchTeamsTeamAggregateFieldsCountArgs = {
+  columns?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "match_teams_team" */
+export type IMatchTeamsTeamAggregateOrderBy = {
+  avg?: Maybe<IMatchTeamsTeamAvgOrderBy>;
+  count?: Maybe<IOrderBy>;
+  max?: Maybe<IMatchTeamsTeamMaxOrderBy>;
+  min?: Maybe<IMatchTeamsTeamMinOrderBy>;
+  stddev?: Maybe<IMatchTeamsTeamStddevOrderBy>;
+  stddev_pop?: Maybe<IMatchTeamsTeamStddevPopOrderBy>;
+  stddev_samp?: Maybe<IMatchTeamsTeamStddevSampOrderBy>;
+  sum?: Maybe<IMatchTeamsTeamSumOrderBy>;
+  var_pop?: Maybe<IMatchTeamsTeamVarPopOrderBy>;
+  var_samp?: Maybe<IMatchTeamsTeamVarSampOrderBy>;
+  variance?: Maybe<IMatchTeamsTeamVarianceOrderBy>;
+};
+
+/** aggregate avg on columns */
+export type IMatchTeamsTeamAvgFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamAvgOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** Boolean expression to filter rows from the table "match_teams_team". All fields are combined with a logical 'AND'. */
+export type IMatchTeamsTeamBoolExp = {
+  _and?: Maybe<Array<Maybe<IMatchTeamsTeamBoolExp>>>;
+  _not?: Maybe<IMatchTeamsTeamBoolExp>;
+  _or?: Maybe<Array<Maybe<IMatchTeamsTeamBoolExp>>>;
+  match?: Maybe<IMatchBoolExp>;
+  matchId?: Maybe<IIntComparisonExp>;
+  team?: Maybe<ITeamBoolExp>;
+  teamId?: Maybe<IIntComparisonExp>;
+};
+
+/** aggregate max on columns */
+export type IMatchTeamsTeamMaxFields = {
+  matchId?: Maybe<Scalars['Int']>;
+  teamId?: Maybe<Scalars['Int']>;
+};
+
+/** order by max() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamMaxOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate min on columns */
+export type IMatchTeamsTeamMinFields = {
+  matchId?: Maybe<Scalars['Int']>;
+  teamId?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamMinOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** ordering options when selecting data from "match_teams_team" */
+export type IMatchTeamsTeamOrderBy = {
+  match?: Maybe<IMatchOrderBy>;
+  matchId?: Maybe<IOrderBy>;
+  team?: Maybe<ITeamOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** select columns of table "match_teams_team" */
+export const enum IMatchTeamsTeamSelectColumn {
+  /** column name */
+  MatchId = 'matchId',
+  /** column name */
+  TeamId = 'teamId'
+};
+
+/** aggregate stddev on columns */
+export type IMatchTeamsTeamStddevFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamStddevOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate stddev_pop on columns */
+export type IMatchTeamsTeamStddevPopFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamStddevPopOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate stddev_samp on columns */
+export type IMatchTeamsTeamStddevSampFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamStddevSampOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate sum on columns */
+export type IMatchTeamsTeamSumFields = {
+  matchId?: Maybe<Scalars['Int']>;
+  teamId?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamSumOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate var_pop on columns */
+export type IMatchTeamsTeamVarPopFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamVarPopOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate var_samp on columns */
+export type IMatchTeamsTeamVarSampFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamVarSampOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
+/** aggregate variance on columns */
+export type IMatchTeamsTeamVarianceFields = {
+  matchId?: Maybe<Scalars['Float']>;
+  teamId?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "match_teams_team" */
+export type IMatchTeamsTeamVarianceOrderBy = {
+  matchId?: Maybe<IOrderBy>;
+  teamId?: Maybe<IOrderBy>;
+};
+
 /** aggregate var_pop on columns */
 export type IMatchVarPopFields = {
   durationTicks?: Maybe<Scalars['Float']>;
@@ -1980,9 +2180,9 @@ export type IPlayer = {
   steamProfile?: Maybe<Scalars['String']>;
   steamUsername?: Maybe<Scalars['String']>;
   /** An array relationship */
-  team_players_players: Array<ITeamPlayersPlayer>;
+  teams: Array<ITeamPlayersPlayer>;
   /** An aggregated array relationship */
-  team_players_players_aggregate: ITeamPlayersPlayerAggregate;
+  teams_aggregate: ITeamPlayersPlayerAggregate;
   /** An array relationship */
   trackedBy: Array<IPlayerTrackedByUser>;
   /** An aggregated array relationship */
@@ -2071,7 +2271,7 @@ export type IPlayerPlayerInfosAggregateArgs = {
 
 
 /** columns and relationships of "player" */
-export type IPlayerTeamPlayersPlayersArgs = {
+export type IPlayerTeamsArgs = {
   distinct_on?: Maybe<Array<ITeamPlayersPlayerSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2081,7 +2281,7 @@ export type IPlayerTeamPlayersPlayersArgs = {
 
 
 /** columns and relationships of "player" */
-export type IPlayerTeamPlayersPlayersAggregateArgs = {
+export type IPlayerTeamsAggregateArgs = {
   distinct_on?: Maybe<Array<ITeamPlayersPlayerSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2487,7 +2687,7 @@ export type IPlayerBoolExp = {
   steamId?: Maybe<IStringComparisonExp>;
   steamProfile?: Maybe<IStringComparisonExp>;
   steamUsername?: Maybe<IStringComparisonExp>;
-  team_players_players?: Maybe<ITeamPlayersPlayerBoolExp>;
+  teams?: Maybe<ITeamPlayersPlayerBoolExp>;
   trackedBy?: Maybe<IPlayerTrackedByUserBoolExp>;
 };
 
@@ -3784,7 +3984,7 @@ export type IPlayerOrderBy = {
   steamId?: Maybe<IOrderBy>;
   steamProfile?: Maybe<IOrderBy>;
   steamUsername?: Maybe<IOrderBy>;
-  team_players_players_aggregate?: Maybe<ITeamPlayersPlayerAggregateOrderBy>;
+  teams_aggregate?: Maybe<ITeamPlayersPlayerAggregateOrderBy>;
   trackedBy_aggregate?: Maybe<IPlayerTrackedByUserAggregateOrderBy>;
 };
 
@@ -4355,6 +4555,12 @@ export type IQueryRoot = {
   match_players_player_aggregate: IMatchPlayersPlayerAggregate;
   /** fetch data from the table: "match_players_player" using primary key columns */
   match_players_player_by_pk?: Maybe<IMatchPlayersPlayer>;
+  /** fetch data from the table: "match_teams_team" */
+  match_teams_team: Array<IMatchTeamsTeam>;
+  /** fetch aggregated fields from the table: "match_teams_team" */
+  match_teams_team_aggregate: IMatchTeamsTeamAggregate;
+  /** fetch data from the table: "match_teams_team" using primary key columns */
+  match_teams_team_by_pk?: Maybe<IMatchTeamsTeam>;
   /** fetch data from the table: "notification" */
   notification: Array<INotification>;
   /** fetch aggregated fields from the table: "notification" */
@@ -4596,6 +4802,33 @@ export type IQueryRootMatchPlayersPlayerAggregateArgs = {
 export type IQueryRootMatchPlayersPlayerByPkArgs = {
   matchId: Scalars['Int'];
   playerId: Scalars['Int'];
+};
+
+
+/** query root */
+export type IQueryRootMatchTeamsTeamArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
+};
+
+
+/** query root */
+export type IQueryRootMatchTeamsTeamAggregateArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
+};
+
+
+/** query root */
+export type IQueryRootMatchTeamsTeamByPkArgs = {
+  matchId: Scalars['Int'];
+  teamId: Scalars['Int'];
 };
 
 
@@ -5093,6 +5326,7 @@ export type IRound = {
   /** An object relationship */
   match?: Maybe<IMatch>;
   matchId?: Maybe<Scalars['Int']>;
+  officialEndTick: Scalars['Int'];
   /** An array relationship */
   player_blinds: Array<IPlayerBlind>;
   /** An aggregated array relationship */
@@ -5353,6 +5587,7 @@ export type IRoundAvgFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5362,6 +5597,7 @@ export type IRoundAvgOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5378,6 +5614,7 @@ export type IRoundBoolExp = {
   kills?: Maybe<IKillBoolExp>;
   match?: Maybe<IMatchBoolExp>;
   matchId?: Maybe<IIntComparisonExp>;
+  officialEndTick?: Maybe<IIntComparisonExp>;
   player_blinds?: Maybe<IPlayerBlindBoolExp>;
   player_hurts?: Maybe<IPlayerHurtBoolExp>;
   player_jumps?: Maybe<IPlayerJumpBoolExp>;
@@ -5394,6 +5631,7 @@ export type IRoundMaxFields = {
   endTick?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   matchId?: Maybe<Scalars['Int']>;
+  officialEndTick?: Maybe<Scalars['Int']>;
   startTick?: Maybe<Scalars['Int']>;
   winReason?: Maybe<Scalars['Int']>;
 };
@@ -5403,6 +5641,7 @@ export type IRoundMaxOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5412,6 +5651,7 @@ export type IRoundMinFields = {
   endTick?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   matchId?: Maybe<Scalars['Int']>;
+  officialEndTick?: Maybe<Scalars['Int']>;
   startTick?: Maybe<Scalars['Int']>;
   winReason?: Maybe<Scalars['Int']>;
 };
@@ -5421,6 +5661,7 @@ export type IRoundMinOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5434,6 +5675,7 @@ export type IRoundOrderBy = {
   kills_aggregate?: Maybe<IKillAggregateOrderBy>;
   match?: Maybe<IMatchOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   player_blinds_aggregate?: Maybe<IPlayerBlindAggregateOrderBy>;
   player_hurts_aggregate?: Maybe<IPlayerHurtAggregateOrderBy>;
   player_jumps_aggregate?: Maybe<IPlayerJumpAggregateOrderBy>;
@@ -5456,6 +5698,8 @@ export const enum IRoundSelectColumn {
   /** column name */
   MatchId = 'matchId',
   /** column name */
+  OfficialEndTick = 'officialEndTick',
+  /** column name */
   StartTick = 'startTick',
   /** column name */
   WinReason = 'winReason'
@@ -5466,6 +5710,7 @@ export type IRoundStddevFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5475,6 +5720,7 @@ export type IRoundStddevOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5484,6 +5730,7 @@ export type IRoundStddevPopFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5493,6 +5740,7 @@ export type IRoundStddevPopOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5502,6 +5750,7 @@ export type IRoundStddevSampFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5511,6 +5760,7 @@ export type IRoundStddevSampOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5520,6 +5770,7 @@ export type IRoundSumFields = {
   endTick?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['Int']>;
   matchId?: Maybe<Scalars['Int']>;
+  officialEndTick?: Maybe<Scalars['Int']>;
   startTick?: Maybe<Scalars['Int']>;
   winReason?: Maybe<Scalars['Int']>;
 };
@@ -5529,6 +5780,7 @@ export type IRoundSumOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5538,6 +5790,7 @@ export type IRoundVarPopFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5547,6 +5800,7 @@ export type IRoundVarPopOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5556,6 +5810,7 @@ export type IRoundVarSampFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5565,6 +5820,7 @@ export type IRoundVarSampOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5574,6 +5830,7 @@ export type IRoundVarianceFields = {
   endTick?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   matchId?: Maybe<Scalars['Float']>;
+  officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
   winReason?: Maybe<Scalars['Float']>;
 };
@@ -5583,6 +5840,7 @@ export type IRoundVarianceOrderBy = {
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   matchId?: Maybe<IOrderBy>;
+  officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
   winReason?: Maybe<IOrderBy>;
 };
@@ -5619,6 +5877,12 @@ export type ISubscriptionRoot = {
   match_players_player_aggregate: IMatchPlayersPlayerAggregate;
   /** fetch data from the table: "match_players_player" using primary key columns */
   match_players_player_by_pk?: Maybe<IMatchPlayersPlayer>;
+  /** fetch data from the table: "match_teams_team" */
+  match_teams_team: Array<IMatchTeamsTeam>;
+  /** fetch aggregated fields from the table: "match_teams_team" */
+  match_teams_team_aggregate: IMatchTeamsTeamAggregate;
+  /** fetch data from the table: "match_teams_team" using primary key columns */
+  match_teams_team_by_pk?: Maybe<IMatchTeamsTeam>;
   /** fetch data from the table: "notification" */
   notification: Array<INotification>;
   /** fetch aggregated fields from the table: "notification" */
@@ -5860,6 +6124,33 @@ export type ISubscriptionRootMatchPlayersPlayerAggregateArgs = {
 export type ISubscriptionRootMatchPlayersPlayerByPkArgs = {
   matchId: Scalars['Int'];
   playerId: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type ISubscriptionRootMatchTeamsTeamArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
+};
+
+
+/** subscription root */
+export type ISubscriptionRootMatchTeamsTeamAggregateArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
+};
+
+
+/** subscription root */
+export type ISubscriptionRootMatchTeamsTeamByPkArgs = {
+  matchId: Scalars['Int'];
+  teamId: Scalars['Int'];
 };
 
 
@@ -6345,43 +6636,43 @@ export type ISubscriptionRootWeaponStatusByPkArgs = {
 export type ITeam = {
   createdAt: Scalars['timestamp'];
   id: Scalars['Int'];
+  /** An array relationship */
+  matches: Array<IMatchTeamsTeam>;
+  /** An aggregated array relationship */
+  matches_aggregate: IMatchTeamsTeamAggregate;
   name?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  players: Array<ITeamPlayersPlayer>;
+  /** An aggregated array relationship */
+  players_aggregate: ITeamPlayersPlayerAggregate;
   /** An object relationship */
   round?: Maybe<IRound>;
   roundsWonId?: Maybe<Scalars['Int']>;
-  /** An array relationship */
-  team_matches_matches: Array<ITeamMatchesMatch>;
-  /** An aggregated array relationship */
-  team_matches_matches_aggregate: ITeamMatchesMatchAggregate;
-  /** An array relationship */
-  team_players_players: Array<ITeamPlayersPlayer>;
-  /** An aggregated array relationship */
-  team_players_players_aggregate: ITeamPlayersPlayerAggregate;
 };
 
 
 /** columns and relationships of "team" */
-export type ITeamTeamMatchesMatchesArgs = {
-  distinct_on?: Maybe<Array<ITeamMatchesMatchSelectColumn>>;
+export type ITeamMatchesArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<ITeamMatchesMatchOrderBy>>;
-  where?: Maybe<ITeamMatchesMatchBoolExp>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
 };
 
 
 /** columns and relationships of "team" */
-export type ITeamTeamMatchesMatchesAggregateArgs = {
-  distinct_on?: Maybe<Array<ITeamMatchesMatchSelectColumn>>;
+export type ITeamMatchesAggregateArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<ITeamMatchesMatchOrderBy>>;
-  where?: Maybe<ITeamMatchesMatchBoolExp>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
 };
 
 
 /** columns and relationships of "team" */
-export type ITeamTeamPlayersPlayersArgs = {
+export type ITeamPlayersArgs = {
   distinct_on?: Maybe<Array<ITeamPlayersPlayerSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -6391,7 +6682,7 @@ export type ITeamTeamPlayersPlayersArgs = {
 
 
 /** columns and relationships of "team" */
-export type ITeamTeamPlayersPlayersAggregateArgs = {
+export type ITeamPlayersAggregateArgs = {
   distinct_on?: Maybe<Array<ITeamPlayersPlayerSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -6461,11 +6752,11 @@ export type ITeamBoolExp = {
   _or?: Maybe<Array<Maybe<ITeamBoolExp>>>;
   createdAt?: Maybe<ITimestampComparisonExp>;
   id?: Maybe<IIntComparisonExp>;
+  matches?: Maybe<IMatchTeamsTeamBoolExp>;
   name?: Maybe<IStringComparisonExp>;
+  players?: Maybe<ITeamPlayersPlayerBoolExp>;
   round?: Maybe<IRoundBoolExp>;
   roundsWonId?: Maybe<IIntComparisonExp>;
-  team_matches_matches?: Maybe<ITeamMatchesMatchBoolExp>;
-  team_players_players?: Maybe<ITeamPlayersPlayerBoolExp>;
 };
 
 /** columns and relationships of "team_matches_match" */
@@ -6700,11 +6991,11 @@ export type ITeamMinOrderBy = {
 export type ITeamOrderBy = {
   createdAt?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
+  matches_aggregate?: Maybe<IMatchTeamsTeamAggregateOrderBy>;
   name?: Maybe<IOrderBy>;
+  players_aggregate?: Maybe<ITeamPlayersPlayerAggregateOrderBy>;
   round?: Maybe<IRoundOrderBy>;
   roundsWonId?: Maybe<IOrderBy>;
-  team_matches_matches_aggregate?: Maybe<ITeamMatchesMatchAggregateOrderBy>;
-  team_players_players_aggregate?: Maybe<ITeamPlayersPlayerAggregateOrderBy>;
 };
 
 /** columns and relationships of "team_players_player" */

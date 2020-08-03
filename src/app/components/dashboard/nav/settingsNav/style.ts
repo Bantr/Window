@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 
 export const Container = styled.div`
   width: 320px;
-  height: 80%;
+  height: 100%;
   background-color: ${({ theme }): string => theme.pb};
   border-radius: 10px;
   padding: 25px 0 0 35px;
