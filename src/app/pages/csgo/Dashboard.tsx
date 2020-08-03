@@ -17,6 +17,7 @@ const TempTitle = styled.h3`
 `;
 interface IProps extends RouteComponentProps {
   path: string;
+  default?: boolean;
 }
 export const Dashboard: React.FC<IProps> = () => {
   const { userData } = React.useContext(UserContext);

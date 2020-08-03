@@ -51,6 +51,7 @@ export const NotificationList: React.FC<IProps> = ({ deletedNotifications, delet
         <SkeletonNotification index={0} />
         <SkeletonNotification index={1} />
         <SkeletonNotification index={2} />
+        <SkeletonNotification index={3} />
       </React.Fragment>
     );
   }

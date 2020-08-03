@@ -7,5 +7,5 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-color: ${({ theme }): string => theme.p};
+  background-color: ${({ theme }): string => theme.sb};
 `;

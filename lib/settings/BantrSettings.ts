@@ -11,6 +11,7 @@ class BantrSettings implements IAppSettings {
   public clientAppVersion = process.env.CLIENT_APP_VERSION;
   public faceitApiRoot = 'https://open.faceit.com/data/v4/';
   public faceitApiKey = process.env.FACEIT_API_KEY;
+  public graphQLEndpoint = 'https://graphql.bantr.app'
 }
 
 export const bantrSettings = new BantrSettings();
