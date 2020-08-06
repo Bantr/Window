@@ -28,6 +28,11 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
   const { enqueueSnackbar } = useSnackbar();
   const showErrorMessage = (): void => { enqueueSnackbar('Disconnecting failed, contact support if this error remains.'); };
 
+  function disconnectAction(): void {
+    disconnect();
+    close();
+  }
+
   React.useEffect(() => {
     authenticationService.isAuthenticated(true).then((session) => {
       if (!session || !setUserData) {
@@ -89,7 +94,7 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
       </Button>
       <ModalWrapper>
         <ConfirmationModal
-          action={disconnect}
+          action={disconnectAction}
           actionText="Disconnect"
           close={closeModal}
           description={`Are you sure you want to disconnect ${platformName}?`}
