@@ -53,6 +53,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
   }
 
+  form {
+    width: 100%;
+  }
+
  a.highlight {
     color: ${({ theme }): string => theme.p};
     text-decoration-line: underline;
@@ -100,9 +104,6 @@ export const GlobalStyle = createGlobalStyle`
     list-style-position: inside;
     margin: 10px 0;
   }
-
-  /* tooltip style enhancements */
-  .rc-tooltip-inner {min-height: 18px;}
 
   /* custom scrollbar */
   ::-webkit-scrollbar {width: 10px;}
@@ -175,6 +176,45 @@ export const GlobalStyle = createGlobalStyle`
   .c3-circle {
     fill: ${({ theme }): string => theme.p};
   }
+
+  /* tooltip style enhancements */
+
+  .rc-tooltip-inner {
+    background-color: ${({ theme }): string => theme.p};
+    min-height: 18px;
+  }
+
+  .rc-tooltip-placement-left {
+    .rc-tooltip-arrow {
+      border-left-color: ${({ theme }): string => theme.p};
+    }
+  }
+
+  .rc-tooltip-placement-bottom {
+    .rc-tooltip-arrow {
+      border-bottom-color: ${({ theme }): string => theme.p};
+    }
+  }
+
+  .rc-tooltip-placement-top {
+    .rc-tooltip-arrow {
+      border-top-color: ${({ theme }): string => theme.p};
+    }
+  }
+
+  .rc-tooltip-placement-right{
+    .rc-tooltip-arrow {
+      border-right-color: ${({ theme }): string => theme.p};
+    }
+  }
+
+/* Native firefox scrollbar shows on top of simplebar scrollbar. So if in simplebar container, hide the native scrollbar. */
+.simplebar-content-wrapper {
+/* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  /*overflow: hidden!important;*/
+}
 `;
 
 export type Props = {

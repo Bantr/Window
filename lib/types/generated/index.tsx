@@ -11,6 +11,8 @@ export type Scalars = {
   bomb_status_type_enum: any;
   date: any;
   player_info_weapon_enum: any;
+  round_endreason_enum: any;
+  team_startingside_enum: any;
   timestamp: any;
   utility_activated_type_enum: any;
   utility_thrown_type_enum: any;
@@ -5313,10 +5315,11 @@ export type IQueryRootWeaponStatusByPkArgs = {
 /** columns and relationships of "round" */
 export type IRound = {
   /** An array relationship */
-  bomb_statuses: Array<IBombStatus>;
+  bombStatusChanges: Array<IBombStatus>;
   /** An aggregated array relationship */
-  bomb_statuses_aggregate: IBombStatusAggregate;
+  bombStatusChanges_aggregate: IBombStatusAggregate;
   createdAt: Scalars['timestamp'];
+  endReason: Scalars['round_endreason_enum'];
   endTick: Scalars['Int'];
   id: Scalars['Int'];
   /** An array relationship */
@@ -5328,40 +5331,38 @@ export type IRound = {
   matchId?: Maybe<Scalars['Int']>;
   officialEndTick: Scalars['Int'];
   /** An array relationship */
-  player_blinds: Array<IPlayerBlind>;
+  playerHurts: Array<IPlayerHurt>;
   /** An aggregated array relationship */
-  player_blinds_aggregate: IPlayerBlindAggregate;
+  playerHurts_aggregate: IPlayerHurtAggregate;
   /** An array relationship */
-  player_hurts: Array<IPlayerHurt>;
+  playerJumps: Array<IPlayerJump>;
   /** An aggregated array relationship */
-  player_hurts_aggregate: IPlayerHurtAggregate;
+  playerJumps_aggregate: IPlayerJumpAggregate;
   /** An array relationship */
-  player_jumps: Array<IPlayerJump>;
+  playersBlinded: Array<IPlayerBlind>;
   /** An aggregated array relationship */
-  player_jumps_aggregate: IPlayerJumpAggregate;
+  playersBlinded_aggregate: IPlayerBlindAggregate;
   startTick: Scalars['Int'];
   /** An array relationship */
-  teams: Array<ITeam>;
+  utilityActivated: Array<IUtilityActivated>;
   /** An aggregated array relationship */
-  teams_aggregate: ITeamAggregate;
+  utilityActivated_aggregate: IUtilityActivatedAggregate;
   /** An array relationship */
-  utility_activateds: Array<IUtilityActivated>;
+  utilityThrown: Array<IUtilityThrown>;
   /** An aggregated array relationship */
-  utility_activateds_aggregate: IUtilityActivatedAggregate;
+  utilityThrown_aggregate: IUtilityThrownAggregate;
   /** An array relationship */
-  utility_throwns: Array<IUtilityThrown>;
+  weaponStatusChanges: Array<IWeaponStatus>;
   /** An aggregated array relationship */
-  utility_throwns_aggregate: IUtilityThrownAggregate;
-  /** An array relationship */
-  weapon_statuses: Array<IWeaponStatus>;
-  /** An aggregated array relationship */
-  weapon_statuses_aggregate: IWeaponStatusAggregate;
-  winReason: Scalars['Int'];
+  weaponStatusChanges_aggregate: IWeaponStatusAggregate;
+  /** An object relationship */
+  winningTeam?: Maybe<ITeam>;
+  winningTeamId?: Maybe<Scalars['Int']>;
 };
 
 
 /** columns and relationships of "round" */
-export type IRoundBombStatusesArgs = {
+export type IRoundBombStatusChangesArgs = {
   distinct_on?: Maybe<Array<IBombStatusSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5371,7 +5372,7 @@ export type IRoundBombStatusesArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundBombStatusesAggregateArgs = {
+export type IRoundBombStatusChangesAggregateArgs = {
   distinct_on?: Maybe<Array<IBombStatusSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5397,26 +5398,6 @@ export type IRoundKillsAggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<IKillOrderBy>>;
   where?: Maybe<IKillBoolExp>;
-};
-
-
-/** columns and relationships of "round" */
-export type IRoundPlayerBlindsArgs = {
-  distinct_on?: Maybe<Array<IPlayerBlindSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<IPlayerBlindOrderBy>>;
-  where?: Maybe<IPlayerBlindBoolExp>;
-};
-
-
-/** columns and relationships of "round" */
-export type IRoundPlayerBlindsAggregateArgs = {
-  distinct_on?: Maybe<Array<IPlayerBlindSelectColumn>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<IPlayerBlindOrderBy>>;
-  where?: Maybe<IPlayerBlindBoolExp>;
 };
 
 
@@ -5461,27 +5442,27 @@ export type IRoundPlayerJumpsAggregateArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundTeamsArgs = {
-  distinct_on?: Maybe<Array<ITeamSelectColumn>>;
+export type IRoundPlayersBlindedArgs = {
+  distinct_on?: Maybe<Array<IPlayerBlindSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<ITeamOrderBy>>;
-  where?: Maybe<ITeamBoolExp>;
+  order_by?: Maybe<Array<IPlayerBlindOrderBy>>;
+  where?: Maybe<IPlayerBlindBoolExp>;
 };
 
 
 /** columns and relationships of "round" */
-export type IRoundTeamsAggregateArgs = {
-  distinct_on?: Maybe<Array<ITeamSelectColumn>>;
+export type IRoundPlayersBlindedAggregateArgs = {
+  distinct_on?: Maybe<Array<IPlayerBlindSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<ITeamOrderBy>>;
-  where?: Maybe<ITeamBoolExp>;
+  order_by?: Maybe<Array<IPlayerBlindOrderBy>>;
+  where?: Maybe<IPlayerBlindBoolExp>;
 };
 
 
 /** columns and relationships of "round" */
-export type IRoundUtilityActivatedsArgs = {
+export type IRoundUtilityActivatedArgs = {
   distinct_on?: Maybe<Array<IUtilityActivatedSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5491,7 +5472,7 @@ export type IRoundUtilityActivatedsArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundUtilityActivatedsAggregateArgs = {
+export type IRoundUtilityActivatedAggregateArgs = {
   distinct_on?: Maybe<Array<IUtilityActivatedSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5501,7 +5482,7 @@ export type IRoundUtilityActivatedsAggregateArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundUtilityThrownsArgs = {
+export type IRoundUtilityThrownArgs = {
   distinct_on?: Maybe<Array<IUtilityThrownSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5511,7 +5492,7 @@ export type IRoundUtilityThrownsArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundUtilityThrownsAggregateArgs = {
+export type IRoundUtilityThrownAggregateArgs = {
   distinct_on?: Maybe<Array<IUtilityThrownSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5521,7 +5502,7 @@ export type IRoundUtilityThrownsAggregateArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundWeaponStatusesArgs = {
+export type IRoundWeaponStatusChangesArgs = {
   distinct_on?: Maybe<Array<IWeaponStatusSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5531,7 +5512,7 @@ export type IRoundWeaponStatusesArgs = {
 
 
 /** columns and relationships of "round" */
-export type IRoundWeaponStatusesAggregateArgs = {
+export type IRoundWeaponStatusChangesAggregateArgs = {
   distinct_on?: Maybe<Array<IWeaponStatusSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5589,7 +5570,7 @@ export type IRoundAvgFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "round" */
@@ -5599,7 +5580,7 @@ export type IRoundAvgOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** Boolean expression to filter rows from the table "round". All fields are combined with a logical 'AND'. */
@@ -5607,23 +5588,38 @@ export type IRoundBoolExp = {
   _and?: Maybe<Array<Maybe<IRoundBoolExp>>>;
   _not?: Maybe<IRoundBoolExp>;
   _or?: Maybe<Array<Maybe<IRoundBoolExp>>>;
-  bomb_statuses?: Maybe<IBombStatusBoolExp>;
+  bombStatusChanges?: Maybe<IBombStatusBoolExp>;
   createdAt?: Maybe<ITimestampComparisonExp>;
+  endReason?: Maybe<IRoundEndreasonEnumComparisonExp>;
   endTick?: Maybe<IIntComparisonExp>;
   id?: Maybe<IIntComparisonExp>;
   kills?: Maybe<IKillBoolExp>;
   match?: Maybe<IMatchBoolExp>;
   matchId?: Maybe<IIntComparisonExp>;
   officialEndTick?: Maybe<IIntComparisonExp>;
-  player_blinds?: Maybe<IPlayerBlindBoolExp>;
-  player_hurts?: Maybe<IPlayerHurtBoolExp>;
-  player_jumps?: Maybe<IPlayerJumpBoolExp>;
+  playerHurts?: Maybe<IPlayerHurtBoolExp>;
+  playerJumps?: Maybe<IPlayerJumpBoolExp>;
+  playersBlinded?: Maybe<IPlayerBlindBoolExp>;
   startTick?: Maybe<IIntComparisonExp>;
-  teams?: Maybe<ITeamBoolExp>;
-  utility_activateds?: Maybe<IUtilityActivatedBoolExp>;
-  utility_throwns?: Maybe<IUtilityThrownBoolExp>;
-  weapon_statuses?: Maybe<IWeaponStatusBoolExp>;
-  winReason?: Maybe<IIntComparisonExp>;
+  utilityActivated?: Maybe<IUtilityActivatedBoolExp>;
+  utilityThrown?: Maybe<IUtilityThrownBoolExp>;
+  weaponStatusChanges?: Maybe<IWeaponStatusBoolExp>;
+  winningTeam?: Maybe<ITeamBoolExp>;
+  winningTeamId?: Maybe<IIntComparisonExp>;
+};
+
+
+/** expression to compare columns of type round_endreason_enum. All fields are combined with logical 'AND'. */
+export type IRoundEndreasonEnumComparisonExp = {
+  _eq?: Maybe<Scalars['round_endreason_enum']>;
+  _gt?: Maybe<Scalars['round_endreason_enum']>;
+  _gte?: Maybe<Scalars['round_endreason_enum']>;
+  _in?: Maybe<Array<Scalars['round_endreason_enum']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['round_endreason_enum']>;
+  _lte?: Maybe<Scalars['round_endreason_enum']>;
+  _neq?: Maybe<Scalars['round_endreason_enum']>;
+  _nin?: Maybe<Array<Scalars['round_endreason_enum']>>;
 };
 
 /** aggregate max on columns */
@@ -5633,7 +5629,7 @@ export type IRoundMaxFields = {
   matchId?: Maybe<Scalars['Int']>;
   officialEndTick?: Maybe<Scalars['Int']>;
   startTick?: Maybe<Scalars['Int']>;
-  winReason?: Maybe<Scalars['Int']>;
+  winningTeamId?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "round" */
@@ -5643,7 +5639,7 @@ export type IRoundMaxOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate min on columns */
@@ -5653,7 +5649,7 @@ export type IRoundMinFields = {
   matchId?: Maybe<Scalars['Int']>;
   officialEndTick?: Maybe<Scalars['Int']>;
   startTick?: Maybe<Scalars['Int']>;
-  winReason?: Maybe<Scalars['Int']>;
+  winningTeamId?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "round" */
@@ -5663,34 +5659,37 @@ export type IRoundMinOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** ordering options when selecting data from "round" */
 export type IRoundOrderBy = {
-  bomb_statuses_aggregate?: Maybe<IBombStatusAggregateOrderBy>;
+  bombStatusChanges_aggregate?: Maybe<IBombStatusAggregateOrderBy>;
   createdAt?: Maybe<IOrderBy>;
+  endReason?: Maybe<IOrderBy>;
   endTick?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   kills_aggregate?: Maybe<IKillAggregateOrderBy>;
   match?: Maybe<IMatchOrderBy>;
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
-  player_blinds_aggregate?: Maybe<IPlayerBlindAggregateOrderBy>;
-  player_hurts_aggregate?: Maybe<IPlayerHurtAggregateOrderBy>;
-  player_jumps_aggregate?: Maybe<IPlayerJumpAggregateOrderBy>;
+  playerHurts_aggregate?: Maybe<IPlayerHurtAggregateOrderBy>;
+  playerJumps_aggregate?: Maybe<IPlayerJumpAggregateOrderBy>;
+  playersBlinded_aggregate?: Maybe<IPlayerBlindAggregateOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  teams_aggregate?: Maybe<ITeamAggregateOrderBy>;
-  utility_activateds_aggregate?: Maybe<IUtilityActivatedAggregateOrderBy>;
-  utility_throwns_aggregate?: Maybe<IUtilityThrownAggregateOrderBy>;
-  weapon_statuses_aggregate?: Maybe<IWeaponStatusAggregateOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  utilityActivated_aggregate?: Maybe<IUtilityActivatedAggregateOrderBy>;
+  utilityThrown_aggregate?: Maybe<IUtilityThrownAggregateOrderBy>;
+  weaponStatusChanges_aggregate?: Maybe<IWeaponStatusAggregateOrderBy>;
+  winningTeam?: Maybe<ITeamOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** select columns of table "round" */
 export const enum IRoundSelectColumn {
   /** column name */
   CreatedAt = 'createdAt',
+  /** column name */
+  EndReason = 'endReason',
   /** column name */
   EndTick = 'endTick',
   /** column name */
@@ -5702,7 +5701,7 @@ export const enum IRoundSelectColumn {
   /** column name */
   StartTick = 'startTick',
   /** column name */
-  WinReason = 'winReason'
+  WinningTeamId = 'winningTeamId'
 };
 
 /** aggregate stddev on columns */
@@ -5712,7 +5711,7 @@ export type IRoundStddevFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "round" */
@@ -5722,7 +5721,7 @@ export type IRoundStddevOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -5732,7 +5731,7 @@ export type IRoundStddevPopFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "round" */
@@ -5742,7 +5741,7 @@ export type IRoundStddevPopOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -5752,7 +5751,7 @@ export type IRoundStddevSampFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "round" */
@@ -5762,7 +5761,7 @@ export type IRoundStddevSampOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate sum on columns */
@@ -5772,7 +5771,7 @@ export type IRoundSumFields = {
   matchId?: Maybe<Scalars['Int']>;
   officialEndTick?: Maybe<Scalars['Int']>;
   startTick?: Maybe<Scalars['Int']>;
-  winReason?: Maybe<Scalars['Int']>;
+  winningTeamId?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "round" */
@@ -5782,7 +5781,7 @@ export type IRoundSumOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate var_pop on columns */
@@ -5792,7 +5791,7 @@ export type IRoundVarPopFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "round" */
@@ -5802,7 +5801,7 @@ export type IRoundVarPopOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate var_samp on columns */
@@ -5812,7 +5811,7 @@ export type IRoundVarSampFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "round" */
@@ -5822,7 +5821,7 @@ export type IRoundVarSampOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** aggregate variance on columns */
@@ -5832,7 +5831,7 @@ export type IRoundVarianceFields = {
   matchId?: Maybe<Scalars['Float']>;
   officialEndTick?: Maybe<Scalars['Float']>;
   startTick?: Maybe<Scalars['Float']>;
-  winReason?: Maybe<Scalars['Float']>;
+  winningTeamId?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "round" */
@@ -5842,7 +5841,7 @@ export type IRoundVarianceOrderBy = {
   matchId?: Maybe<IOrderBy>;
   officialEndTick?: Maybe<IOrderBy>;
   startTick?: Maybe<IOrderBy>;
-  winReason?: Maybe<IOrderBy>;
+  winningTeamId?: Maybe<IOrderBy>;
 };
 
 /** subscription root */
@@ -6645,9 +6644,11 @@ export type ITeam = {
   players: Array<ITeamPlayersPlayer>;
   /** An aggregated array relationship */
   players_aggregate: ITeamPlayersPlayerAggregate;
-  /** An object relationship */
-  round?: Maybe<IRound>;
-  roundsWonId?: Maybe<Scalars['Int']>;
+  /** An array relationship */
+  roundsWon: Array<IRound>;
+  /** An aggregated array relationship */
+  roundsWon_aggregate: IRoundAggregate;
+  startingSide: Scalars['team_startingside_enum'];
 };
 
 
@@ -6688,6 +6689,26 @@ export type ITeamPlayersAggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<ITeamPlayersPlayerOrderBy>>;
   where?: Maybe<ITeamPlayersPlayerBoolExp>;
+};
+
+
+/** columns and relationships of "team" */
+export type ITeamRoundsWonArgs = {
+  distinct_on?: Maybe<Array<IRoundSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<IRoundOrderBy>>;
+  where?: Maybe<IRoundBoolExp>;
+};
+
+
+/** columns and relationships of "team" */
+export type ITeamRoundsWonAggregateArgs = {
+  distinct_on?: Maybe<Array<IRoundSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<IRoundOrderBy>>;
+  where?: Maybe<IRoundBoolExp>;
 };
 
 /** aggregated selection of "team" */
@@ -6736,13 +6757,11 @@ export type ITeamAggregateOrderBy = {
 /** aggregate avg on columns */
 export type ITeamAvgFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "team" */
 export type ITeamAvgOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** Boolean expression to filter rows from the table "team". All fields are combined with a logical 'AND'. */
@@ -6755,8 +6774,8 @@ export type ITeamBoolExp = {
   matches?: Maybe<IMatchTeamsTeamBoolExp>;
   name?: Maybe<IStringComparisonExp>;
   players?: Maybe<ITeamPlayersPlayerBoolExp>;
-  round?: Maybe<IRoundBoolExp>;
-  roundsWonId?: Maybe<IIntComparisonExp>;
+  roundsWon?: Maybe<IRoundBoolExp>;
+  startingSide?: Maybe<ITeamStartingsideEnumComparisonExp>;
 };
 
 /** columns and relationships of "team_matches_match" */
@@ -6963,28 +6982,24 @@ export type ITeamMatchesMatchVarianceOrderBy = {
 export type ITeamMaxFields = {
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
-  roundsWonId?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "team" */
 export type ITeamMaxOrderBy = {
   id?: Maybe<IOrderBy>;
   name?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate min on columns */
 export type ITeamMinFields = {
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
-  roundsWonId?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "team" */
 export type ITeamMinOrderBy = {
   id?: Maybe<IOrderBy>;
   name?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** ordering options when selecting data from "team" */
@@ -6994,8 +7009,8 @@ export type ITeamOrderBy = {
   matches_aggregate?: Maybe<IMatchTeamsTeamAggregateOrderBy>;
   name?: Maybe<IOrderBy>;
   players_aggregate?: Maybe<ITeamPlayersPlayerAggregateOrderBy>;
-  round?: Maybe<IRoundOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
+  roundsWon_aggregate?: Maybe<IRoundAggregateOrderBy>;
+  startingSide?: Maybe<IOrderBy>;
 };
 
 /** columns and relationships of "team_players_player" */
@@ -7207,91 +7222,91 @@ export const enum ITeamSelectColumn {
   /** column name */
   Name = 'name',
   /** column name */
-  RoundsWonId = 'roundsWonId'
+  StartingSide = 'startingSide'
+};
+
+
+/** expression to compare columns of type team_startingside_enum. All fields are combined with logical 'AND'. */
+export type ITeamStartingsideEnumComparisonExp = {
+  _eq?: Maybe<Scalars['team_startingside_enum']>;
+  _gt?: Maybe<Scalars['team_startingside_enum']>;
+  _gte?: Maybe<Scalars['team_startingside_enum']>;
+  _in?: Maybe<Array<Scalars['team_startingside_enum']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['team_startingside_enum']>;
+  _lte?: Maybe<Scalars['team_startingside_enum']>;
+  _neq?: Maybe<Scalars['team_startingside_enum']>;
+  _nin?: Maybe<Array<Scalars['team_startingside_enum']>>;
 };
 
 /** aggregate stddev on columns */
 export type ITeamStddevFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "team" */
 export type ITeamStddevOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate stddev_pop on columns */
 export type ITeamStddevPopFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "team" */
 export type ITeamStddevPopOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate stddev_samp on columns */
 export type ITeamStddevSampFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "team" */
 export type ITeamStddevSampOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate sum on columns */
 export type ITeamSumFields = {
   id?: Maybe<Scalars['Int']>;
-  roundsWonId?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "team" */
 export type ITeamSumOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate var_pop on columns */
 export type ITeamVarPopFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "team" */
 export type ITeamVarPopOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate var_samp on columns */
 export type ITeamVarSampFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "team" */
 export type ITeamVarSampOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 /** aggregate variance on columns */
 export type ITeamVarianceFields = {
   id?: Maybe<Scalars['Float']>;
-  roundsWonId?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "team" */
 export type ITeamVarianceOrderBy = {
   id?: Maybe<IOrderBy>;
-  roundsWonId?: Maybe<IOrderBy>;
 };
 
 
