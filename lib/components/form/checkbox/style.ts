@@ -14,20 +14,33 @@ export const Label = styled.label`
   user-select: none;
 `;
 
+export const Input = styled.input`
+  position: absolute;
+  visibility: hidden;
+`;
+
 // this is the container
-export const CheckboxContainer = styled.div <{ isChecked: boolean }>`
+export const CheckboxContainer = styled.div <{ isChecked?: boolean }>`
   display: flex;
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${({ theme }): string => theme.p};
-  border-radius: 2px;
-  background-color: ${({ isChecked, theme }): string => isChecked ? theme.p : 'none'};
+  border: 3px solid ${({ isChecked, theme }): string => isChecked ? theme.p : theme.placeholder};
+  border-radius: 4px;
+  background-color: ${({ isChecked, theme }): string => isChecked ? theme.p : 'transparent'};
   transition: box-shadow .125s linear, border-color .15s linear;
   cursor: pointer;
   overflow: visible;
+
+  &.placeholder {
+    border: none; /* Otherwise the border does not have the animation */
+    border-radius: 4px;
+    width: 27px;
+    height: 27px;
+    cursor: default;
+  }
 `;
 
 export const CheckMarkContainer = styled.div<{ isChecked: boolean }>`
