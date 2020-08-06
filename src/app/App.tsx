@@ -84,8 +84,10 @@ const App: React.FC = () => {
               vertical: 'top',
               horizontal: 'center'
             }}
+            autoHideDuration={5000}
             hideIconVariant={false}
             maxSnack={3}
+            preventDuplicate
           >
             <ApolloProvider client={apolloClient}>
               <UserContext.Provider value={providerUserData}>
