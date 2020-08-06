@@ -52,7 +52,7 @@ export const SideNav: React.FC<{}> = () => {
       <div>
         {links.map(({ icon, text, to, comingSoon = false }) => (
           <React.Fragment key={to}>
-            {comingSoon ? <ComingSoon>Coming soon!</ComingSoon> : ''}
+            {comingSoon ? <ComingSoon position={{ top: '150px', right: '-70px' }} /> : ''}
             <SideNavLink collapsed={collapsed} icon={icon} text={text} to={to}></SideNavLink>
           </React.Fragment>
         ))}
