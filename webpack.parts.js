@@ -113,6 +113,7 @@ exports.sentry = (appName, appVersion) => ({
       ignore: [
         'webpack.config.js',
         'webpack.parts.js',
+        'src/polyfills.ts',
         'cypress',
         'storybook',
         'public',
@@ -120,8 +121,7 @@ exports.sentry = (appName, appVersion) => ({
         'scripts'
       ],
       ext: ['.ts',],
-      release: `${appName}-v${appVersion}`,
-      configFile: '.sentry.properties',
+      release: `v${appVersion}`,
     })
   ]
 });
