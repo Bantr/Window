@@ -39,6 +39,7 @@ const productionConfig = merge([
   parts.minimizeImages(),
   parts.ServiceWorker(),
   parts.CopyPublicFolder(),
+  parts.sentry(process.env.npm_package_name, process.env.npm_package_version)
 ]);
 
 const developmentConfig = merge([
@@ -54,7 +55,6 @@ const developmentConfig = merge([
 ]);
 
 const CIConfig = merge([
-  parts.sentry(process.env.npm_package_name, process.env.npm_package_version),
   parts.istanbul()
 ])
 

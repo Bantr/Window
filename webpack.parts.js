@@ -215,7 +215,7 @@ exports.istanbul = () => ({
       test: /\.tsx?$/,
       enforce: 'post', // needed with babel
       include: [path.resolve('src/'), path.resolve('lib/')],
-      exclude: [/node_modules/],
+      exclude: [/node_modules/, path.resolve('lib/types/generated/index.tsx'), path.resolve('lib/icons')],
       loader: 'istanbul-instrumenter-loader',
       options: { esModules: true }
     }]
