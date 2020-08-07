@@ -39,7 +39,7 @@ const productionConfig = merge([
   parts.minimizeImages(),
   parts.ServiceWorker(),
   parts.CopyPublicFolder(),
-  parts.sentry(process.env.npm_package_name, process.env.npm_package_version)
+  parts.sentry(process.env.npm_package_version, process.env.SENTRY_AUTH_TOKEN)
 ]);
 
 const developmentConfig = merge([

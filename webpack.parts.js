@@ -105,26 +105,32 @@ exports.sourceMap = () => ({
 });
 
 // This lets you view source code context obtained from stack traces in their original untransformed form.
-exports.sentry = (appName, appVersion) => ({
-  plugins: [
-    new SentryWebpackPlugin({
-      include: '.',
-      ignoreFile: '.gitignore',
-      ignore: [
-        'webpack.config.js',
-        'webpack.parts.js',
-        'src/polyfills.ts',
-        'cypress',
-        'storybook',
-        'public',
-        '@types',
-        'scripts'
-      ],
-      ext: ['.ts',],
-      release: `v${appVersion}`,
-    })
-  ]
-});
+exports.sentry = (appVersion, token) => {
+  if (token) {
+    return (
+      {
+        plugins: [
+          new SentryWebpackPlugin({
+            include: '.',
+            ignoreFile: '.gitignore',
+            ignore: [
+              'webpack.config.js',
+              'webpack.parts.js',
+              'src/polyfills.ts',
+              'cypress',
+              'storybook',
+              'public',
+              '@types',
+              'scripts'
+            ],
+            ext: ['.ts',],
+            release: `v${appVersion}`,
+          })
+        ]
+      })
+  }
+  return null
+};
 
 exports.RebuildOnModuleInstall = () => ({
   plugins: [new WatchMissingNodeModulesPlugin(path.resolve('node_modules'))]

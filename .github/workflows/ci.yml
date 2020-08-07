@@ -32,4 +32,4 @@ jobs:
       - run: npm ci --cache .npm --prefer-offline
       - run: npm run build
         env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Uploads source maps to sentry.
