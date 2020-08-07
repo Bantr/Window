@@ -6,12 +6,12 @@ const Container = styled.div`
   background-color: pink;
 `;
 
-export const MatchRow: React.FC<{}> = () => (
+export const MatchRow: React.FC = () => (
   <Container>
     this is a match
   </Container>
 );
 
-export const MatchRowChild: React.FC<{}> = () => (
+export const MatchRowChild: React.FC = () => (
   <div>this is a matchchild</div>
 );

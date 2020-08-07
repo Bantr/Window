@@ -22,6 +22,6 @@ export const SearchResult: React.FC<ISearchResultProps> = () => (
   <div>search result</div>
 );
 
-export const EmptySearchResult: React.FC<{}> = () => (
+export const EmptySearchResult: React.FC = () => (
   <div>no search result found</div>
 );

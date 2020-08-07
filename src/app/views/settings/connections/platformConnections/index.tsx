@@ -10,7 +10,7 @@ interface IPlatformInfo {
   username: string;
 }
 
-export const PlatformConnections: React.FC<{}> = () => {
+export const PlatformConnections: React.FC = () => {
   const { userData } = React.useContext(UserContext);
   if (!userData) { throw new Error('User context not defined'); }
 

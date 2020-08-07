@@ -10,7 +10,7 @@ import { Settings } from './settings';
 import { Avatar, Header, Inner, Left, Right } from './style';
 import Tooltip from 'rc-tooltip';
 
-export const HeaderNav: React.FC<{}> = () => {
+export const HeaderNav: React.FC = () => {
   const { userData } = React.useContext(UserContext);
   const [dropDownVisible, setDropDownVisible] = React.useState(false);
   const containerRef = React.createRef<HTMLDivElement>();

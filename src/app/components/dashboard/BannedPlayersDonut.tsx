@@ -29,7 +29,7 @@ const GET_TRACKED_ACCOUNTS_WITH_BAN = gql`
   }
 `;
 
-export const BannedPlayersDonut: React.FC<{}> = () => {
+export const BannedPlayersDonut: React.FC = () => {
   const { loading, error, data } = useQuery<IPlayerData>(GET_TRACKED_ACCOUNTS_WITH_BAN);
 
   // TODO: fix decent error handling (show error on component?)

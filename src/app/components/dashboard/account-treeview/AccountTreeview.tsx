@@ -86,7 +86,7 @@ const GET_TRACKED_ACCOUNTS = gql`
   }
 `;
 
-export const AccountTreeview: React.FC<{}> = () => {
+export const AccountTreeview: React.FC = () => {
   const limit = 50;
   const { userData } = React.useContext(UserContext);
 

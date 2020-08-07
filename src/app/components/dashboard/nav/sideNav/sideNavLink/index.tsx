@@ -19,7 +19,7 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => 
           placement="right"
           trigger="hover"
         >
-          <Link getProps={({ isCurrent }): object => ({ className: isCurrent ? 'link active' : 'link' })} to={to}>
+          <Link getProps={({ isCurrent }): Record<string, unknown> => ({ className: isCurrent ? 'link active' : 'link' })} to={to}>
             <IconContainer>
               {icon}
             </IconContainer>
@@ -32,7 +32,7 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => 
           </Link>
         </Tooltip>
         :
-        <Link getProps={({ isCurrent }): object => ({ className: isCurrent ? 'link active' : 'link' })} to={to}>
+        <Link getProps={({ isCurrent }): Record<string, unknown> => ({ className: isCurrent ? 'link active' : 'link' })} to={to}>
           <IconContainer>
             {icon}
           </IconContainer>

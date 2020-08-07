@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Title } from 'lib/components';
 import { Container, Nav, StyledLink } from './style';
 
-export const SettingsNav: React.FC<{}> = () => (
+export const SettingsNav: React.FC = () => (
   <Container data-cy="settingsNav">
     <Title align="left" size="massive" type="h2">Settings</Title>
     <Nav>
