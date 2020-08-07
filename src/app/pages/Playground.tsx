@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Playground as PrismaPlayground, store } from 'graphql-playground-react';
 import { bantrSettings } from 'lib/settings';
 import { RouteComponentProps } from '@reach/router';
-import { UserContext } from 'lib/hooks';
+import { UserContext } from 'lib/context';
 
 const settings = {
   'editor.theme': 'dark',
@@ -30,7 +30,7 @@ export const Playground: React.FC<RouteComponentProps> = () => {
       </Helmet>
       <Provider store={store}>
         <PrismaPlayground
-          endpoint={bantrSettings.graphQLEndpoint}
+          endpoint={`https://${bantrSettings.graphQLEndpoint}`}
           headers={headers}
           settings={settings}
         />

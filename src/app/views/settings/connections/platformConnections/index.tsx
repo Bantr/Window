@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Title } from 'lib/components';
 import { Connection } from './connection';
-import { UserContext } from 'lib/hooks';
+import { UserContext } from 'lib/context';
 
 interface IPlatformInfo {
   accountId: string;
