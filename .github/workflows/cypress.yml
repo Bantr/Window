@@ -16,7 +16,7 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - run: npm ci --cache .npm --prefer-offline
-      - run: npm run start
+      - run: npm run start:ci
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:

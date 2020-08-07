@@ -26,6 +26,7 @@
     "serve": "serve ./dist --no-clipboard -s --listen ${HOSTNAME:-'http://localhost':{PORT:-3000}",
     "serve:ci": "serve ./dist --no-clipboard -s --listen ${PORT:-3000} & wait-on ${HOSTNAME:-'http://localhost'}:${PORT:-3000}",
     "sort": "sort-package-json package.json",
+    "start:ci": "webpack-dev-server --env.mode=development --progress",
     "prestart": "npm run graphql:generate",
     "start": "webpack-dev-server --env.mode=development --progress",
     "storybook": "node storybook.setup.js"
