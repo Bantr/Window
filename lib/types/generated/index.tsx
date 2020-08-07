@@ -7478,6 +7478,7 @@ export const enum IUserSelectColumn {
 export type IUserSettings = {
   lastKnownMatch?: Maybe<Scalars['String']>;
   matchAuthCode?: Maybe<Scalars['String']>;
+  matchmakingAuthFailed: Scalars['Boolean'];
   notificationCommunityEnabled: Scalars['Boolean'];
   notificationDiscordEnabled: Scalars['Boolean'];
   notificationEconomyEnabled: Scalars['Boolean'];
@@ -7495,6 +7496,7 @@ export type IUserSettingsBoolExp = {
   _or?: Maybe<Array<Maybe<IUserSettingsBoolExp>>>;
   lastKnownMatch?: Maybe<IStringComparisonExp>;
   matchAuthCode?: Maybe<IStringComparisonExp>;
+  matchmakingAuthFailed?: Maybe<IBooleanComparisonExp>;
   notificationCommunityEnabled?: Maybe<IBooleanComparisonExp>;
   notificationDiscordEnabled?: Maybe<IBooleanComparisonExp>;
   notificationEconomyEnabled?: Maybe<IBooleanComparisonExp>;
@@ -7508,6 +7510,7 @@ export type IUserSettingsBoolExp = {
 export type IUserSettingsOrderBy = {
   lastKnownMatch?: Maybe<IOrderBy>;
   matchAuthCode?: Maybe<IOrderBy>;
+  matchmakingAuthFailed?: Maybe<IOrderBy>;
   notificationCommunityEnabled?: Maybe<IOrderBy>;
   notificationDiscordEnabled?: Maybe<IOrderBy>;
   notificationEconomyEnabled?: Maybe<IOrderBy>;
@@ -7523,6 +7526,8 @@ export const enum IUserSettingsSelectColumn {
   LastKnownMatch = 'lastKnownMatch',
   /** column name */
   MatchAuthCode = 'matchAuthCode',
+  /** column name */
+  MatchmakingAuthFailed = 'matchmakingAuthFailed',
   /** column name */
   NotificationCommunityEnabled = 'notificationCommunityEnabled',
   /** column name */

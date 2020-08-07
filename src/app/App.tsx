@@ -8,10 +8,11 @@ import { authenticationService } from 'lib/services';
 import { SnackbarProvider } from 'notistack';
 import { theme } from '../constants/theme';
 import { RetryLink } from '@apollo/client/link/retry';
-import { InMemoryCache } from '@apollo/client/cache';
-import { ApolloClient, ApolloLink, ApolloProvider, HttpLink } from '@apollo/client';
+import { ApolloClient, ApolloLink, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { SubscriptionClient } from 'subscriptions-transport-ws';
+import { WebSocketLink } from '@apollo/client/link/ws';
 import { AppLoad } from './views/appLoad';
-import { IUserData, UserContext } from 'lib/hooks';
+import { IUserData, UserContext } from 'lib/context';
 import { bantrSettings } from 'lib/settings';
 
 /* tooltip styling */
@@ -35,7 +36,7 @@ const App: React.FC = () => {
   const [userData, setUserData] = React.useState(defaultUserData);
   const providerUserData = React.useMemo(() => ({ userData, setUserData }), [userData, setUserData]);
   const [isLoading, setLoading] = React.useState(true);
-  const [apiKey, setApiKey] = React.useState('no-key');
+  const [apiKey, setApiKey] = React.useState<string>(null);
 
   async function getSession(): Promise<IUserData> {
     return await authenticationService.isAuthenticated();
@@ -43,7 +44,6 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     // should only check onLoad if the session exists, if the user has been authenticated in the past.
-
     getSession().then((session: IUserData) => {
       if (session) {
         setUserData({ ...session });
@@ -52,22 +52,20 @@ const App: React.FC = () => {
       setLoading(false);
       return;
     });
-    setLoading(false);
   }, []);
+
+  // Backend expects if the apiKey does not exist it does not send an empty one.
+  const headers = apiKey ? { headers: { 'bantr-graphql': apiKey } } : null;
 
   const link = ApolloLink.from([
     new RetryLink(),
-    new HttpLink({
-      uri: bantrSettings.graphQLEndpoint,
-      // this should become same origin
-      credentials: 'same-origin',
-      headers: {
-        'BANTR-GRAPHQL': apiKey
-      }
-    })
+    new WebSocketLink(new SubscriptionClient(`wss://${bantrSettings.graphQLEndpoint}`, { reconnect: true, connectionParams: headers }))
   ]);
 
-  const apolloClient = new ApolloClient({ link, cache: new InMemoryCache() });
+  const apolloClient = new ApolloClient({
+    cache: new InMemoryCache(),
+    link
+  });
 
   if (isLoading) {
     return (

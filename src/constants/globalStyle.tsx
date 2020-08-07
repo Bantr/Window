@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
   #root {
     max-width: 1920px;
     margin: 0 auto;
+    overflow-x: hidden;
 
     @media (min-width: 1921px) {
       margin-top: 25px;
