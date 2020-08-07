@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { routingService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
-import appTemp from '../../assets/images/app-temp.png';
+import appTemp from '../../../assets/images/app-temp.png';
 
 import {
   Container,
@@ -12,13 +12,7 @@ import {
   Window
 } from './style';
 
-interface IFormInputs {
-  default: string;
-  readOnly: string;
-  required: string;
-}
-
-export const Body: React.FC = () => (
+export const Landing: React.FC = () => (
   <Container>
     <HeroTitle>
       Extensive <span> ban </span> notifications.
