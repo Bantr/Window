@@ -215,17 +215,24 @@ exports.loaders = ({ filename }) => ({
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          },
           {
             loader: 'ts-loader',
-            options: { getCustomTransformers: () => ({ before: [styledComponentsTransformer] }) }
+            options: {
+              getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
+            }
           }
         ]
       },
       {
         test: /\.(jsx)$/,
         exclude: /node_modules/,
-        use: ['babel']
+        use: { loader: 'babel', options: { cacheDirectory: true } }
       },
       {
         test: /\.html$/,

@@ -6,7 +6,7 @@ build/Release$
 
 # graphql
 schema.graphql
-cypress/videos
+cypress/videos/*
 cypress/screenshots
 
 # dependency directories

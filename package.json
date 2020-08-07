@@ -19,6 +19,8 @@
     "graphql:generate": "graphql-codegen --config gqlTypeGenerator.yml --require dotenv/config",
     "graphql:schema": "./scripts/getGraphqlSchema.sh",
     "lint": "eslint . -c ./.eslintrc.js --ext .ts,.tsx",
+    "report:coverage": "npx nyc@latest report --reporter=html",
+    "report:coverage:text": "npx nyc@latest report --reporter=text",
     "lint:css": "stylelint '**/*.tsx'",
     "lint:fix": "eslint --fix . -c ./.eslintrc.js --ext .ts,.tsx",
     "serve": "serve ./dist --no-clipboard -s --listen ${HOSTNAME:-'http://localhost':{PORT:-3000}",

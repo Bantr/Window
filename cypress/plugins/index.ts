@@ -1,4 +1,3 @@
-import codeCoverageTask from '@cypress/code-coverage/task';
 import * as fs from 'fs';
 import * as path from 'path';
 /**
@@ -7,10 +6,10 @@ import * as path from 'path';
 export default (on: any, config: any): any => {
   on('task', {
     getSchema() {
-      return fs.readFileSync(path.resolve(__dirname, '../schema.graphql'), 'utf8');
+      return fs.readFileSync(path.resolve(__dirname, '../../lib/graphql/schema.graphql'), 'utf8');
     }
   });
-
-  codeCoverageTask(on, config);
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('@cypress/code-coverage/task')(on, config);
   return config;
 };

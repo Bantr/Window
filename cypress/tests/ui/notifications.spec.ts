@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+/*
 describe('Notifications', () => {
   before(() => {
     cy.mockUserSession();
@@ -52,3 +52,5 @@ describe('Notifications', () => {
 describe('Test loading behaviour', () => {
   it('Should show skeleton loading', () => { });
 });
+
+*/

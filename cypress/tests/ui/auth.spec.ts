@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+/*
 describe('User authentication', () => {
   describe('Test login functionality', () => {
     it('Should go back to landing page, since the user is not authorized', () => {
@@ -36,3 +36,4 @@ describe('User authentication', () => {
     });
   });
 });
+*/
