@@ -25,6 +25,35 @@ const chalk = require('chalk');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
+const babelOptions =
+{
+  cacheDirectory: true,
+  presets: [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  plugins: [
+    "babel-plugin-styled-components",
+    "react-hot-loader/babel",
+    "istanbul",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ],
+    [
+      "react-remove-properties",
+      {
+        "properties": [
+          "data-cy"
+        ]
+      }
+    ]
+  ]
+};
+
 exports.start = (ci) => {
   console.log('Webpack has been started..');
   console.log('CI: ', chalk.green(ci ? true : false));
@@ -80,7 +109,6 @@ exports.devServer = ({ host, port } = { host: 'localhost', port: 8080 }) => ({
       warnings: false,
       errors: true
     },
-    compress: true,
     disableHostCheck: true,
     public: 'dev-client.bantr.app',
     historyApiFallback: true, // path changes react router dom.,
@@ -217,9 +245,7 @@ exports.loaders = ({ filename }) => ({
         use: [
           {
             loader: 'babel-loader',
-            options: {
-              cacheDirectory: true
-            }
+            options: babelOptions
           },
           {
             loader: 'ts-loader',
@@ -232,7 +258,7 @@ exports.loaders = ({ filename }) => ({
       {
         test: /\.(jsx)$/,
         exclude: /node_modules/,
-        use: { loader: 'babel', options: { cacheDirectory: true } }
+        use: { loader: 'babel', options: babelOptions }
       },
       {
         test: /\.html$/,
