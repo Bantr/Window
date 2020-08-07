@@ -26,7 +26,7 @@ type NotificationResponse = {
   notification: INotificationAggregate;
 }
 
-export const NotificationBell: React.FC<{}> = () => {
+export const NotificationBell: React.FC = () => {
   const [visible, toggleVisible] = React.useState(false);
   const [hasNewNotification, setNewNotification] = React.useState<boolean>(false);
   const [deletedNotifications, setDeletedNotifications] = React.useState<number[]>([]);

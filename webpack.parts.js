@@ -69,9 +69,9 @@ exports.CopyPublicFolder = () => ({
   ]
 })
 
-exports.devServer = ({ host, port } = { host: 'localhost', port: 8080 }) => ({
+exports.devServer = ({ hostname, port } = { hostname: 'localhost', port: 8080 }) => ({
   devServer: {
-    host: host,
+    host: hostname,
     port: port,
     open: true,
     stats: 'errors-only',
@@ -80,9 +80,8 @@ exports.devServer = ({ host, port } = { host: 'localhost', port: 8080 }) => ({
       warnings: false,
       errors: true
     },
-    compress: true,
     disableHostCheck: true,
-    public: 'dev-client.bantr.app',
+    public: `${hostname}:${port}`,
     historyApiFallback: true, // path changes react router dom.,
     after: () => console.log('Development server has been started.')
   }
@@ -106,26 +105,32 @@ exports.sourceMap = () => ({
 });
 
 // This lets you view source code context obtained from stack traces in their original untransformed form.
-exports.sentry = (appName, appVersion) => ({
-  plugins: [
-    new SentryWebpackPlugin({
-      include: '.',
-      ignoreFile: '.gitignore',
-      ignore: [
-        'webpack.config.js',
-        'webpack.parts.js',
-        'cypress',
-        'storybook',
-        'public',
-        '@types',
-        'scripts'
-      ],
-      ext: ['.ts',],
-      release: `${appName}-v${appVersion}`,
-      configFile: '.sentry.properties',
-    })
-  ]
-});
+exports.sentry = (appVersion, token) => {
+  if (token) {
+    return (
+      {
+        plugins: [
+          new SentryWebpackPlugin({
+            include: '.',
+            ignoreFile: '.gitignore',
+            ignore: [
+              'webpack.config.js',
+              'webpack.parts.js',
+              'src/polyfills.ts',
+              'cypress',
+              'storybook',
+              'public',
+              '@types',
+              'scripts'
+            ],
+            ext: ['.ts',],
+            release: `v${appVersion}`,
+          })
+        ]
+      })
+  }
+  return null
+};
 
 exports.RebuildOnModuleInstall = () => ({
   plugins: [new WatchMissingNodeModulesPlugin(path.resolve('node_modules'))]
@@ -208,6 +213,21 @@ exports.aliases = () => ({
   }
 });
 
+console.log(path.resolve('src'));
+
+exports.istanbul = () => ({
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      enforce: 'post', // needed with babel
+      include: [path.resolve('src/'), path.resolve('lib/')],
+      exclude: [/node_modules/, path.resolve('lib/types/generated/index.tsx'), path.resolve('lib/icons')],
+      loader: 'istanbul-instrumenter-loader',
+      options: { esModules: true }
+    }]
+  }
+});
+
 exports.loaders = ({ filename }) => ({
   module: {
     rules: [
@@ -215,17 +235,21 @@ exports.loaders = ({ filename }) => ({
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          {
+            loader: 'babel-loader?cacheDirectory'
+          },
           {
             loader: 'ts-loader',
-            options: { getCustomTransformers: () => ({ before: [styledComponentsTransformer] }) }
+            options: {
+              getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
+            }
           }
         ]
       },
       {
         test: /\.(jsx)$/,
         exclude: /node_modules/,
-        use: ['babel']
+        use: { loader: 'babel-loader?cacheDirectory' }
       },
       {
         test: /\.html$/,

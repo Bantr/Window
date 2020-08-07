@@ -3,7 +3,7 @@ import * as c3 from 'c3';
 import { Chart } from 'lib/components/dashboard';
 import { DBVISUAL } from 'lib/enums';
 
-export const BannedPerMonth: React.FC<{}> = () => {
+export const BannedPerMonth: React.FC = () => {
   const axesOptions: c3.AxesOptions = {
     x: {
       type: 'category',

@@ -36,9 +36,17 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
-
+    '@typescript-eslint/naming-convention': [
+      "error", {
+        'selector': 'interface',
+        'format': ['PascalCase'],
+        'custom': {
+          "regex": '^I[A-Z]',
+          'match': true
+        }
+      }
+    ],
     '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/interface-name-prefix': [2, { 'prefixWithI': 'always' }],
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-non-null-assertion': 0,

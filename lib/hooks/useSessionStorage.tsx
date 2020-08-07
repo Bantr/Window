@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Sentry from '@sentry/react';
 
-export function useSessionStorage(key: string, initialValue: any): [any, (value: any) => void] {
+export function useSessionStorage<T>(key: string, initialValue: T): [any, (value: any) => void] {
   const [storedValue, setStoredValue] = React.useState(() => {
     try {
       const item = window.sessionStorage.getItem(key);

@@ -44,7 +44,7 @@ const socialLinks = [
   }
 ];
 
-export const SideNav: React.FC<{}> = () => {
+export const SideNav: React.FC = () => {
   const [collapsed, setCollapsed] = useLocalStorage('sidenav-collapsed', false);
 
   return (

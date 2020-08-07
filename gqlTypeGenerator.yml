@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://graphql.bantr.app'
+schema: "https://graphql.bantr.app"
 headers:
   bantr-graphql: ${HASURA_GRAPHQL_USER_SECRET}
 overwrites: true
@@ -10,7 +10,7 @@ generates:
       - typescript-operations
     config:
       namingConvention:
-        transformUnderscore: true     # Disables default behaviour that preserve underscores.
-      typesPrefix: I                  # Prefixes all the generated types.
-      skipTypename: true              # Remove the __typename from the generated types, only add if specified.
-      constEnums: true                # Will prefix every generated with const. see docs: (https://www.typescriptlang.org/docs/handbook/enums.html)
+        transformUnderscore: true # Disables default behaviour that preserve underscores.
+      typesPrefix: I # Prefixes all the generated types.
+      skipTypename: true # Remove the __typename from the generated types, only add if specified.
+      constEnums: true # Will prefix every generated with const. see docs: (https://www.typescriptlang.org/docs/handbook/enums.html)

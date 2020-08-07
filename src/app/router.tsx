@@ -10,7 +10,7 @@ import { AppLoad } from './views/appLoad';
 
 import { favicon, faviconDark } from 'lib/images';
 
-export const Router: React.FC<{}> = () => {
+export const Router: React.FC = () => {
   const darkMode = useTheme().dark;
   const [isAuthenticated, setAuthenticated] = React.useState<boolean>(false);
   const [loading, isLoading] = React.useState<boolean>(true);

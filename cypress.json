@@ -12,9 +12,12 @@
   "trashAssetsBeforeRuns": true,
   "animationDistanceThreshold": 15,
   "env": {
-    "api": "api.bantr.app",
-    "coverage": "false"
+    "api": "api.bantr.app"
   },
   "experimentalFetchPolyfill": true,
-  "experimentalComponentTesting": true
+  "experimentalComponentTesting": true,
+  "reporter": "min",
+  "reporterOptions": {
+    "toConsole": true
+  }
 }

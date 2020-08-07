@@ -6,12 +6,12 @@ const Container = styled.div`
   background-color: green;
 `;
 
-export const BanRow: React.FC<{}> = () => (
+export const BanRow: React.FC = () => (
   <Container>
     this is a ban
   </Container>
 );
 
-export const BanRowChild: React.FC<{}> = () => (
+export const BanRowChild: React.FC = () => (
   <Container>this is a ban child</Container>
 );

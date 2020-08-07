@@ -12,8 +12,6 @@ import './Core';
 import './navigation';
 
 // Cypress default settings
-
 Cypress.on('window:before:load', win => {
-  // @ts-ignore
   win.fetch = null;
 });

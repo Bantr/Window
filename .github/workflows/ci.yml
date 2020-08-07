@@ -1,4 +1,4 @@
-name: Lint and Build (non master)
+name: Lint and Build
 
 on: [push]
 
@@ -31,3 +31,5 @@ jobs:
           node-version: "12.x"
       - run: npm ci --cache .npm --prefer-offline
       - run: npm run build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} # Uploads source maps to sentry.

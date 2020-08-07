@@ -39,7 +39,7 @@ const Select = styled.select`
   cursor: pointer;
 `;
 
-export const Dropdown: React.FC<{}> = ({ children }) => (
+export const Dropdown: React.FC = ({ children }) => (
   <Container>
     <Select>
       {children}

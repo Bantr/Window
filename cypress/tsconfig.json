@@ -2,7 +2,8 @@
   "extends": "../tsconfig.json",
   "include": [
     "./**/*.ts",
-    "tests/away"
+    "tests/away",
+    "plugins/index.js"
   ],
   "target": "node",
   "exclude": [],

@@ -39,21 +39,23 @@ const productionConfig = merge([
   parts.minimizeImages(),
   parts.ServiceWorker(),
   parts.CopyPublicFolder(),
+  parts.sentry(process.env.npm_package_version, process.env.SENTRY_AUTH_TOKEN)
 ]);
 
 const developmentConfig = merge([
   parts.loaders({ filename: '[name].[ext]' }),
   parts.devServer({
-    host: process.env.HOSTNAME,
+    hostname: process.env.HOSTNAME,
     port: process.env.PORT
   }),
   parts.sourceMap(),
   parts.RebuildOnModuleInstall(),
   parts.OSXDevSupport(),
+  parts.istanbul(), // instrument code for when using cypress
 ]);
 
 const CIConfig = merge([
-  parts.sentry(process.env.npm_package_name, process.env.npm_package_version)
+  parts.istanbul()
 ])
 
 module.exports = ({ mode }) => {

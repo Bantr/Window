@@ -87,7 +87,7 @@ export const AccountRow: React.FC<ITrackedAccount> = React.forwardRef<HTMLDivEle
   );
 });
 
-export const AccountRowPlaceholder: React.FC<{}> = () => (
+export const AccountRowPlaceholder: React.FC = () => (
   <AccountRowContainer>
     <Avatar>
       <div className="img placeholder" />

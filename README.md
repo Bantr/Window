@@ -1,5 +1,8 @@
 <h1 align="center">
   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Bantr/Koyi/Node.js%20CI">
+  <a href="https://codecov.io/gh/Bantr/Spawn">
+  <img alt="Code coverage" src="https://codecov.io/gh/Bantr/Spawn/branch/master/graph/badge.svg" />
+  </a>
  <img alt="Discord" src="https://img.shields.io/discord/626436103573864448?label=Discord">
   <br/>
   <a href="https://bantr.app">

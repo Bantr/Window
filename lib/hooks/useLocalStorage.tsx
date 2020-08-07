@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Sentry from '@sentry/react';
 
-export function useLocalStorage(key: string, initialValue: any): [any, (value: any) => void] {
+export function useLocalStorage<T>(key: string, initialValue: T): [any, (value: any) => void] {
   const [storedValue, setStoredValue] = React.useState(() => {
     try {
       const item = window.localStorage.getItem(key);
