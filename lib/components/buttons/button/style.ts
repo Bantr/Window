@@ -35,7 +35,7 @@ export const Outline = styled.button<IButtonProps>`
   align-items: center;
   flex-direction: row;
   background-color: transparent;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};
   color: ${({ theme, color }): string => (color === 'primary' ? theme.p : theme.s)};

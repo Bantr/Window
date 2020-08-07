@@ -7,3 +7,4 @@ export * from './error';
 export * from './future';
 export * from './modals';
 export { QuestionMarkTooltip } from './questionMarkTooltip';
+export * from './tags';
