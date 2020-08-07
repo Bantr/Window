@@ -25,35 +25,6 @@ const chalk = require('chalk');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
-const babelOptions =
-{
-  cacheDirectory: true,
-  presets: [
-    "@babel/preset-env",
-    "@babel/preset-react",
-    "@babel/preset-typescript"
-  ],
-  plugins: [
-    "babel-plugin-styled-components",
-    "react-hot-loader/babel",
-    "istanbul",
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "regenerator": true
-      }
-    ],
-    [
-      "react-remove-properties",
-      {
-        "properties": [
-          "data-cy"
-        ]
-      }
-    ]
-  ]
-};
-
 exports.start = (ci) => {
   console.log('Webpack has been started..');
   console.log('CI: ', chalk.green(ci ? true : false));
@@ -98,9 +69,9 @@ exports.CopyPublicFolder = () => ({
   ]
 })
 
-exports.devServer = ({ host, port } = { host: 'localhost', port: 8080 }) => ({
+exports.devServer = ({ hostname, port } = { hostname: 'localhost', port: 8080 }) => ({
   devServer: {
-    host: host,
+    host: hostname,
     port: port,
     open: true,
     stats: 'errors-only',
@@ -110,7 +81,7 @@ exports.devServer = ({ host, port } = { host: 'localhost', port: 8080 }) => ({
       errors: true
     },
     disableHostCheck: true,
-    public: 'dev-client.bantr.app',
+    public: `${hostname}:${port}`,
     historyApiFallback: true, // path changes react router dom.,
     after: () => console.log('Development server has been started.')
   }
@@ -236,6 +207,21 @@ exports.aliases = () => ({
   }
 });
 
+console.log(path.resolve('src'));
+
+exports.istanbul = () => ({
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      enforce: 'post', // needed with babel
+      include: [path.resolve('src/'), path.resolve('lib/')],
+      exclude: [/node_modules/],
+      loader: 'istanbul-instrumenter-loader',
+      options: { esModules: true }
+    }]
+  }
+});
+
 exports.loaders = ({ filename }) => ({
   module: {
     rules: [
@@ -244,8 +230,7 @@ exports.loaders = ({ filename }) => ({
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: babelOptions
+            loader: 'babel-loader?cacheDirectory'
           },
           {
             loader: 'ts-loader',
@@ -258,7 +243,7 @@ exports.loaders = ({ filename }) => ({
       {
         test: /\.(jsx)$/,
         exclude: /node_modules/,
-        use: { loader: 'babel', options: babelOptions }
+        use: { loader: 'babel-loader?cacheDirectory' }
       },
       {
         test: /\.html$/,
