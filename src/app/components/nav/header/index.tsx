@@ -8,9 +8,8 @@ import {
 } from './style';
 import { routingService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
-import { Button } from 'lib/components';
-import { Logo } from 'lib/components';
-import { UserContext } from 'lib/hooks';
+import { Button, Logo } from 'lib/components';
+import { UserContext } from 'lib/context';
 
 export const Header: React.FC = () => {
   const { userData } = React.useContext(UserContext);

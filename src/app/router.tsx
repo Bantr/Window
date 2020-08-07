@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTheme } from 'lib/hooks';
 import { Router as ReachRouter, Redirect } from '@reach/router';
-import { Csgo, Landing, NotFound, Playground, Privacy, TermsOfUse } from '../app/pages';
+import { Csgo, Home, NotFound, Playground, Privacy, TermsOfUse } from '../app/pages';
 import { Dashboard, Profile, Tracker, Compare, Tournaments, TacticalTimeout } from './pages/csgo';
 import { Appearance, Connections, Language, Notifications, Settings } from './pages/settings';
 import { authenticationService } from 'lib/services';
@@ -31,7 +31,7 @@ export const Router: React.FC<{}> = () => {
       </Helmet>
       <ReachRouter>
         <Redirect from="/csgo" to="/csgo/dashboard" />
-        <Landing path="/" />
+        <Home path="/" />
         <Privacy path="/privacy-policy" />
         <TermsOfUse path="/terms-of-use" />
         {

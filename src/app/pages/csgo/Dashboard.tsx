@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { UserContext } from 'lib/hooks';
+import { UserContext } from 'lib/context';
 // import { BannedPlayersDonut, BanFeed, BannedPerMonth, AccountTreeview } from '../../components/dashboard';
 
 const PrimaryGrid = styled.div`

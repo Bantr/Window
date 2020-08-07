@@ -2,7 +2,7 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { Container, Description, SteamContainer, InnerForm } from './style';
 import { httpService } from 'lib/services';
-import { UserContext } from 'lib/hooks';
+import { UserContext } from 'lib/context';
 import { useSnackbar } from 'notistack';
 import { ComingSoon } from 'lib/components';
 import { useQuery } from '@apollo/client';

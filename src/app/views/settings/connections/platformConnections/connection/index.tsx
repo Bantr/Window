@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { httpService, routingService, authenticationService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
-import { UserContext, useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
+import { useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
+import { UserContext } from 'lib/context';
 import { Container, ConnectionDetails, TitleContainer, CheckMarkContainer } from './style';
 import { ConfirmationModal } from 'lib/components';
 import { Button, Title } from 'lib/components';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
-import { UserContext } from 'lib/hooks';
+import { UserContext } from 'lib/context';
 import { Title } from 'lib/components';
 import { Hamburger } from 'lib/icons';
 import gql from 'graphql-tag';

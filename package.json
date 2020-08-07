@@ -64,6 +64,7 @@
     "rxjs": "^6.5.5",
     "simplebar-react": "^2.1.0",
     "styled-components": "^5.0.1",
+    "subscriptions-transport-ws": "^0.9.17",
     "typescript": "3.9.1-rc",
     "use-sound": "^1.0.2",
     "uuid": "^7.0.2",

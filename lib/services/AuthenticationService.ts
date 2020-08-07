@@ -1,4 +1,4 @@
-import { IUserData } from 'lib/hooks';
+import { IUserData } from 'lib/context';
 import { httpService } from 'lib/services';
 
 class AuthenticationService {
