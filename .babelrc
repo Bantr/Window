@@ -7,6 +7,7 @@
   "plugins": [
     "babel-plugin-styled-components",
     "react-hot-loader/babel",
+    "istanbul",
     [
       "@babel/plugin-transform-runtime",
       {

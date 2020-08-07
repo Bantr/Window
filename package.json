@@ -122,6 +122,7 @@
     "@welldone-software/why-did-you-render": "^4.2.2",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-react-remove-properties": "^0.3.0",
     "babel-plugin-styled-components": "^1.10.7",
     "babel-polyfill": "^6.26.0",

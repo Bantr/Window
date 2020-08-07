@@ -18,6 +18,7 @@ jobs:
       - run: npm ci --cache .npm --prefer-offline
       - run: npm run build
       - run: npm run serve:ci
+
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
@@ -25,3 +26,7 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Code coverage
+        uses: codecov/codeov-action@v1
+        with:
+          file: ./coverage/clover.xml
