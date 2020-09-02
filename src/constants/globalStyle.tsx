@@ -11,6 +11,15 @@ const skeletonLoading = keyframes`
   }
 `;
 
+const tooltipShow = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 export const GlobalStyle = createGlobalStyle`
   *::selection {
     background-color: ${({ theme }): string => theme.t};
@@ -22,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
   }
 
   body{
@@ -38,20 +48,22 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 1920px;
     margin: 0 auto;
     overflow-x: hidden;
-
-    @media (min-width: 1921px) {
-      margin-top: 25px;
-    }
   }
 
   *, a, p, div, li, h1, h2, h3, h4, h5, h6, header, footer {
     font-family: 'Poppins', sans-serif;
+    font-weight: 400; /* Default size */
     color: ${({ theme }): string => theme.t};
     transition: background-color 0.2s linear;
     transition: box-shadow 0.125s linear;
     margin: 0;
+    user-select: none;
     padding: 0;
     box-sizing: border-box; /* padding is included in percentages e.g. width: 100% + padding 10 will remain width 100% instead of 100%+10px */
+  }
+
+  strong {
+    font-weight: 800;
   }
 
   form {
@@ -96,6 +108,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    font-weight: 700;
     padding: 5px 20px;
     border-radius: 5px;
     border: none;
@@ -152,70 +165,84 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* c3 chart */
-  .c3-chart-arc text {
-    fill: ${({ theme }): string => theme.t};
-  }
-  .c3-legend-item text{
-    fill: ${({ theme }): string => theme.t};
-    font-size: 80%;
+  .rc-tooltip {
+    opacity: 0;
+    animation: ${tooltipShow} .15s linear forwards;
+    max-width: 500px;
   }
 
-  /* tick */
-  .domain {
+  .rc-tooltip-hidden {
     display: none;
+    opacity: 0;
   }
-  .tick {
-    fill: ${({ theme }): string => theme.t};
-    font-weight: lighter;
-  }
-
-  /* c3 styles */
-  .c3-lines-banned {
-    fill: ${({ theme }): string => theme.p}20;
-  }
-  .c3-circle {
-    fill: ${({ theme }): string => theme.p};
-  }
-
-  /* tooltip style enhancements */
 
   .rc-tooltip-inner {
     background-color: ${({ theme }): string => theme.p};
     min-height: 18px;
+    hyphens: auto;
+    overflow-wrap: break-word
   }
 
-  .rc-tooltip-placement-left {
-    .rc-tooltip-arrow {
-      border-left-color: ${({ theme }): string => theme.p};
+  /* styling for the bantr user badge <BantrUser/> */
+  .bantr-user-tooltip {
+    .rc-tooltip-inner {
+      background-color: ${({ theme }): string => theme.s};
+      font-weight: 500;
+      font-size: 1rem;
     }
   }
 
-  .rc-tooltip-placement-bottom {
-    .rc-tooltip-arrow {
-      border-bottom-color: ${({ theme }): string => theme.p};
+  .mui-snackbar {
+    color: white;
+  }
+
+  /* Styling sfor <InfoTooltip/> */
+  .info-tooltip {
+    font-size: 1.125rem;
+  }
+
+  .rc-tooltip-arrow { display: none; }
+
+  /* FIX: Native firefox scrollbar shows on top of simplebar scrollbar. So if in simplebar container, hide the native scrollbar. */
+  .simplebar-content-wrapper {
+  /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    /*overflow: hidden!important;*/
+  }
+
+  /* Fixes styling issues with the graphql playground */
+  .playground {
+    a, p, div, li, h1, h2, h3, h4, h5, h6 {
+      color: inherit;
     }
   }
 
-  .rc-tooltip-placement-top {
-    .rc-tooltip-arrow {
-      border-top-color: ${({ theme }): string => theme.p};
-    }
+  .MuiSnackbarContent-root {
+    background-color: ${({ theme }): string => theme.p};
+    color: ${({ theme }) => theme.t};
   }
 
-  .rc-tooltip-placement-right{
-    .rc-tooltip-arrow {
-      border-right-color: ${({ theme }): string => theme.p};
-    }
+  div[class^="SnackbarItem-variantSuccess-"], div[class*="SnackbarItem-variantSuccess-"] {
+    background-color: ${({ theme }): string => theme.p}!important;
+    color: white;
   }
 
-/* Native firefox scrollbar shows on top of simplebar scrollbar. So if in simplebar container, hide the native scrollbar. */
-.simplebar-content-wrapper {
-/* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  /*overflow: hidden!important;*/
-}
+  div[class^="SnackbarItem-variantError-"], div[class*="SnackbarItem-variantError-"] {
+    background-color: ${({ theme }): string => theme.error}!important;
+    color: white;
+  }
+
+  div[class^="SnackbarItem-variantInfo-"], div[class*="SnackbarItem-variantInfo-"] {
+    background-color: ${({ theme }): string => theme.p}!important;
+    color: white;
+  }
+
+/* Add custom styling to the snackbar variants (types: default, info, success, error */
+  span#client-snackbar {
+    color: white!important;
+  }
+
 `;
 
 export type Props = {

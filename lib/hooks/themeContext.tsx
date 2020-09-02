@@ -1,48 +1,34 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import React, { createContext, useContext } from 'react';
+import { ThemeProvider as StyledThemeProvider, DefaultTheme } from 'styled-components';
+import { useLocalStorage } from 'lib/hooks';
+import { THEME } from 'lib/enums';
 
 interface IThemeContext {
-  dark: boolean;
-  toggleDarkMode(): void;
+  theme: THEME;
+  changeTheme(themeName: THEME): void;
 }
+const ThemeContext = createContext<IThemeContext>({ theme: THEME.DEFAULT, changeTheme: (themeName: THEME) => { localStorage.setItem('theme', themeName); } });
+const useTheme = (): IThemeContext => useContext(ThemeContext);
 
-const defaultContextData: IThemeContext = {
-  dark: true,
-  toggleDarkMode: (): void => { }
-};
-
-const ThemeContext = createContext(defaultContextData);
-const useTheme = (): any => useContext(ThemeContext);
-
+/* theme provider */
 interface IProps {
-  theme: any;
+  getTheme: (themeName: THEME) => DefaultTheme;
   children: React.ReactNode;
 }
 
-const ThemeProvider: React.FC<IProps> = ({ theme, children }) => {
-  const [themeState, setThemeState] = useState({ dark: true, hasThemeMounted: false });
+const ThemeProvider: React.FC<IProps> = ({ getTheme, children }) => {
+  const [themeState, setThemeState] = useLocalStorage<{ theme: THEME }>('theme', { theme: THEME.DEFAULT });
 
-  useEffect(() => {
-    const lsDark = localStorage.getItem('dark') === 'true';
-    setThemeState({ ...themeState, dark: lsDark, hasThemeMounted: true });
-  }, []);
-
-  if (!themeState.hasThemeMounted) {
-    return <div />;
-  }
-  const toggleDarkMode = (): void => {
-    const dark = !themeState.dark;
-    setThemeState({ ...themeState, dark });
-    localStorage.setItem('dark', JSON.stringify(dark));
+  const changeTheme = (themeName: THEME): void => {
+    setThemeState({ theme: themeName });
   };
-  const computedTheme = themeState.dark ? theme('dark') : theme('light');
 
   return (
-    <StyledThemeProvider theme={computedTheme}>
+    <StyledThemeProvider theme={getTheme(themeState.theme)}>
       <ThemeContext.Provider
         value={{
-          dark: themeState.dark,
-          toggleDarkMode
+          theme: themeState.theme,
+          changeTheme: changeTheme
         }}>
         {children}
       </ThemeContext.Provider>
