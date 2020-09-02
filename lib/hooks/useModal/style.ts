@@ -31,7 +31,9 @@ export const Container = styled.div`
   padding: 25px 25px 15px 25px;
   transition: 0.2s all ease-in-out;
   animation: ${slideIn} .2s ease-in-out alternate;
-  box-shadow: 0 15px 40px 0 rgba(67,62,75,.3), 0 1px 15px 0 rgba(67,61,74,.15)
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
+  border-radius: 10px;
+
   p {
     text-align: left !important;
     margin-top: 15px;

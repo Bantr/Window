@@ -8,4 +8,5 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   background-color: ${({ theme }): string => theme.sb};
+  color: ${({ theme }) => theme.t};
 `;

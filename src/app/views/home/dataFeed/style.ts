@@ -45,13 +45,15 @@ export const FeedItemContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
 
   .amount {
     font-size: 6rem;
+    font-weight: 600;
+    color: white;
   }
   .text {
     font-size: 1.5rem;
     font-weight: 600;
+    color: white;
   }
 `;

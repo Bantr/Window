@@ -6,7 +6,6 @@ import * as path from 'path';
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
-
   /*
   on('task', {
     getSchema() {

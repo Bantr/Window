@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { useSnackbar } from 'notistack';
-
-import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
-
 import { joiResolver } from '@hookform/resolvers';
 import { REGEX } from '@bantr/lib/dist/constants';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as Joi from 'joi';
+import GET_MATCHMAKING_CODES from 'lib/graphql/queries/getMatchMakingCodes.gql';
 import * as Sentry from '@sentry/react';
 
 import { setCustomErrorMessages } from 'lib/helpers';
@@ -31,17 +29,6 @@ interface IFormInputs {
   lastKnownMatch: string;
   matchmakingAuthCode: string;
 }
-
-const GET_MATCHMAKING_CODES = gql`
-  query GET_MATCHMAKING_CODES {
-    user {
-      settings {
-        lastKnownMatch
-        matchAuthCode
-      }
-  }
-}
-`;
 
 export const MatchMaking: React.FC = () => {
   const { register, handleSubmit, errors, setValue, getValues, formState } = useForm<IFormInputs>({ resolver: joiResolver(schema), mode: 'onChange' });
@@ -87,7 +74,7 @@ export const MatchMaking: React.FC = () => {
 
   return (
     <Container>
-      <Title size="large" type="h4">Valve Matchmaking</Title>
+      <Title size="medium" type="h4">Valve Matchmaking</Title>
       <Paragraph>
         In order to have access to your replays, we need your game authentication code and your most recently completed match token. <br />
         These can both be found <a className="highlight" href="https://help.steampowered.com/en/wizard/HelpWithGameIssue/?appid=730&issueid=128" rel="noopener noreferrer" target="_blank">here</a>.

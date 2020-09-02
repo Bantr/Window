@@ -4,21 +4,31 @@
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "react-remove-properties",
+          {
+            "properties": [
+              "data-cy"
+            ]
+          }
+        ]
+      ]
+    },
+    "development": {
+      "plugins": [
+        "react-refresh/babel"
+      ]
+    }
+  },
   "plugins": [
     "babel-plugin-styled-components",
-    "react-hot-loader/babel",
     [
       "@babel/plugin-transform-runtime",
       {
         "regenerator": true
-      }
-    ],
-    [
-      "react-remove-properties",
-      {
-        "properties": [
-          "data-cy"
-        ]
       }
     ]
   ]

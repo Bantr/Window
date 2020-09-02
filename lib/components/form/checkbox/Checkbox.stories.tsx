@@ -3,7 +3,7 @@ import { Checkbox as CheckboxComponent } from '.';
 
 export default {
   component: CheckboxComponent,
-  title: 'Checkbox components'
+  title: 'Form'
 };
 
 export const Checkbox = (): React.ReactNode => <CheckboxComponent name="checkbox-default" />;

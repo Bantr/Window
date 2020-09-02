@@ -6,14 +6,15 @@ import { ThemeProvider } from 'lib/hooks';
 import { ErrorFallback } from 'lib/components';
 import { authenticationService } from 'lib/services';
 import { SnackbarProvider } from 'notistack';
-import { theme } from '../constants/theme';
+import { getTheme } from '../../lib/util/getTheme';
 import { RetryLink } from '@apollo/client/link/retry';
 import { ApolloClient, ApolloLink, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { WebSocketLink } from '@apollo/client/link/ws';
-import { AppLoad } from './views/appLoad';
+import { AppLoad } from './pages';
 import { IUserData, UserContext } from 'lib/context';
 import { bantrSettings } from 'lib/settings';
+import { isDevelopment } from 'lib/util';
 
 /* tooltip styling */
 import 'rc-tooltip/assets/bootstrap.css';
@@ -64,36 +65,39 @@ const App: React.FC = () => {
 
   const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
-    link
+    link,
+    name: 'marco apollo',
+    connectToDevTools: isDevelopment()
   });
 
   if (isLoading) {
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider getTheme={getTheme}>
         <AppLoad />;
+        <GlobalStyle />
       </ThemeProvider>
     );
   } else {
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider getTheme={getTheme}>
         <Sentry.ErrorBoundary fallback={ErrorFallback}>
-          <SnackbarProvider
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'center'
-            }}
-            autoHideDuration={5000}
-            hideIconVariant={false}
-            maxSnack={3}
-            preventDuplicate
-          >
-            <ApolloProvider client={apolloClient}>
-              <UserContext.Provider value={providerUserData}>
+          <ApolloProvider client={apolloClient}>
+            <UserContext.Provider value={providerUserData}>
+              <SnackbarProvider
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center'
+                }}
+                autoHideDuration={5000}
+                hideIconVariant
+                maxSnack={3}
+                preventDuplicate
+              >
                 <Router />
-                <GlobalStyle />
-              </UserContext.Provider>
-            </ApolloProvider>
-          </SnackbarProvider>
+              </SnackbarProvider>
+              <GlobalStyle />
+            </UserContext.Provider>
+          </ApolloProvider>
         </Sentry.ErrorBoundary >
       </ThemeProvider >
     );

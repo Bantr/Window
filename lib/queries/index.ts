@@ -1,1 +1,0 @@
-export { steamAvatarQuery } from './steamAvatarQuery';

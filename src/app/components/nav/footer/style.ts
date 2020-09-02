@@ -66,9 +66,7 @@ export const BottomContainer = styled.nav`
   justify-content: space-between;
 
   a {
-    will-change: transform;
     transition: transform .2s ease-in-out;
-
     &:hover{
       transform: translateY(-3px);
     }

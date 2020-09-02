@@ -1,30 +1,38 @@
 import * as React from 'react';
-import { routingService } from 'lib/services';
-import { bantrSettings } from 'lib/settings';
-import appTemp from '../../../assets/images/app-temp.png';
+import { Laptop } from './Laptop';
+import { Title, Paragraph, Button } from 'lib/components';
+import { WeaponAk47 } from 'lib/icons';
 
 import {
   Container,
-  HeroTitle,
-  HeroLead,
-  StyledButton,
-  WindowContainer,
-  Window
+  TextContainer,
+  ImageContainer
 } from './style';
 
 export const Landing: React.FC = () => (
   <Container>
-    <HeroTitle>
-      Extensive <span> ban </span> notifications.
-    </HeroTitle>
-    <HeroLead>Bantr tracks all the players you played with and against.</HeroLead>
-    <StyledButton
-      onClick={(): void => { routingService.navigateExternal(`${bantrSettings.apiRoot}/auth/steam?redirectTo=${window.location.protocol}//${window.location.hostname}/csgo`); }}
-      variant="outline">Sign up here -&gt;</StyledButton>
-    <WindowContainer>
-      <Window>
-        <img alt="Preview app temp" src={appTemp} />
-      </Window>
-    </WindowContainer>
+    <TextContainer>
+      <Title size="huge" type="h1">Get in depth <strong>CS:GO</strong> match analysis.</Title>
+      <Paragraph>
+        Get a full picture of your performances, inside and out. <br />
+        Harness the power of your data and unleash your full potential.
+      </Paragraph>
+      <Button icon={<WeaponAk47 pointer scale={1.5} />} variant="default">
+        Read more
+      </Button>
+    </TextContainer>
+    {
+      /*
+        This should eventually contain a sample application of the real app with a mocked graphql provider.
+        <WindowContainer>
+          <Window>
+            <img alt="Preview app temp" src={appTemp} />
+          </Window>
+        </WindowContainer>
+    */
+    }
+    <ImageContainer>
+      <Laptop />
+    </ImageContainer>
   </Container >
 );

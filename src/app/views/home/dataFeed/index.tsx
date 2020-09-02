@@ -2,28 +2,9 @@ import * as React from 'react';
 import { useSubscription } from '@apollo/client';
 import { Title, LiveTag } from 'lib/components';
 import { Container, FeedContainer, FeedItemContainer, Inner } from './style';
-import gql from 'graphql-tag';
 import { IPlayerAggregate, IMatchAggregate } from 'lib/types/generated';
-
-const SUBSCRIPTION_GET_PLAYER_COUNT = gql`
-  subscription GET_PLAYER_COUNT{
-    players: player_aggregate{
-      aggregate {
-        count
-      }
-    }
-  }
-`;
-
-const SUBSCRIPTION_GET_MATCH_COUNT = gql`
-  subscription GET_MATCH_COUNT{
-    matches: match_aggregate{
-      aggregate {
-        count
-      }
-    }
-  }
-`;
+import SUBSCRIPTION_GET_PLAYER_COUNT from 'lib/graphql/subscriptions/getPlayerCount.gql';
+import SUBSCRIPTION_GET_MATCH_COUNT from 'lib/graphql/subscriptions/getMatchCount.gql';
 
 interface IPlayerCountResponse {
   players: IPlayerAggregate;
@@ -49,7 +30,7 @@ export const DataFeed: React.FC = () => {
     );
   }
 
-  if (playerLoading || matchLoading) {
+  if (playerLoading || matchLoading || !playerCount || !matchCount) {
     return (
       <Container>
         <Inner>

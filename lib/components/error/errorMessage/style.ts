@@ -10,10 +10,11 @@ export const Container = styled(motion.div) <{ isVisible: boolean }>`
   display: ${({ isVisible }): string => isVisible ? 'flex' : 'none'};
   align-items: center;
   justify-content: flex-start;
-  border-radius: 4px;
+  border-radius: 10px;
   font-weight: 500;
   margin-bottom: 15px;
   overflow-y: hidden;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
 
   p{
     width: 100%;
@@ -23,7 +24,7 @@ export const Container = styled(motion.div) <{ isVisible: boolean }>`
     text-transform: capitalize;
   }
 
-  svg {
+  .icon {
     fill: white;
     margin-right: 15px;
   }
