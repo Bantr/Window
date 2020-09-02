@@ -10,10 +10,13 @@ export type Scalars = {
   ban_type_enum: any;
   bomb_status_type_enum: any;
   date: any;
+  jsonb: any;
   player_info_weapon_enum: any;
   round_endreason_enum: any;
+  round_type_enum: any;
   team_startingside_enum: any;
   timestamp: any;
+  timestamptz: any;
   utility_activated_type_enum: any;
   utility_thrown_type_enum: any;
   weapon_status_weapon_enum: any;
@@ -30,6 +33,19 @@ export type IBooleanComparisonExp = {
   _lte?: Maybe<Scalars['Boolean']>;
   _neq?: Maybe<Scalars['Boolean']>;
   _nin?: Maybe<Array<Scalars['Boolean']>>;
+};
+
+/** expression to compare columns of type Float. All fields are combined with logical 'AND'. */
+export type IFloatComparisonExp = {
+  _eq?: Maybe<Scalars['Float']>;
+  _gt?: Maybe<Scalars['Float']>;
+  _gte?: Maybe<Scalars['Float']>;
+  _in?: Maybe<Array<Scalars['Float']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['Float']>;
+  _lte?: Maybe<Scalars['Float']>;
+  _neq?: Maybe<Scalars['Float']>;
+  _nin?: Maybe<Array<Scalars['Float']>>;
 };
 
 /** expression to compare columns of type Int. All fields are combined with logical 'AND'. */
@@ -602,6 +618,139 @@ export type IBombStatusVarianceOrderBy = {
   tick?: Maybe<IOrderBy>;
 };
 
+/** columns and relationships of "custom_theme" */
+export type ICustomTheme = {
+  config: Scalars['jsonb'];
+  createdAt: Scalars['date'];
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  /** An object relationship */
+  user?: Maybe<IUser>;
+  userId?: Maybe<Scalars['Int']>;
+};
+
+
+/** columns and relationships of "custom_theme" */
+export type ICustomThemeConfigArgs = {
+  path?: Maybe<Scalars['String']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type ICustomThemeAppendInput = {
+  config?: Maybe<Scalars['jsonb']>;
+};
+
+/** input type for inserting array relation for remote table "custom_theme" */
+export type ICustomThemeArrRelInsertInput = {
+  data: Array<ICustomThemeInsertInput>;
+  on_conflict?: Maybe<ICustomThemeOnConflict>;
+};
+
+/** Boolean expression to filter rows from the table "custom_theme". All fields are combined with a logical 'AND'. */
+export type ICustomThemeBoolExp = {
+  _and?: Maybe<Array<Maybe<ICustomThemeBoolExp>>>;
+  _not?: Maybe<ICustomThemeBoolExp>;
+  _or?: Maybe<Array<Maybe<ICustomThemeBoolExp>>>;
+  config?: Maybe<IJsonbComparisonExp>;
+  createdAt?: Maybe<IDateComparisonExp>;
+  id?: Maybe<IIntComparisonExp>;
+  name?: Maybe<IStringComparisonExp>;
+  user?: Maybe<IUserBoolExp>;
+  userId?: Maybe<IIntComparisonExp>;
+};
+
+/** unique or primary key constraints on table "custom_theme" */
+export const enum ICustomThemeConstraint {
+  /** unique or primary key constraint */
+  PkEe2273f63ed69ca5841727fec42 = 'PK_ee2273f63ed69ca5841727fec42'
+};
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type ICustomThemeDeleteAtPathInput = {
+  config?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type ICustomThemeDeleteElemInput = {
+  config?: Maybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type ICustomThemeDeleteKeyInput = {
+  config?: Maybe<Scalars['String']>;
+};
+
+/** input type for inserting data into table "custom_theme" */
+export type ICustomThemeInsertInput = {
+  config?: Maybe<Scalars['jsonb']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "custom_theme" */
+export type ICustomThemeMutationResponse = {
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<ICustomTheme>;
+};
+
+/** input type for inserting object relation for remote table "custom_theme" */
+export type ICustomThemeObjRelInsertInput = {
+  data: ICustomThemeInsertInput;
+  on_conflict?: Maybe<ICustomThemeOnConflict>;
+};
+
+/** on conflict condition type for table "custom_theme" */
+export type ICustomThemeOnConflict = {
+  constraint: ICustomThemeConstraint;
+  update_columns: Array<ICustomThemeUpdateColumn>;
+  where?: Maybe<ICustomThemeBoolExp>;
+};
+
+/** ordering options when selecting data from "custom_theme" */
+export type ICustomThemeOrderBy = {
+  config?: Maybe<IOrderBy>;
+  createdAt?: Maybe<IOrderBy>;
+  id?: Maybe<IOrderBy>;
+  name?: Maybe<IOrderBy>;
+  user?: Maybe<IUserOrderBy>;
+  userId?: Maybe<IOrderBy>;
+};
+
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type ICustomThemePrependInput = {
+  config?: Maybe<Scalars['jsonb']>;
+};
+
+/** select columns of table "custom_theme" */
+export const enum ICustomThemeSelectColumn {
+  /** column name */
+  Config = 'config',
+  /** column name */
+  CreatedAt = 'createdAt',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UserId = 'userId'
+};
+
+/** input type for updating data in table "custom_theme" */
+export type ICustomThemeSetInput = {
+  config?: Maybe<Scalars['jsonb']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "custom_theme" */
+export const enum ICustomThemeUpdateColumn {
+  /** column name */
+  Config = 'config',
+  /** column name */
+  Name = 'name'
+};
+
 
 /** expression to compare columns of type date. All fields are combined with logical 'AND'. */
 export type IDateComparisonExp = {
@@ -614,6 +763,30 @@ export type IDateComparisonExp = {
   _lte?: Maybe<Scalars['date']>;
   _neq?: Maybe<Scalars['date']>;
   _nin?: Maybe<Array<Scalars['date']>>;
+};
+
+
+/** expression to compare columns of type jsonb. All fields are combined with logical 'AND'. */
+export type IJsonbComparisonExp = {
+  /** is the column contained in the given json value */
+  _contained_in?: Maybe<Scalars['jsonb']>;
+  /** does the column contain the given json value at the top level */
+  _contains?: Maybe<Scalars['jsonb']>;
+  _eq?: Maybe<Scalars['jsonb']>;
+  _gt?: Maybe<Scalars['jsonb']>;
+  _gte?: Maybe<Scalars['jsonb']>;
+  /** does the string exist as a top-level key in the column */
+  _has_key?: Maybe<Scalars['String']>;
+  /** do all of these strings exist as top-level keys in the column */
+  _has_keys_all?: Maybe<Array<Scalars['String']>>;
+  /** do any of these strings exist as top-level keys in the column */
+  _has_keys_any?: Maybe<Array<Scalars['String']>>;
+  _in?: Maybe<Array<Scalars['jsonb']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['jsonb']>;
+  _lte?: Maybe<Scalars['jsonb']>;
+  _neq?: Maybe<Scalars['jsonb']>;
+  _nin?: Maybe<Array<Scalars['jsonb']>>;
 };
 
 /** columns and relationships of "kill" */
@@ -960,9 +1133,9 @@ export type IMatch = {
   /** An aggregated array relationship */
   rounds_aggregate: IRoundAggregate;
   /** An array relationship */
-  team_matches_matches: Array<ITeamMatchesMatch>;
+  teams: Array<IMatchTeamsTeam>;
   /** An aggregated array relationship */
-  team_matches_matches_aggregate: ITeamMatchesMatchAggregate;
+  teams_aggregate: IMatchTeamsTeamAggregate;
   tickrate?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['Int']>;
   typeExtended?: Maybe<Scalars['String']>;
@@ -1010,22 +1183,22 @@ export type IMatchRoundsAggregateArgs = {
 
 
 /** columns and relationships of "match" */
-export type IMatchTeamMatchesMatchesArgs = {
-  distinct_on?: Maybe<Array<ITeamMatchesMatchSelectColumn>>;
+export type IMatchTeamsArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<ITeamMatchesMatchOrderBy>>;
-  where?: Maybe<ITeamMatchesMatchBoolExp>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
 };
 
 
 /** columns and relationships of "match" */
-export type IMatchTeamMatchesMatchesAggregateArgs = {
-  distinct_on?: Maybe<Array<ITeamMatchesMatchSelectColumn>>;
+export type IMatchTeamsAggregateArgs = {
+  distinct_on?: Maybe<Array<IMatchTeamsTeamSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<ITeamMatchesMatchOrderBy>>;
-  where?: Maybe<ITeamMatchesMatchBoolExp>;
+  order_by?: Maybe<Array<IMatchTeamsTeamOrderBy>>;
+  where?: Maybe<IMatchTeamsTeamBoolExp>;
 };
 
 /** aggregated selection of "match" */
@@ -1099,7 +1272,7 @@ export type IMatchBoolExp = {
   map?: Maybe<IStringComparisonExp>;
   players?: Maybe<IMatchPlayersPlayerBoolExp>;
   rounds?: Maybe<IRoundBoolExp>;
-  team_matches_matches?: Maybe<ITeamMatchesMatchBoolExp>;
+  teams?: Maybe<IMatchTeamsTeamBoolExp>;
   tickrate?: Maybe<IIntComparisonExp>;
   type?: Maybe<IIntComparisonExp>;
   typeExtended?: Maybe<IStringComparisonExp>;
@@ -1158,7 +1331,7 @@ export type IMatchOrderBy = {
   map?: Maybe<IOrderBy>;
   players_aggregate?: Maybe<IMatchPlayersPlayerAggregateOrderBy>;
   rounds_aggregate?: Maybe<IRoundAggregateOrderBy>;
-  team_matches_matches_aggregate?: Maybe<ITeamMatchesMatchAggregateOrderBy>;
+  teams_aggregate?: Maybe<IMatchTeamsTeamAggregateOrderBy>;
   tickrate?: Maybe<IOrderBy>;
   type?: Maybe<IOrderBy>;
   typeExtended?: Maybe<IOrderBy>;
@@ -1696,6 +1869,64 @@ export type IMatchVarianceOrderBy = {
   type?: Maybe<IOrderBy>;
 };
 
+/** mutation root */
+export type IMutationRoot = {
+  /** delete data from the table: "custom_theme" */
+  delete_custom_theme?: Maybe<ICustomThemeMutationResponse>;
+  /** insert data into the table: "custom_theme" */
+  insert_custom_theme?: Maybe<ICustomThemeMutationResponse>;
+  /** update data of the table: "custom_theme" */
+  update_custom_theme?: Maybe<ICustomThemeMutationResponse>;
+  /** update data of the table: "notification" */
+  update_notification?: Maybe<INotificationMutationResponse>;
+  /** update data of the table: "user_settings" */
+  update_user_settings?: Maybe<IUserSettingsMutationResponse>;
+};
+
+
+/** mutation root */
+export type IMutationRootDeleteCustomThemeArgs = {
+  where: ICustomThemeBoolExp;
+};
+
+
+/** mutation root */
+export type IMutationRootInsertCustomThemeArgs = {
+  objects: Array<ICustomThemeInsertInput>;
+  on_conflict?: Maybe<ICustomThemeOnConflict>;
+};
+
+
+/** mutation root */
+export type IMutationRootUpdateCustomThemeArgs = {
+  _append?: Maybe<ICustomThemeAppendInput>;
+  _delete_at_path?: Maybe<ICustomThemeDeleteAtPathInput>;
+  _delete_elem?: Maybe<ICustomThemeDeleteElemInput>;
+  _delete_key?: Maybe<ICustomThemeDeleteKeyInput>;
+  _prepend?: Maybe<ICustomThemePrependInput>;
+  _set?: Maybe<ICustomThemeSetInput>;
+  where: ICustomThemeBoolExp;
+};
+
+
+/** mutation root */
+export type IMutationRootUpdateNotificationArgs = {
+  _set?: Maybe<INotificationSetInput>;
+  where: INotificationBoolExp;
+};
+
+
+/** mutation root */
+export type IMutationRootUpdateUserSettingsArgs = {
+  _append?: Maybe<IUserSettingsAppendInput>;
+  _delete_at_path?: Maybe<IUserSettingsDeleteAtPathInput>;
+  _delete_elem?: Maybe<IUserSettingsDeleteElemInput>;
+  _delete_key?: Maybe<IUserSettingsDeleteKeyInput>;
+  _prepend?: Maybe<IUserSettingsPrependInput>;
+  _set?: Maybe<IUserSettingsSetInput>;
+  where: IUserSettingsBoolExp;
+};
+
 /** columns and relationships of "notification" */
 export type INotification = {
   /** An object relationship */
@@ -1982,6 +2213,12 @@ export type INotificationBoolExp = {
   userId?: Maybe<IIntComparisonExp>;
 };
 
+/** unique or primary key constraints on table "notification" */
+export const enum INotificationConstraint {
+  /** unique or primary key constraint */
+  Pk_705b6c7cdf9b2c2ff7ac7872cb7 = 'PK_705b6c7cdf9b2c2ff7ac7872cb7'
+};
+
 /** aggregate max on columns */
 export type INotificationMaxFields = {
   banId?: Maybe<Scalars['Int']>;
@@ -2014,6 +2251,21 @@ export type INotificationMinOrderBy = {
   userId?: Maybe<IOrderBy>;
 };
 
+/** response of any mutation on the table "notification" */
+export type INotificationMutationResponse = {
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<INotification>;
+};
+
+/** on conflict condition type for table "notification" */
+export type INotificationOnConflict = {
+  constraint: INotificationConstraint;
+  update_columns: Array<INotificationUpdateColumn>;
+  where?: Maybe<INotificationBoolExp>;
+};
+
 /** ordering options when selecting data from "notification" */
 export type INotificationOrderBy = {
   ban?: Maybe<IBanOrderBy>;
@@ -2040,6 +2292,12 @@ export const enum INotificationSelectColumn {
   Seen = 'seen',
   /** column name */
   UserId = 'userId'
+};
+
+/** input type for updating data in table "notification" */
+export type INotificationSetInput = {
+  deleted?: Maybe<Scalars['Boolean']>;
+  seen?: Maybe<Scalars['Boolean']>;
 };
 
 /** aggregate stddev on columns */
@@ -2096,6 +2354,14 @@ export type INotificationSumOrderBy = {
   banId?: Maybe<IOrderBy>;
   id?: Maybe<IOrderBy>;
   userId?: Maybe<IOrderBy>;
+};
+
+/** update columns of table "notification" */
+export const enum INotificationUpdateColumn {
+  /** column name */
+  Deleted = 'deleted',
+  /** column name */
+  Seen = 'seen'
 };
 
 /** aggregate var_pop on columns */
@@ -3293,7 +3559,7 @@ export type IPlayerInfo = {
   player?: Maybe<IPlayer>;
   playerId?: Maybe<Scalars['Int']>;
   tick: Scalars['Int'];
-  weapon: Scalars['player_info_weapon_enum'];
+  weapon?: Maybe<Scalars['player_info_weapon_enum']>;
 };
 
 /** aggregated selection of "player_info" */
@@ -4282,9 +4548,9 @@ export type IPlayerVarianceOrderBy = {
 export type IPosition = {
   createdAt: Scalars['timestamp'];
   id: Scalars['Int'];
-  x: Scalars['Int'];
-  y: Scalars['Int'];
-  z: Scalars['Int'];
+  x: Scalars['Float'];
+  y: Scalars['Float'];
+  z: Scalars['Float'];
 };
 
 /** aggregated selection of "position" */
@@ -4353,17 +4619,17 @@ export type IPositionBoolExp = {
   _or?: Maybe<Array<Maybe<IPositionBoolExp>>>;
   createdAt?: Maybe<ITimestampComparisonExp>;
   id?: Maybe<IIntComparisonExp>;
-  x?: Maybe<IIntComparisonExp>;
-  y?: Maybe<IIntComparisonExp>;
-  z?: Maybe<IIntComparisonExp>;
+  x?: Maybe<IFloatComparisonExp>;
+  y?: Maybe<IFloatComparisonExp>;
+  z?: Maybe<IFloatComparisonExp>;
 };
 
 /** aggregate max on columns */
 export type IPositionMaxFields = {
   id?: Maybe<Scalars['Int']>;
-  x?: Maybe<Scalars['Int']>;
-  y?: Maybe<Scalars['Int']>;
-  z?: Maybe<Scalars['Int']>;
+  x?: Maybe<Scalars['Float']>;
+  y?: Maybe<Scalars['Float']>;
+  z?: Maybe<Scalars['Float']>;
 };
 
 /** order by max() on columns of table "position" */
@@ -4377,9 +4643,9 @@ export type IPositionMaxOrderBy = {
 /** aggregate min on columns */
 export type IPositionMinFields = {
   id?: Maybe<Scalars['Int']>;
-  x?: Maybe<Scalars['Int']>;
-  y?: Maybe<Scalars['Int']>;
-  z?: Maybe<Scalars['Int']>;
+  x?: Maybe<Scalars['Float']>;
+  y?: Maybe<Scalars['Float']>;
+  z?: Maybe<Scalars['Float']>;
 };
 
 /** order by min() on columns of table "position" */
@@ -4464,9 +4730,9 @@ export type IPositionStddevSampOrderBy = {
 /** aggregate sum on columns */
 export type IPositionSumFields = {
   id?: Maybe<Scalars['Int']>;
-  x?: Maybe<Scalars['Int']>;
-  y?: Maybe<Scalars['Int']>;
-  z?: Maybe<Scalars['Int']>;
+  x?: Maybe<Scalars['Float']>;
+  y?: Maybe<Scalars['Float']>;
+  z?: Maybe<Scalars['Float']>;
 };
 
 /** order by sum() on columns of table "position" */
@@ -4539,6 +4805,10 @@ export type IQueryRoot = {
   bomb_status_aggregate: IBombStatusAggregate;
   /** fetch data from the table: "bomb_status" using primary key columns */
   bomb_status_by_pk?: Maybe<IBombStatus>;
+  /** fetch data from the table: "custom_theme" */
+  custom_theme: Array<ICustomTheme>;
+  /** fetch data from the table: "custom_theme" using primary key columns */
+  custom_theme_by_pk?: Maybe<ICustomTheme>;
   /** fetch data from the table: "kill" */
   kill: Array<IKill>;
   /** fetch aggregated fields from the table: "kill" */
@@ -4724,6 +4994,22 @@ export type IQueryRootBombStatusAggregateArgs = {
 
 /** query root */
 export type IQueryRootBombStatusByPkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** query root */
+export type IQueryRootCustomThemeArgs = {
+  distinct_on?: Maybe<Array<ICustomThemeSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<ICustomThemeOrderBy>>;
+  where?: Maybe<ICustomThemeBoolExp>;
+};
+
+
+/** query root */
+export type IQueryRootCustomThemeByPkArgs = {
   id: Scalars['Int'];
 };
 
@@ -5343,6 +5629,7 @@ export type IRound = {
   /** An aggregated array relationship */
   playersBlinded_aggregate: IPlayerBlindAggregate;
   startTick: Scalars['Int'];
+  type: Scalars['round_type_enum'];
   /** An array relationship */
   utilityActivated: Array<IUtilityActivated>;
   /** An aggregated array relationship */
@@ -5601,6 +5888,7 @@ export type IRoundBoolExp = {
   playerJumps?: Maybe<IPlayerJumpBoolExp>;
   playersBlinded?: Maybe<IPlayerBlindBoolExp>;
   startTick?: Maybe<IIntComparisonExp>;
+  type?: Maybe<IRoundTypeEnumComparisonExp>;
   utilityActivated?: Maybe<IUtilityActivatedBoolExp>;
   utilityThrown?: Maybe<IUtilityThrownBoolExp>;
   weaponStatusChanges?: Maybe<IWeaponStatusBoolExp>;
@@ -5677,6 +5965,7 @@ export type IRoundOrderBy = {
   playerJumps_aggregate?: Maybe<IPlayerJumpAggregateOrderBy>;
   playersBlinded_aggregate?: Maybe<IPlayerBlindAggregateOrderBy>;
   startTick?: Maybe<IOrderBy>;
+  type?: Maybe<IOrderBy>;
   utilityActivated_aggregate?: Maybe<IUtilityActivatedAggregateOrderBy>;
   utilityThrown_aggregate?: Maybe<IUtilityThrownAggregateOrderBy>;
   weaponStatusChanges_aggregate?: Maybe<IWeaponStatusAggregateOrderBy>;
@@ -5700,6 +5989,8 @@ export const enum IRoundSelectColumn {
   OfficialEndTick = 'officialEndTick',
   /** column name */
   StartTick = 'startTick',
+  /** column name */
+  Type = 'type',
   /** column name */
   WinningTeamId = 'winningTeamId'
 };
@@ -5784,6 +6075,20 @@ export type IRoundSumOrderBy = {
   winningTeamId?: Maybe<IOrderBy>;
 };
 
+
+/** expression to compare columns of type round_type_enum. All fields are combined with logical 'AND'. */
+export type IRoundTypeEnumComparisonExp = {
+  _eq?: Maybe<Scalars['round_type_enum']>;
+  _gt?: Maybe<Scalars['round_type_enum']>;
+  _gte?: Maybe<Scalars['round_type_enum']>;
+  _in?: Maybe<Array<Scalars['round_type_enum']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['round_type_enum']>;
+  _lte?: Maybe<Scalars['round_type_enum']>;
+  _neq?: Maybe<Scalars['round_type_enum']>;
+  _nin?: Maybe<Array<Scalars['round_type_enum']>>;
+};
+
 /** aggregate var_pop on columns */
 export type IRoundVarPopFields = {
   endTick?: Maybe<Scalars['Float']>;
@@ -5858,6 +6163,10 @@ export type ISubscriptionRoot = {
   bomb_status_aggregate: IBombStatusAggregate;
   /** fetch data from the table: "bomb_status" using primary key columns */
   bomb_status_by_pk?: Maybe<IBombStatus>;
+  /** fetch data from the table: "custom_theme" */
+  custom_theme: Array<ICustomTheme>;
+  /** fetch data from the table: "custom_theme" using primary key columns */
+  custom_theme_by_pk?: Maybe<ICustomTheme>;
   /** fetch data from the table: "kill" */
   kill: Array<IKill>;
   /** fetch aggregated fields from the table: "kill" */
@@ -6043,6 +6352,22 @@ export type ISubscriptionRootBombStatusAggregateArgs = {
 
 /** subscription root */
 export type ISubscriptionRootBombStatusByPkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type ISubscriptionRootCustomThemeArgs = {
+  distinct_on?: Maybe<Array<ICustomThemeSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<ICustomThemeOrderBy>>;
+  where?: Maybe<ICustomThemeBoolExp>;
+};
+
+
+/** subscription root */
+export type ISubscriptionRootCustomThemeByPkArgs = {
   id: Scalars['Int'];
 };
 
@@ -7323,6 +7648,20 @@ export type ITimestampComparisonExp = {
   _nin?: Maybe<Array<Scalars['timestamp']>>;
 };
 
+
+/** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
+export type ITimestamptzComparisonExp = {
+  _eq?: Maybe<Scalars['timestamptz']>;
+  _gt?: Maybe<Scalars['timestamptz']>;
+  _gte?: Maybe<Scalars['timestamptz']>;
+  _in?: Maybe<Array<Scalars['timestamptz']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['timestamptz']>;
+  _lte?: Maybe<Scalars['timestamptz']>;
+  _neq?: Maybe<Scalars['timestamptz']>;
+  _nin?: Maybe<Array<Scalars['timestamptz']>>;
+};
+
 /** columns and relationships of "user" */
 export type IUser = {
   discordId?: Maybe<Scalars['String']>;
@@ -7333,6 +7672,7 @@ export type IUser = {
   /** An aggregated array relationship */
   follows_aggregate: IPlayerFollowedByUserAggregate;
   id: Scalars['Int'];
+  lastActive: Scalars['timestamptz'];
   lastCheckedAtFaceit: Scalars['timestamp'];
   lastCheckedAtSteam: Scalars['timestamp'];
   /** An array relationship */
@@ -7344,6 +7684,8 @@ export type IUser = {
   settings?: Maybe<IUserSettings>;
   settingsId?: Maybe<Scalars['Int']>;
   steamId: Scalars['String'];
+  /** An array relationship */
+  themes: Array<ICustomTheme>;
   /** An array relationship */
   tracks: Array<IPlayerTrackedByUser>;
   /** An aggregated array relationship */
@@ -7393,6 +7735,16 @@ export type IUserNotificationsAggregateArgs = {
 
 
 /** columns and relationships of "user" */
+export type IUserThemesArgs = {
+  distinct_on?: Maybe<Array<ICustomThemeSelectColumn>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<ICustomThemeOrderBy>>;
+  where?: Maybe<ICustomThemeBoolExp>;
+};
+
+
+/** columns and relationships of "user" */
 export type IUserTracksArgs = {
   distinct_on?: Maybe<Array<IPlayerTrackedByUserSelectColumn>>;
   limit?: Maybe<Scalars['Int']>;
@@ -7421,6 +7773,7 @@ export type IUserBoolExp = {
   faceitName?: Maybe<IStringComparisonExp>;
   follows?: Maybe<IPlayerFollowedByUserBoolExp>;
   id?: Maybe<IIntComparisonExp>;
+  lastActive?: Maybe<ITimestamptzComparisonExp>;
   lastCheckedAtFaceit?: Maybe<ITimestampComparisonExp>;
   lastCheckedAtSteam?: Maybe<ITimestampComparisonExp>;
   notifications?: Maybe<INotificationBoolExp>;
@@ -7428,6 +7781,7 @@ export type IUserBoolExp = {
   settings?: Maybe<IUserSettingsBoolExp>;
   settingsId?: Maybe<IIntComparisonExp>;
   steamId?: Maybe<IStringComparisonExp>;
+  themes?: Maybe<ICustomThemeBoolExp>;
   tracks?: Maybe<IPlayerTrackedByUserBoolExp>;
   username?: Maybe<IStringComparisonExp>;
 };
@@ -7439,6 +7793,7 @@ export type IUserOrderBy = {
   faceitName?: Maybe<IOrderBy>;
   follows_aggregate?: Maybe<IPlayerFollowedByUserAggregateOrderBy>;
   id?: Maybe<IOrderBy>;
+  lastActive?: Maybe<IOrderBy>;
   lastCheckedAtFaceit?: Maybe<IOrderBy>;
   lastCheckedAtSteam?: Maybe<IOrderBy>;
   notifications_aggregate?: Maybe<INotificationAggregateOrderBy>;
@@ -7461,6 +7816,8 @@ export const enum IUserSelectColumn {
   /** column name */
   Id = 'id',
   /** column name */
+  LastActive = 'lastActive',
+  /** column name */
   LastCheckedAtFaceit = 'lastCheckedAtFaceit',
   /** column name */
   LastCheckedAtSteam = 'lastCheckedAtSteam',
@@ -7477,6 +7834,7 @@ export const enum IUserSelectColumn {
 /** columns and relationships of "user_settings" */
 export type IUserSettings = {
   lastKnownMatch?: Maybe<Scalars['String']>;
+  layoutSettings?: Maybe<Scalars['jsonb']>;
   matchAuthCode?: Maybe<Scalars['String']>;
   matchmakingAuthFailed: Scalars['Boolean'];
   notificationCommunityEnabled: Scalars['Boolean'];
@@ -7489,12 +7847,24 @@ export type IUserSettings = {
   user?: Maybe<IUser>;
 };
 
+
+/** columns and relationships of "user_settings" */
+export type IUserSettingsLayoutSettingsArgs = {
+  path?: Maybe<Scalars['String']>;
+};
+
+/** append existing jsonb value of filtered columns with new jsonb value */
+export type IUserSettingsAppendInput = {
+  layoutSettings?: Maybe<Scalars['jsonb']>;
+};
+
 /** Boolean expression to filter rows from the table "user_settings". All fields are combined with a logical 'AND'. */
 export type IUserSettingsBoolExp = {
   _and?: Maybe<Array<Maybe<IUserSettingsBoolExp>>>;
   _not?: Maybe<IUserSettingsBoolExp>;
   _or?: Maybe<Array<Maybe<IUserSettingsBoolExp>>>;
   lastKnownMatch?: Maybe<IStringComparisonExp>;
+  layoutSettings?: Maybe<IJsonbComparisonExp>;
   matchAuthCode?: Maybe<IStringComparisonExp>;
   matchmakingAuthFailed?: Maybe<IBooleanComparisonExp>;
   notificationCommunityEnabled?: Maybe<IBooleanComparisonExp>;
@@ -7506,9 +7876,46 @@ export type IUserSettingsBoolExp = {
   user?: Maybe<IUserBoolExp>;
 };
 
+/** unique or primary key constraints on table "user_settings" */
+export const enum IUserSettingsConstraint {
+  /** unique or primary key constraint */
+  Pk_00f004f5922a0744d174530d639 = 'PK_00f004f5922a0744d174530d639'
+};
+
+/** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
+export type IUserSettingsDeleteAtPathInput = {
+  layoutSettings?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+/** delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array */
+export type IUserSettingsDeleteElemInput = {
+  layoutSettings?: Maybe<Scalars['Int']>;
+};
+
+/** delete key/value pair or string element. key/value pairs are matched based on their key value */
+export type IUserSettingsDeleteKeyInput = {
+  layoutSettings?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "user_settings" */
+export type IUserSettingsMutationResponse = {
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<IUserSettings>;
+};
+
+/** on conflict condition type for table "user_settings" */
+export type IUserSettingsOnConflict = {
+  constraint: IUserSettingsConstraint;
+  update_columns: Array<IUserSettingsUpdateColumn>;
+  where?: Maybe<IUserSettingsBoolExp>;
+};
+
 /** ordering options when selecting data from "user_settings" */
 export type IUserSettingsOrderBy = {
   lastKnownMatch?: Maybe<IOrderBy>;
+  layoutSettings?: Maybe<IOrderBy>;
   matchAuthCode?: Maybe<IOrderBy>;
   matchmakingAuthFailed?: Maybe<IOrderBy>;
   notificationCommunityEnabled?: Maybe<IOrderBy>;
@@ -7520,14 +7927,56 @@ export type IUserSettingsOrderBy = {
   user?: Maybe<IUserOrderBy>;
 };
 
+/** prepend existing jsonb value of filtered columns with new jsonb value */
+export type IUserSettingsPrependInput = {
+  layoutSettings?: Maybe<Scalars['jsonb']>;
+};
+
 /** select columns of table "user_settings" */
 export const enum IUserSettingsSelectColumn {
   /** column name */
   LastKnownMatch = 'lastKnownMatch',
   /** column name */
+  LayoutSettings = 'layoutSettings',
+  /** column name */
   MatchAuthCode = 'matchAuthCode',
   /** column name */
   MatchmakingAuthFailed = 'matchmakingAuthFailed',
+  /** column name */
+  NotificationCommunityEnabled = 'notificationCommunityEnabled',
+  /** column name */
+  NotificationDiscordEnabled = 'notificationDiscordEnabled',
+  /** column name */
+  NotificationEconomyEnabled = 'notificationEconomyEnabled',
+  /** column name */
+  NotificationFaceitEnabled = 'notificationFaceitEnabled',
+  /** column name */
+  NotificationGameEnabled = 'notificationGameEnabled',
+  /** column name */
+  NotificationVacEnabled = 'notificationVACEnabled'
+};
+
+/** input type for updating data in table "user_settings" */
+export type IUserSettingsSetInput = {
+  lastKnownMatch?: Maybe<Scalars['String']>;
+  layoutSettings?: Maybe<Scalars['jsonb']>;
+  matchAuthCode?: Maybe<Scalars['String']>;
+  notificationCommunityEnabled?: Maybe<Scalars['Boolean']>;
+  notificationDiscordEnabled?: Maybe<Scalars['Boolean']>;
+  notificationEconomyEnabled?: Maybe<Scalars['Boolean']>;
+  notificationFaceitEnabled?: Maybe<Scalars['Boolean']>;
+  notificationGameEnabled?: Maybe<Scalars['Boolean']>;
+  notificationVACEnabled?: Maybe<Scalars['Boolean']>;
+};
+
+/** update columns of table "user_settings" */
+export const enum IUserSettingsUpdateColumn {
+  /** column name */
+  LastKnownMatch = 'lastKnownMatch',
+  /** column name */
+  LayoutSettings = 'layoutSettings',
+  /** column name */
+  MatchAuthCode = 'matchAuthCode',
   /** column name */
   NotificationCommunityEnabled = 'notificationCommunityEnabled',
   /** column name */
