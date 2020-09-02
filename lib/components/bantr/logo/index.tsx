@@ -1,6 +1,16 @@
 import * as React from 'react';
-import { Link } from '@reach/router';
-import { Svg } from './style';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const Svg = styled.svg`
+  cursor: pointer;
+  .primary{
+    fill: ${({ theme }): string => theme.p};
+  }
+  .secondary{
+    fill: ${({ theme }): string => theme.s};
+  }
+`;
 
 interface IProps {
   to?: string;
