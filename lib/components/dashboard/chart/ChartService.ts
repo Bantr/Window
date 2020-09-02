@@ -1,62 +1,36 @@
-import * as c3 from 'c3';
 import { DBVISUAL } from 'lib/enums';
+import { IChartProps } from './index';
+import * as c3 from 'c3';
+import { DefaultTheme } from 'styled-components';
 
-export interface IChartSettings {
-  data: any;
-  keys: Array<string>;
-  type: DBVISUAL;
-  showLegend: boolean;
-  showTooltip: boolean;
-  showLabelsOnChart: boolean;
-  colorPattern: Array<string>;
-  axesOptions?: c3.AxesOptions;
-  gridOptions?: c3.GridOptions;
-}
-
-export class ChartService {
-  private _chartConfiguration: c3.ChartConfiguration
-  private _id: string
-
-  constructor(id: string, chartSettings: IChartSettings) {
-    this._id = String(id);
-
-    this._chartConfiguration = {
-      bindto: `#${this._id}`,
+class ChartService {
+  public chartConfiguration(id: string, { data, type, showLegend = true, keys, axesOptions, showTooltip = false }: IChartProps, theme: DefaultTheme): c3.ChartConfiguration {
+    return {
+      bindto: `#${id}`,
       data: {
-        json: this._validateData(chartSettings.data),
-        keys: {
-          value: chartSettings.keys
-        },
-        type: this._validateType(chartSettings.type),
-        labels: chartSettings.showLabelsOnChart
-      },
-      legend: {
-        show: chartSettings.showLegend,
-        position: 'bottom'
+        json: data,
+        keys: { value: keys },
+        type: this._validateType(type),
+        empty: {
+          label: {
+            text: 'No data :('
+          }
+        }
       },
       color: {
-        pattern: chartSettings.colorPattern
+        pattern: [theme.p, theme.s, theme.chart1, theme.chart2, theme.chart3, theme.chart4]
+      },
+      legend: {
+        show: showLegend,
+        position: 'bottom'
       },
       tooltip: {
-        show: chartSettings.showTooltip
-
+        show: showTooltip
       },
-      axis: chartSettings.axesOptions ? chartSettings.axesOptions : null,
-      grid: chartSettings.gridOptions ? chartSettings.gridOptions : null
+      axis: axesOptions ? axesOptions : null
     };
   }
 
-  public generateChart(): void {
-    c3.generate(this._chartConfiguration);
-  }
-
-  private _validateData(data: any): any {
-    // validate data structure
-    if (!data) {
-      throw new Error('The dataset is empty');
-    }
-    return data;
-  }
   private _validateType(type: DBVISUAL): DBVISUAL {
     switch (type) {
       case DBVISUAL.AREA:
@@ -67,7 +41,9 @@ export class ChartService {
       case DBVISUAL.SPLINE:
         return type;
       default:
-        throw new Error('This type is not recognized');
+        throw new Error('this is the error');
     }
   }
 }
+
+export const chartService = new ChartService();
