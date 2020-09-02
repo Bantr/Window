@@ -2,7 +2,7 @@
   "name": "@bantr/spawn",
   "version": "1.0.0",
   "private": true,
-  "license": "MIT",
+  "license": "AGPL-3.0-later",
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production CI=true webpack --env.mode=production --progress",
