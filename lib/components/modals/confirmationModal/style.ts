@@ -5,8 +5,38 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: space-between;
   justify-content: center;
-  height: 150px;
   width: 500px;
+  padding: 10px;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .icon {
+      margin-top: -3px;
+      margin-right: 25px;
+
+      svg {
+        fill: ${({ theme }): string => theme.p};
+      }
+
+      &::before{
+        position: absolute;
+        content: '';
+        width: 175%;
+        height: 175%;
+        border-radius: 50%;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: ${({ theme }): string => theme.p}25;
+        transform: translateX(-21%) translateY(-21%);
+        transition: background-color 0.2s ease-in-out;
+      }
+    }
+  }
 `;
 
 export const Description = styled.p`

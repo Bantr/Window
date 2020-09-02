@@ -9,11 +9,20 @@ interface IProps {
   actionIcon?: React.ReactNode;
   action: () => void;
   actionText: string;
+  icon?: React.ReactNode;
   close: () => void;
   ref: React.MutableRefObject<HTMLDivElement>;
 }
 
-export const ConfirmationModal = React.forwardRef<HTMLDivElement, IProps>(({ title, description, action, actionText, actionIcon, close }, ref) => {
+export const ConfirmationModal = React.forwardRef<HTMLDivElement, IProps>(({
+  icon = null,
+  title,
+  description,
+  action,
+  actionText,
+  actionIcon,
+  close
+}, ref) => {
   function confirmAction(): void {
     action();
     close();
@@ -26,7 +35,7 @@ export const ConfirmationModal = React.forwardRef<HTMLDivElement, IProps>(({ tit
       ref={ref}
     >
       <Header>
-        <Title>{title}</Title>
+        <Title size="large">{icon} {title}</Title>
         <Plus onClick={close} pointer rotate={45} />
       </Header>
       <Description>{description}</Description>
