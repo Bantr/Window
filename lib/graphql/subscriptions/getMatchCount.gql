@@ -1,0 +1,7 @@
+subscription getMatchCount {
+  matches: match_aggregate{
+    aggregate {
+      count
+    }
+  }
+}

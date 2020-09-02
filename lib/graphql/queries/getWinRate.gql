@@ -1,0 +1,12 @@
+query getWinRate($steamId: String!){
+  allRounds: round_aggregate( where: { match: { players: { player: { steamId: { _eq: $steamId }}}}}) {
+    aggregate {
+      count
+    }
+  }
+  wonRounds: round_aggregate(where: { winningTeam: { players: { player: { steamId: { _eq: "76561198066895194" }}}}}) {
+    aggregate {
+      count
+    }
+  }
+}

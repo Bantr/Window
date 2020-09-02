@@ -1,0 +1,8 @@
+query getConnectionStatus {
+    user {
+      settings {
+        lastKnownMatch
+        matchAuthCode
+      }
+    }
+  }

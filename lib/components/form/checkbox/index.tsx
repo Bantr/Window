@@ -70,7 +70,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, IProps>(({
       }
       <CheckboxContainer isChecked={isChecked} onClick={onCheck} >
         <CheckMarkContainer isChecked={isChecked}>
-          <CheckMark fill="white" scale={1.1} />
+          <CheckMark fill="white" scale={.9} />
         </CheckMarkContainer>
         <Ripple className={isChecked ? 'animate' : ''} />
         <Input

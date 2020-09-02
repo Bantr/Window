@@ -1,0 +1,7 @@
+query getBanCountOfMonth($firstDayOfMonth: timestamp!, $lastDayOfMonth: timestamp!) {
+  bans: ban_aggregate(where: {unbanned: { _eq: false}, preExisting: { _eq: false}, detectedAt: { _gte: $firstDayOfMonth}, _and: { detectedAt: { _lte: $lastDayOfMonth }}}){
+    aggregate {
+      count
+    }
+  }
+}

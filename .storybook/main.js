@@ -1,6 +1,7 @@
 const path = require('path');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
+const getTransformer = require('ts-transform-graphql-tag').getTransformer;
 
 module.exports = {
   stories: ['../**/*.stories.tsx'],
@@ -10,6 +11,7 @@ module.exports = {
     '@storybook/preset-typescript',
     '@storybook/addon-notes/register',
     '@storybook/addon-a11y/register',
+    'storybook-addon-styled-component-theme/dist/register'
   ],
   webpackFinal: async config => {
     config.resolve.alias = {
@@ -26,7 +28,9 @@ module.exports = {
           },
           {
             loader: require.resolve('ts-loader'),
-            options: { getCustomTransformers: () => ({ before: [styledComponentsTransformer] }) }
+            options: {
+              getCustomTransformers: () => ({ before: [getTransformer(), styledComponentsTransformer] })
+            }
           },
           // Optional
           //      {

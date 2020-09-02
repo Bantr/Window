@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import * as c3 from 'c3';
 import { Chart } from 'lib/components/dashboard';
@@ -52,3 +53,4 @@ export const BannedPerMonth: React.FC = () => {
     />
   );
 };
+*/

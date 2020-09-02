@@ -5,7 +5,7 @@
 build/Release$
 
 # graphql
-schema.graphql
+schema.gql
 cypress/videos
 cypress/screenshots
 

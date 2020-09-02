@@ -1,0 +1,7 @@
+subscription getNewNotificationCount{
+  notification: notification_aggregate(where: {deleted: {_eq: false}, seen: {_eq: false}}){
+    aggregate {
+      count
+    }
+  }
+}

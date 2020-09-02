@@ -1,11 +1,10 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
 import { Container, Description, SteamContainer, InnerForm } from './style';
 import { httpService } from 'lib/services';
 import { UserContext } from 'lib/context';
 import { useSnackbar } from 'notistack';
 import { ComingSoon } from 'lib/components';
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { Title, Checkbox } from 'lib/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { IUser } from 'lib/types/generated';
@@ -58,7 +57,7 @@ export const PlatformNotifications: React.FC = () => {
 
   return (
     <Container>
-      <Title size="large" type="h4">Push notifications</Title>
+      <Title size="medium" type="h4">Push notifications</Title>
       <Description>On which platform would you like to receive Bantr notifications</Description>
       <form onSubmit={handleSubmit(onSubmit)}>
         <InnerForm>

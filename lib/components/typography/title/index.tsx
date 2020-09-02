@@ -12,15 +12,15 @@ export const Title: React.FC<IProps> = ({ align = 'left', size = 'medium', type 
   function defineSize(): string {
     switch (size) {
       case 'small':
-        return '80%';
+        return '1rem';
       case 'medium':
-        return '100%';
+        return '1.2rem';
       case 'large':
-        return '120%';
+        return '1.4rem';
       case 'huge':
-        return '140%';
+        return '1.7rem';
       case 'massive':
-        return '160%';
+        return '2.5rem';
     }
   }
 

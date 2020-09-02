@@ -14,6 +14,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -21,6 +22,7 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const path = require('path');
 const chalk = require('chalk');
+const getTransformer = require('ts-transform-graphql-tag').getTransformer;
 
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 const styledComponentsTransformer = createStyledComponentsTransformer();
@@ -30,10 +32,11 @@ exports.start = (ci) => {
   console.log('CI: ', chalk.green(ci ? true : false));
 };
 
-exports.IO = () => ({
+exports.IO = (isDevelopment) => ({
   devtool: '',
   target: 'web',
   // startpoint
+  mode: isDevelopment ? 'development' : 'production',
   entry: {
     index: path.join(__dirname, '/src/index.tsx'),
     polyfills: path.join(__dirname, '/src/polyfills.ts')
@@ -61,6 +64,12 @@ exports.dotEnv = (env) => ({
   ]
 });
 
+exports.reactRefresh = () => ({
+  plugins: [
+    new ReactRefreshWebpackPlugin()
+  ]
+})
+
 exports.CopyPublicFolder = () => ({
   plugins: [
     new CopyWebpackPlugin([
@@ -75,13 +84,14 @@ exports.devServer = ({ hostname, port } = { hostname: 'localhost', port: 8080 })
     port: port,
     open: true,
     stats: 'errors-only',
+    compress: true, // improves build speed.
     hot: true,
     overlay: {
       warnings: false,
       errors: true
     },
     disableHostCheck: true,
-    public: `${hostname}:${port}`,
+    public: `dev-client.bantr.app`,
     historyApiFallback: true, // path changes react router dom.,
     after: () => console.log('Development server has been started.')
   }
@@ -228,7 +238,7 @@ exports.istanbul = () => ({
   }
 });
 
-exports.loaders = ({ filename }) => ({
+exports.loaders = ({ filename, isDevelopment }) => ({
   module: {
     rules: [
       {
@@ -241,7 +251,8 @@ exports.loaders = ({ filename }) => ({
           {
             loader: 'ts-loader',
             options: {
-              getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
+              transpileOnly: true,
+              getCustomTransformers: () => ({ before: [getTransformer(), styledComponentsTransformer] })
             }
           }
         ]

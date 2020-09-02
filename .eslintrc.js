@@ -10,9 +10,7 @@ module.exports = {
   ],
   plugins: ['react-hooks', 'react', 'cypress'],
   settings: {
-    react: {
-      version: 'detect'
-    },
+    react: { version: 'detect' }
   },
   ignorePatterns: ['node_modules/',
     'ssr/',
@@ -33,15 +31,15 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     createDefaultProgram: true,
-    project: './tsconfig.json',
+    project: './tsconfig.json'
   },
   rules: {
     '@typescript-eslint/naming-convention': [
-      "error", {
+      'error', {
         'selector': 'interface',
         'format': ['PascalCase'],
         'custom': {
-          "regex": '^I[A-Z]',
+          'regex': '^I[A-Z]',
           'match': true
         }
       }
@@ -52,6 +50,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/no-unused-vars': 2,
+    '@typescript-eslint/ban-ts-comment': 0,
 
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-spacing': 2,
@@ -121,10 +120,10 @@ module.exports = {
     'cypress/no-force': 'warn'
   },
   overrides: [{
-    "files": ["*.js"],
-    "rules": {
+    'files': ['*.js'],
+    'rules': {
       '@typescript-eslint/no-var-requires': 0,
       '@typescript-eslint/explicit-function-return-type': 0
     }
   }]
-}
+};

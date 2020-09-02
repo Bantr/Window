@@ -1,15 +1,11 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { RouteComponentProps } from '@reach/router';
 
-interface IProps extends RouteComponentProps {
-  path: string;
-}
-
-export const Tournaments: React.FC<IProps> = () => (
+export const Tournaments: React.FC = () => (
   <div>
     <Helmet>
-      <title>CSGO | Tournaments</title>
+      <title>Tournaments</title>
+      <meta content="Get immediate access to the latest Counterstrike Global Offensive Major statistics. Our statistics are designed to give you the best overview available." name="description" />
     </Helmet>
     this is the Tournament page
   </div>

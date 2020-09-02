@@ -52,7 +52,6 @@ export const Right = styled.div`
 `;
 
 export const Avatar = styled.div<{ url: string }>`
-  position: relative;
   width: 40px;
   height: 40px;
   background-image: url(${({ url }): string => url ? url : 'none'});

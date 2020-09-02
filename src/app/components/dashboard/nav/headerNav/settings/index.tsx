@@ -1,7 +1,6 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
 import { Settings as SettingsIcon, AlertTriangle } from 'lib/icons';
-import { useQuery } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 import { Link, AlertContainer } from './style';
 import * as Sentry from '@sentry/react';
 import Tooltip from 'rc-tooltip';
@@ -44,13 +43,14 @@ export const Settings: React.FC = () => {
 
   return (
     <Tooltip
+      mouseEnterDelay={.25}
       overlay="Settings"
       placement="bottom"
       trigger="hover"
     >
       <Link className="icon-container" data-cy="headerNav-settings" to="/csgo/settings/connections">
         {showAlert ? <AlertContainer><AlertTriangle scale={.8} /></AlertContainer> : null}
-        <SettingsIcon pointer />
+        <SettingsIcon highlight pointer />
       </Link>
     </Tooltip>
   );

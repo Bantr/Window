@@ -12,7 +12,7 @@ export interface IDefaultProps {
 }
 export const Container = styled.div<{ position: IPosition }>`
   padding: 5px 10px;
-  border: 2px solid white;
+  border: 2px solid ${({ theme }): string => theme.t};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,4 +25,8 @@ export const Container = styled.div<{ position: IPosition }>`
   ${({ position }): string => position && position.top ? `top: ${position.top}` : null};
   ${({ position }): string => position && position.left ? `left: ${position.left}` : null};
   ${({ position }): string => position && position.bottom ? `bottom: ${position.bottom}` : null};
+
+  .text {
+    font-weight: 800;
+  }
 `;

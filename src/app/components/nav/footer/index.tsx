@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container, Inner, BottomContainer, PanelContainer, Panel } from './style';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { Logo } from 'lib/components';
 
 export const Footer: React.FC = () => (
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => (
       </PanelContainer>
       <BottomContainer>
         <Link to="/privacy-policy">Privacy Policy</Link>
-        <span>All Rights Reserved 2020</span>
+        <span>All Rights Reserved {new Date().getFullYear()}</span>
         <Link to="/terms-of-use">Terms of Use</Link>
       </BottomContainer>
     </Inner>

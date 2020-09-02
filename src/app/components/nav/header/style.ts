@@ -7,6 +7,7 @@ export const Container = styled.header`
   justify-content: center;
   width: 100%;
   height: 75px;
+  margin-bottom: 100px;
 
   .resize-transition {
     transition: width 0.2s ease-in-out;
@@ -18,10 +19,11 @@ export const Container = styled.header`
 
 export const Nav = styled.nav`
   width: 100%;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 0 auto;
   display: flex;
   align-items: center;
+  padding: 50px 100px 25px 0;
 
   a{
     margin: 0 15px;
@@ -56,7 +58,7 @@ export const StyledLink = styled(Link)`
   font-size: 1.2rem!important;
   opacity: 1!important;
 
-  svg {
+  .icon {
     margin-right: 15px;
   }
 

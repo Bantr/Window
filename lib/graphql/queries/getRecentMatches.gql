@@ -1,0 +1,45 @@
+query getRecentMatches($steamId: String!) {
+  matches: match(limit: 5, order_by: {date: desc}, where: {players: {player: {steamId: {_eq: $steamId }}}}) {
+    date
+    id
+    type
+    map
+    teams {
+      team {
+        roundsWon_aggregate(where: {type: {_eq: "0"}}) {
+          aggregate {
+            count
+          }
+        }
+      }
+    }
+
+    rounds {
+      kills: kills_aggregate(where: { attacker: { player: { steamId: { _eq: $steamId }}}}){
+        aggregate {
+          count
+        }
+      }
+      deaths: kills_aggregate(where: { victim: { player: { steamId: { _eq: $steamId }}}}){
+        aggregate {
+          count
+        }
+      }
+      assists: kills_aggregate(where: { assister: { player: { steamId: { _eq: $steamId }}}}){
+        aggregate {
+          count
+        }
+      }
+    }
+
+    lastRound: rounds(limit: 1, order_by: { endTick: desc }) {
+      winningTeam {
+        players {
+          player {
+            steamId
+          }
+        }
+      }
+    }
+  }
+}

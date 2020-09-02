@@ -1,0 +1,8 @@
+query getMatchmakingCodes{
+  user {
+    settings {
+      lastKnownMatch
+      matchAuthCode
+    }
+}
+}

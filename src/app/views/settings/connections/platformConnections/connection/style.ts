@@ -32,12 +32,17 @@ export const TitleContainer = styled.div`
 
 export const CheckMarkContainer = styled.div`
   display: inline-flex;
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   align-items: center;
   margin-left: 5px;
   justify-content: center;
   padding: 3px;
   border-radius: 50%;
   background-color: ${({ theme }): string => theme.p};
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
 `;

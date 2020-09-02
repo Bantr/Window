@@ -21,6 +21,7 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen = false, elementId = 'm
   );
 };
 
+/* TODO: add types */
 export const useModal: any = () => {
   const [isOpen, setOpen] = React.useState(false);
   const open = React.useCallback(() => {

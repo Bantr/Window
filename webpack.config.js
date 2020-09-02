@@ -10,6 +10,7 @@ function isStringTrue(val) {
   return false;
 }
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
 const PublicEnvironmentVariables = {
   'process.env': {
     'API_ROOT': JSON.stringify(process.env.API_ROOT),
@@ -23,7 +24,7 @@ const PublicEnvironmentVariables = {
 const commonConfig = merge([
   parts.start(process.env.CI),
   parts.aliases(),
-  parts.IO(),
+  parts.IO(isDevelopment),
   parts.loadHtml(),
   parts.cssExtract(),
   parts.dotEnv(PublicEnvironmentVariables),
@@ -33,7 +34,7 @@ const commonConfig = merge([
 const productionConfig = merge([
   parts.cleanDist(),
   parts.manifest(),
-  parts.loaders({ filename: '[contenthash].[ext]' }),
+  parts.loaders({ filename: '[contenthash].[ext]', isDevelopment: false }),
   parts.banner(),
   parts.minify(),
   parts.minimizeImages(),
@@ -43,11 +44,12 @@ const productionConfig = merge([
 ]);
 
 const developmentConfig = merge([
-  parts.loaders({ filename: '[name].[ext]' }),
+  parts.loaders({ filename: '[name].[ext]', isDevelopment: true }),
   parts.devServer({
     hostname: process.env.HOSTNAME,
     port: process.env.PORT
   }),
+  parts.reactRefresh(),
   parts.sourceMap(),
   parts.RebuildOnModuleInstall(),
   parts.OSXDevSupport(),

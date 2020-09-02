@@ -7,20 +7,31 @@ export const LinkContainer = styled.div`
   justify-content: flex-start;
   margin: 20px 0 20px 15px;
   transition: transform 0.2s ease-in-out;
-  overflow-x: hidden;
+  overflow: hidden;
 
   &.external {
-    margin: 10px 0 10px 15px;
+    margin: 15px 0 15px 15px;
   }
 
   &:hover {
     transform: translateX(5px);
   }
-  .link, a {
+
+  a {
     display: flex;
   }
-  .link.active {
-    color: ${({ theme }): string => theme.p};
+
+  a.link {
+    opacity: 0.5;
+    transition: opacity .2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.active {
+      opacity: 1;
+    }
   }
 `;
 

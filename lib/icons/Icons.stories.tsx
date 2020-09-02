@@ -3,18 +3,21 @@ import styled from 'styled-components';
 import { Icon } from './BaseIcon';
 
 import {
-  Action, AlertTriangle, Archive, Arrow, ArrowBig, Attachment,
+  AlertTriangle, Archive, Arrow, ArrowBig, Attachment,
   Bantr, Bell,
   CheckMark, Clock, Copy, CreditCard,
   Dashboard, Discord,
   Edit, Eye, EyeOff,
   Faceit, Filter, Fullscreen,
   Github, Globe, GlobeDetailed,
-  Hamburger, Heart,
-  LogOut,
+  Hamburger, Heart, Home,
+  Info,
+  LogIn, LogOut,
   Maps, Minus,
+  Options,
   People, Person, PersonAdd, PersonRemove, Plus, Premium,
   QuestionMark,
+  Radio,
   Search, Settings, Star, Steam,
   Text, Tournament, Tracker, Trash,
   Undo,
@@ -58,52 +61,25 @@ export default {
 
 export const Icons = (): React.ReactNode => (
   <GridContainer>
-    <Action />
-    <AlertTriangle />
-    <Archive />
-    <Arrow />
-    <ArrowBig />
-    <Attachment />
-    <Bantr />
-    <Bell />
-    <CheckMark />
-    <Clock />
-    <Copy />
-    <CreditCard />
-    <Dashboard />
-    <Discord />
-    <Discord outline={false} />
-    <Edit />
-    <Eye />
-    <EyeOff />
-    <Faceit />
-    <Filter />
-    <Fullscreen />
-    <Github />
-    <Globe />
-    <GlobeDetailed />
+    <AlertTriangle /> <Archive /> <Arrow /> <ArrowBig /> <Attachment />
+    <Bantr /> <Bell />
+    <CheckMark /> <Clock /> <Copy /> <CreditCard />
+    <Dashboard /> <Discord /> <Discord outline={false} />
+    <Edit /> <Eye /> <EyeOff />
+    <Faceit /> <Filter /> <Fullscreen />
+    <Github /> <Globe /> <GlobeDetailed />
     <Hamburger />
-    <Heart />
-    <Heart outline={false} />
-    <LogOut />
-    <Maps />
-    <Minus />
-    <People />
-    <Person />
-    <PersonAdd />
-    <PersonRemove />
-    <Plus />
-    <Premium />
+    <Heart /> <Heart outline={false} />
+    <Home />
+    <Info />
+    <LogIn /> <LogOut />
+    <Maps /> <Minus />
+    <Options />
+    <People /> <Person /> <PersonAdd /> <PersonRemove /> <Plus /> <Premium />
     <QuestionMark />
-    <Search />
-    <Settings />
-    <Star />
-    <Star outline={false} />
-    <Steam />
-    <Text />
-    <Tournament />
-    <Tracker />
-    <Trash />
+    <Radio />
+    <Search /> <Settings /> <Star /> <Star outline={false} /> <Steam />
+    <Text /> <Tournament /> <Tracker /> <Trash />
     <Undo />
     <Video />
   </GridContainer>

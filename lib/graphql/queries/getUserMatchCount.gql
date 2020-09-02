@@ -1,0 +1,7 @@
+query getUserMatchCount($steamId: String!) {
+  matches: match_aggregate(where: { players: { player: { steamId: {_eq: $steamId }}}}) {
+    aggregate {
+      count
+    }
+  }
+}
