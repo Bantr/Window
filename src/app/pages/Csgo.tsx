@@ -1,9 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { RouteComponentProps } from '@reach/router';
+import { Greeting } from '../components/snacks';
+import { Outlet } from 'react-router-dom';
 import { HeaderNav, SideNav } from '../components/dashboard/nav';
 import { MatchmakingModal } from '../modals';
 import { useModal, useLocalStorage } from 'lib/hooks';
+import { useSnackbar } from 'notistack';
+import { DateTime } from 'luxon';
 
 const Container = styled.div`
   display: flex;
@@ -15,18 +18,26 @@ const MainView = styled.div`
   overflow-y: auto;
 `;
 
-interface IProps extends RouteComponentProps {
-  children: React.ReactNode;
-}
-
-export const Csgo: React.FC<IProps> = ({ children }) => {
+export const Csgo: React.FC = () => {
   const [ModalWrapper, openModal, closeModal] = useModal();
+  const { enqueueSnackbar } = useSnackbar();
   const wrapperRef = React.createRef<HTMLDivElement>();
   const [val, setVal] = useLocalStorage('showMatchmakingModal', true);
+  const [lastVisit, setLastVisit] = useLocalStorage<string>('lastVisit', null);
 
   React.useEffect(() => {
     if (val === true) {
       openModal();
+    }
+
+    if (lastVisit === null || DateTime.fromISO(lastVisit).diffNow().hours >= 6) {
+      setLastVisit(DateTime.local().toISO());
+      enqueueSnackbar(null,
+        {
+          anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+          autoHideDuration: 10000,
+          content: (key, message) => <Greeting key={key} message={message} />
+        });
     }
   }, []);
 
@@ -43,7 +54,9 @@ export const Csgo: React.FC<IProps> = ({ children }) => {
       <HeaderNav />
       <Container>
         <SideNav />
-        <MainView>{children}</MainView>
+        <MainView>
+          <Outlet />
+        </MainView>
       </Container>
     </React.Fragment>
   );

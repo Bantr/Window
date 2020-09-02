@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Logo } from 'lib/components';
-import { RouteComponentProps } from '@reach/router';
 
 const Container = styled.div`
   width: 100vw;
@@ -11,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export const AppLoad: React.FC<RouteComponentProps> = () => (
+export const AppLoad: React.FC = () => (
   <Container>
     <Logo />
   </Container>

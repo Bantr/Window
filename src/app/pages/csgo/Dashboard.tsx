@@ -1,41 +1,35 @@
 import * as React from 'react';
-import { RouteComponentProps } from '@reach/router';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { UserContext } from 'lib/context';
-// import { BannedPlayersDonut, BanFeed, BannedPerMonth, AccountTreeview } from '../../components/dashboard';
+import { Stats } from '../../views/dashboard/stats';
+import { BanInfo } from '../../views/dashboard/banInfo';
 
-const PrimaryGrid = styled.div`
-  display: grid;
-  grid-gap: 50px;
-  grid-auto-columns: auto;
-  /*grid-template-columns: 1fr 2fr 2fr;*/
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: ${({ theme }) => theme.t}80;
+    margin-bottom: 10px;
+  }
+`;
+const Inner = styled.div`
+  width: 100%;
 `;
 
-const TempTitle = styled.h3`
-  margin: 0 auto;
-`;
-interface IProps extends RouteComponentProps {
-  path: string;
-  default?: boolean;
-}
-export const Dashboard: React.FC<IProps> = () => {
-  const { userData } = React.useContext(UserContext);
-
-  return (
-    <PrimaryGrid>
-      <Helmet>
-        <title>CSGO | Dashboard</title>
-      </Helmet>
-      {
-        <TempTitle>Hi {userData.steamUsername}</TempTitle>
-        /*
-          <BannedPlayersDonut />
-          <BannedPerMonth />
-          <AccountTreeview />
-          <BanFeed />
-        */
-      }
-    </PrimaryGrid>
-  );
-};
+export const Dashboard: React.FC = () => (
+  <Container>
+    <Helmet>
+      <title>CSGO | Dashboard</title>
+      <meta content="Bantr's dashboard gives you quick access to default stats and ban information." name="description" />
+    </Helmet>
+    <Stats />
+    <Inner>
+      <BanInfo />
+    </Inner>
+  </Container>
+);

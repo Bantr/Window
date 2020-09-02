@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { RouteComponentProps } from '@reach/router';
-import { SettingsNav } from '../../components/dashboard/nav/settingsNav';
+import { SettingsNav } from '../../../components/dashboard/nav/settingsNav';
 
 const Container = styled.div`
   width: 100%;
@@ -14,14 +14,11 @@ const Content = styled.div`
   height: 100%;
 `;
 
-interface IProps extends RouteComponentProps {
-  children: React.ReactNode;
-}
-export const Settings: React.FC<IProps> = ({ children }) => (
+export const Settings: React.FC = () => (
   <Container>
     <SettingsNav />
     <Content>
-      {children}
+      <Outlet />
     </Content>
   </Container>
 );

@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { RouteComponentProps } from '@reach/router';
 
-interface IProps extends RouteComponentProps {
-  path: string;
-}
-export const TermsOfUse: React.FC<IProps> = () => (
+export const TermsOfUse: React.FC = () => (
   <div>
     <Helmet>
       <title>Terms of Use</title>
+      <meta content="Bantr's terms of service contains the legal agreements in order to be granted access to our platform. Take this very seriously!" name="description" />
     </Helmet>
     Terms of use page
   </div>

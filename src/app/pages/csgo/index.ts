@@ -4,3 +4,4 @@ export { Profile } from './Profile';
 export { Tracker } from './Tracker';
 export { TacticalTimeout } from './TacticalTimeout';
 export { Tournaments } from './Tournaments';
+export { Match } from './Match';
