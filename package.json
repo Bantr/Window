@@ -5,8 +5,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "build": "CI=false webpack --env.mode=production --progress",
-    "build:ci": "CI=true webpack --env.mode=production ",
+    "build": "NODE_ENV=production CI=true webpack --env.mode=production --progress",
+    "build:ci": "NODE_ENV=production CI=true webpack --env.mode=production ",
     "build-storybook": "build-storybook",
     "cy:cache:list": "cypress cache list",
     "cy:info": "cypress info",
@@ -27,7 +27,7 @@
     "serve:ci": "serve ./dist --no-clipboard -s --listen ${PORT:-3000} & wait-on ${HOSTNAME:-'http://localhost'}:${PORT:-3000}",
     "sort": "sort-package-json package.json",
     "prestart": "npm run graphql:generate",
-    "start": "webpack-dev-server --env.mode=development --progress",
+    "start": "NODE_ENV=development webpack-dev-server --env.mode=development --progress",
     "storybook": "node storybook.setup.js"
   },
   "husky": {
