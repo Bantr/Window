@@ -1,40 +1,31 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
+import { useSubscription } from '@apollo/client';
 import { Bell } from 'lib/icons';
 import { INotificationAggregate } from 'lib/types/generated';
 import useSound from 'use-sound';
 import { useOutsideAlerter } from 'lib/hooks';
 import notificationSfx from '../notification.mp3';
-import { NotificationList } from '../notificationList';
-import { httpService } from 'lib/services';
+import { NotificationsDropdown } from '../../../../../dropdowns/notificationDropdown';
 import { BellIcon, Container, NotificationIcon } from './style';
+import SUBSCRIPTION_GET_NEW_NOTIFICATION_COUNT from 'lib/graphql/subscriptions/getNewNotificationCount.gql';
 import * as Sentry from '@sentry/react';
 import Tooltip from 'rc-tooltip';
-
-const GET_NEW_NOTIFICATION_COUNT = gql`
-  query GET_NEW_NOTIFICATION_COUNT{
-    notification: notification_aggregate(where: {deleted: {_eq: false}, seen: {_eq: false}}){
-      aggregate {
-        count
-      }
-    }
-  }
-`;
 
 type NotificationResponse = {
   notification: INotificationAggregate;
 }
 
 export const NotificationBell: React.FC = () => {
-  const [visible, toggleVisible] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const [hasNewNotification, setNewNotification] = React.useState<boolean>(false);
-  const [deletedNotifications, setDeletedNotifications] = React.useState<number[]>([]);
 
+  // Play sound when a new notification is received
   const [play] = useSound(notificationSfx);
-  const { loading, data, error } = useQuery<NotificationResponse>(GET_NEW_NOTIFICATION_COUNT, { pollInterval: 5 * 1000 * 60 });
+  const { loading, data, error } = useSubscription<NotificationResponse>(SUBSCRIPTION_GET_NEW_NOTIFICATION_COUNT);
+
+  // Ref to close notifications dropdown when clicked outside of it.
   const wrapperRef = React.useRef<HTMLDivElement>(null);
-  useOutsideAlerter(wrapperRef, (): void => { toggleVisible(false); });
+  useOutsideAlerter(wrapperRef, (): void => { setOpen(false); });
 
   if (error) {
     Sentry.captureException(error);
@@ -42,17 +33,7 @@ export const NotificationBell: React.FC = () => {
 
   function bellClicked(): void {
     setNewNotification(false);
-    toggleVisible(!visible);
-  }
-  function deleteNotification(notificationId: number): void {
-    setDeletedNotifications([...deletedNotifications, notificationId]);
-  }
-
-  async function setNotificationsToSeen(notificationIds: number[]): Promise<void> {
-    if (notificationIds) {
-      const body = { 'status': true, 'ids': notificationIds };
-      httpService.post('/notification/seen', body).catch((e: Error) => { Sentry.captureException(e); });
-    }
+    setOpen(!open);
   }
 
   React.useEffect(() => {
@@ -68,22 +49,19 @@ export const NotificationBell: React.FC = () => {
 
     <Container ref={wrapperRef}>
       <Tooltip
+        mouseEnterDelay={.25}
         overlay="Notifications"
         placement="bottom"
         trigger="hover"
       >
         <BellIcon className={hasNewNotification ? 'animate' : ''} data-cy="headerNav-notificationBell" onClick={bellClicked}>
-          <Bell pointer scale={1.2} />
+          <Bell highlight pointer scale={1.2} />
           {hasNewNotification ? <NotificationIcon /> : ''}
         </BellIcon>
       </Tooltip>
       {
-        visible ?
-          <NotificationList
-            deletedNotifications={deletedNotifications}
-            deleteNotification={deleteNotification}
-            setNotificationsToSeen={setNotificationsToSeen}
-          />
+        open ?
+          <NotificationsDropdown />
           :
           ''
       }
