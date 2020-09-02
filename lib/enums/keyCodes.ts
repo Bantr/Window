@@ -1,4 +1,4 @@
-export enum KEYCODES {
+export enum KEY_CODES {
   BACKSPACE = 8,
   TAB = 9,
   ENTER = 13,
