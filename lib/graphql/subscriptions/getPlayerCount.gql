@@ -1,0 +1,7 @@
+subscription getPlayerCount {
+  players: player_aggregate{
+    aggregate {
+      count
+    }
+  }
+}

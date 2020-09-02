@@ -1,0 +1,10 @@
+query getPlayerDetails($steamId: String!){
+  player (where: { steamId: { _eq: $steamId }}){
+    steamUsername,
+    steamAvatar,
+    steamProfile,
+  },
+  user (where: { steamId: { _eq: $steamId }}) {
+    id
+  }
+}

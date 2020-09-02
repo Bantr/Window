@@ -1,0 +1,35 @@
+query getStats($steamId: String!) {
+  matches: match_aggregate(where: { players: { player: { steamId: { _eq: $steamId }}}}) {
+    aggregate {
+      count
+    }
+  }
+
+  kills: kill_aggregate(where: { attacker: { player: { steamId: { _eq: $steamId }}}}){
+    aggregate {
+      count
+    }
+  }
+
+  deaths: kill_aggregate(where: { victim: { player: { steamId: { _eq: $steamId }}}}){
+    aggregate {
+      count
+    }
+  }
+
+  headshots: kill_aggregate(where: { attacker: { player: { steamId: { _eq: $steamId }}}}){
+    aggregate {
+      count
+    }
+  }
+
+  wins: match(where: {players: {player: {steamId: {_eq: $steamId }}}}) {
+    rounds(limit: 1, order_by: {endTick: desc}) {
+      winningTeam {
+        players(where: {player: {steamId: {_eq: $steamId}}}) {
+          playerId
+        }
+      }
+    }
+  }
+}

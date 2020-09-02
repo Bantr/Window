@@ -1,0 +1,11 @@
+subscription getBan($timestamp: String!) {
+     ban(limit: 1, where: { unbanned: { _eq: false}, preExisting: {_eq: false }, detectedAt: { _gte: $timestamp} }){
+       id
+       type
+       detectedAt
+       player {
+         steamUsername
+         steamAvatar
+       }
+    }
+  }

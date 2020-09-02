@@ -1,0 +1,18 @@
+query getNotifications{
+  notifications: notification( where: {deleted: {_eq: false }} , order_by: {ban: {detectedAt: desc}}) {
+    id
+    seen
+    createdAt
+    ban {
+      detectedAt
+      type
+      unbanned
+      unbannedAt
+      player {
+        steamUsername
+        steamAvatar
+        steamId
+      }
+   }
+  }
+}

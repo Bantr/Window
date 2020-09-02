@@ -1,0 +1,5 @@
+subscription getLatestMatch($steamId: String!) {
+  match(where: {players: {player: {steamId: {_eq: $steamId}}}}, limit: 1) {
+    date
+  }
+}
