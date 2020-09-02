@@ -1,20 +1,40 @@
 import * as React from 'react';
-import { Link } from '@reach/router';
-import { Github } from 'lib/icons';
-import { Logo } from 'lib/components';
+import Tooltip from 'rc-tooltip';
+import { Link } from 'react-router-dom';
+import { Logo, VersionTag } from 'lib/components';
 import { UserContext } from 'lib/context';
 import { useOutsideAlerter } from 'lib/hooks';
 import { NotificationBell } from './notificationBell';
-import { UserNav } from '../userNav';
+import { ProfileDropDown } from './profileDropDown';
 import { Settings } from './settings';
 import { Avatar, Header, Inner, Left, Right } from './style';
-import Tooltip from 'rc-tooltip';
+
+// import { LatestMatch } from './latestMatch';
+// import { ConnectionsDropDown } from './ConnectionsDropDown';
+import { usePopper } from 'react-popper';
 
 export const HeaderNav: React.FC = () => {
   const { userData } = React.useContext(UserContext);
-  const [dropDownVisible, setDropDownVisible] = React.useState(false);
+  const [showProfileDropDown, setProfileDropDownVisibility] = React.useState(false);
+  // const [showConnectionsDropDown, setConnectionsDropDownVisibility] = React.useState(false);
+
+  const [popperElement, setPopperElement] = React.useState(null);
+  const [referenceElement, setReferenceElement] = React.useState(null);
+
+  const { styles, attributes } = usePopper(
+    referenceElement,
+    popperElement,
+    {
+      strategy: 'absolute',
+      placement: 'bottom-start'
+    }
+  );
+
   const containerRef = React.createRef<HTMLDivElement>();
-  useOutsideAlerter(containerRef, (): void => { setDropDownVisible(false); });
+  useOutsideAlerter(containerRef, (): void => {
+    setProfileDropDownVisibility(false);
+    // setConnectionsDropDownVisibility(false);
+  });
 
   return (
     <Header ref={containerRef}>
@@ -23,32 +43,34 @@ export const HeaderNav: React.FC = () => {
           <Link className="bantr" data-cy="headerNav-home" to="/csgo/dashboard" >
             <Logo />
             Bantr
+            <VersionTag />
           </Link>
         </Left>
         <Right>
+          {
+            /*
+              <LatestMatch onClick={() => { setConnectionsDropDownVisibility(!showConnectionsDropDown); }}>
+                {showConnectionsDropDown ? <ConnectionsDropDown /> : ''}
+            </LatestMatch>
+            */
+          }
           <NotificationBell data-cy="headerNav-notifications" />
-          <Tooltip
-            overlay="Github"
-            placement="bottom"
-            trigger="hover"
-          >
-            <a className="icon-container" data-cy="headerNav-github" href="https://github.com/bantr" rel="noopener noreferrer" target="_blank">
-              <Github pointer />
-            </a>
-          </Tooltip>
           <Settings />
+
           <Tooltip
+            mouseEnterDelay={.25}
             overlay="Profile"
             placement="bottom"
             trigger="hover"
           >
             <Avatar
               data-cy="headerNav-avatar"
-              onClick={(): void => setDropDownVisible(!dropDownVisible)}
+              onClick={(): void => setProfileDropDownVisibility(!showProfileDropDown)}
+              ref={setReferenceElement}
               url={userData.steamAvatar}>
-              {dropDownVisible ? <UserNav /> : ''}
             </Avatar>
           </Tooltip>
+          {showProfileDropDown ? <div ref={setPopperElement} style={styles.popper} {...attributes.popper} ><ProfileDropDown /></div> : ''}
         </Right>
       </Inner>
     </Header>

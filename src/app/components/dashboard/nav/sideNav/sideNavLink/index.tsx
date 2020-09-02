@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Tooltip from 'rc-tooltip';
-import { Link } from '@reach/router';
+import { NavLink } from 'react-router-dom';
 import { IconContainer, LinkContainer, TextContainer } from './style';
 
 interface IProps {
@@ -15,11 +15,12 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => 
     {
       collapsed ?
         <Tooltip
+          mouseEnterDelay={.25}
           overlay={text}
           placement="right"
           trigger="hover"
         >
-          <Link getProps={({ isCurrent }): Record<string, unknown> => ({ className: isCurrent ? 'link active' : 'link' })} to={to}>
+          <NavLink activeClassName="active" className="link" to={to}>
             <IconContainer>
               {icon}
             </IconContainer>
@@ -29,10 +30,10 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => 
                   {text}
                 </TextContainer>)
             }
-          </Link>
+          </NavLink>
         </Tooltip>
         :
-        <Link getProps={({ isCurrent }): Record<string, unknown> => ({ className: isCurrent ? 'link active' : 'link' })} to={to}>
+        <NavLink activeClassName="active" className="link" to={to}>
           <IconContainer>
             {icon}
           </IconContainer>
@@ -42,7 +43,7 @@ export const SideNavLink: React.FC<IProps> = ({ icon, text, collapsed, to }) => 
                 {text}
               </TextContainer>)
           }
-        </Link>
+        </NavLink>
     }
   </LinkContainer>
 );
@@ -52,6 +53,7 @@ export const ExternalSideNavLink: React.FC<IProps> = ({ icon, text, collapsed, t
     {
       collapsed ?
         <Tooltip
+          mouseEnterDelay={.25}
           overlay={text}
           placement="right"
           trigger="hover"

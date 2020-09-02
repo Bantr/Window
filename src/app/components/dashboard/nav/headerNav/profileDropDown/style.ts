@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 
-export const UserDropDown = styled.nav`
-  position: absolute;
-  top: 70px;
-  left: -100px;
-  right: 0;
-  margin: 0 auto;
+export const DropDown = styled.nav`
+  margin-top: 10px;
   width: 175px;
   height: 100px;
   background-color: ${({ theme }): string => theme.sb};
   transition: 0.15s transform ease-in-out;
   border-radius: 5px;
   display: flex;
+  z-index: 10000;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 12px 11px ${({ theme }): string => theme.shadow}4D, 0 19px 4px ${({ theme }): string => theme.shadow}38;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
 `;
 
 export const DropDownItem = styled.div`
@@ -25,6 +22,7 @@ export const DropDownItem = styled.div`
   align-items: center;
   padding: 10px 0 10px 15px;
   border-radius: 5px;
+  cursor: pointer;
 
   &:nth-child(even){
     background-color: ${({ theme }): string => theme.pb};
@@ -38,7 +36,7 @@ export const DropDownItem = styled.div`
     align-items: center;
   }
 
-  .dropdown-icon {
+  .icon {
     margin-right: 10px;
   }
 `;

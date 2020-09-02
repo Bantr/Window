@@ -1,6 +1,6 @@
 import React from 'react';
 import { SideNavLink, ExternalSideNavLink } from './sideNavLink';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { ArrowBig, Dashboard, Discord, Github, Heart, People, Tracker } from 'lib/icons';
 import { ComingSoon } from 'lib/components';
 import { Collapse, CollapseIconContainer, Container, PrivacyContainer } from './style';
@@ -68,7 +68,7 @@ export const SideNav: React.FC = () => {
         ))
         }
         <PrivacyContainer collapsed={collapsed}>
-          <Link to="/privacy-policy">privacy</Link>
+          <Link to="/privacy-policy">privacy policy</Link>
           <Link to="/terms-of-use">terms of use</Link>
         </PrivacyContainer>
       </div>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from '@reach/router';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 320px;
@@ -16,12 +16,16 @@ export const Nav = styled.nav`
   margin-top: 30px;
 `;
 
-export const StyledLink = styled(Link) <{ isCurrent?: boolean }>`
+export const Link = styled(NavLink)`
   font-size: 1rem;
   margin: 5px 0;
   color: ${({ theme }): string => theme.t};
-
+  opacity: 0.5;
+  transition: opacity .2s ease-in-out;
+  &.active {
+    opacity :1;
+  }
   &:hover {
-    opacity: 0.7;
+    opacity: 1;
   }
 `;
