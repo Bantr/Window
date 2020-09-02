@@ -1,15 +1,14 @@
 import * as React from 'react';
+import { useSnackbar } from 'notistack';
+import * as Sentry from '@sentry/react';
+
+import { Container, ConnectionDetails, TitleContainer, CheckMarkContainer } from './style';
 import { httpService, routingService, authenticationService } from 'lib/services';
 import { bantrSettings } from 'lib/settings';
 import { useModal, useOutsideAlerter, useAsync } from 'lib/hooks';
 import { UserContext } from 'lib/context';
-import { Container, ConnectionDetails, TitleContainer, CheckMarkContainer } from './style';
-import { ConfirmationModal } from 'lib/components';
-import { Button, Title } from 'lib/components';
-import { useSnackbar } from 'notistack';
-import { CheckMark } from 'lib/icons';
-import * as Sentry from '@sentry/react';
-
+import { Button, Title, ConfirmationModal } from 'lib/components';
+import { CheckMark, Trash } from 'lib/icons';
 export interface IProps {
   accountId: string;
   isConnected: boolean;
@@ -63,7 +62,7 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
           {
             connected ?
               <CheckMarkContainer>
-                <CheckMark fill="#fff" />
+                <CheckMark fill="#fff" scale={0.8} />
               </CheckMarkContainer>
               : ''
           }
@@ -93,7 +92,8 @@ export const Connection: React.FC<IProps> = ({ accountId, isConnected, platformN
           action={disconnect}
           actionText="Disconnect"
           close={closeModal}
-          description={`Are you sure you want to disconnect ${platformName}?`}
+          description={`If you delete the connection you will no longer receive notifications on ${platformName}. Are you sure you want to proceed?`}
+          icon={<Trash />}
           ref={wrapperRef}
           title={`Disconnect ${platformName}`}
         />
