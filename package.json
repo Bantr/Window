@@ -41,7 +41,7 @@
     "@material-ui/core": "^4.11.0",
     "@playlyfe/gql": "^2.6.2",
     "@popperjs/core": "^2.4.4",
-    "@sentry/apm": "^5.19.2",
+    "@sentry/apm": "^5.27.1",
     "@sentry/react": "^5.19.0",
     "browserlist": "^1.0.1",
     "c3": "^0.7.15",
