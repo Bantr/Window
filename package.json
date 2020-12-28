@@ -91,7 +91,7 @@
     "@graphql-codegen/typescript-react-apollo": "^1.16.0",
     "@hookform/devtools": "^2.0.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.1",
-    "@sentry/types": "^5.15.5",
+    "@sentry/types": "^5.29.2",
     "@sentry/webpack-plugin": "^1.11.1",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.3.18",
