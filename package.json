@@ -166,7 +166,7 @@
     "nyc": "^15.0.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "react-dev-utils": "^10.2.0",
+    "react-dev-utils": "^11.0.4",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-refresh": "^0.8.3",
     "react-test-renderer": "^16.9.0",
